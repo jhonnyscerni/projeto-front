@@ -4,8 +4,12 @@
 
 export const environment = {
   production: false,
-  apiUrlv1: 'https://localhost:8080/api/v1/',
-  imagensUrl: 'https://localhost:8080/'
+  urlbase: 'https://localhost:8080/',
+  imagensUrl: 'https://localhost:8080/',
+  clientId: 'projeto-web',
+  clientSecret: 'web123',
+  obterTokenUrl: '/oauth/token'
+
 };
 
 /*

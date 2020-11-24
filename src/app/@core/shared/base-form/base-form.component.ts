@@ -7,6 +7,10 @@ export abstract class BaseFormComponent implements OnInit {
 
   formResult: string = '';
 
+  errors: any[] = [];
+
+  mudancasNaoSalvas: boolean;
+
   constructor() { }
 
   ngOnInit() {

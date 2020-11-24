@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
-import { ComponentsModule } from "../../components/components.module";
+import { ComponentsModule } from "../../@core/components/components.module";
 
 import { WidgetsComponent } from "./widgets.component";
 

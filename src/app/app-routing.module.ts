@@ -3,11 +3,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { AdminLayoutComponent } from "./@core/layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./@core/layouts/auth-layout/auth-layout.component";
 import { PresentationComponent } from "./pages/presentation/presentation.component";
-import { AcessoNegadoComponent } from './components/acesso-negado/acesso-negado.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AcessoNegadoComponent } from './@core/components/acesso-negado/acesso-negado.component';
+import { NotFoundComponent } from './@core/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -60,7 +60,7 @@ const routes: Routes = [
       {
         path: "portal",
         loadChildren:
-          "./layouts/auth-layout/auth-layout.module#AuthLayoutModule"
+          "./@core/layouts/auth-layout/auth-layout.module#AuthLayoutModule"
       }
     ]
   },

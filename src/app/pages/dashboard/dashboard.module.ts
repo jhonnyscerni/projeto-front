@@ -9,7 +9,7 @@ import { TooltipModule } from "ngx-bootstrap/tooltip";
 
 import { RouterModule } from "@angular/router";
 import { DashboardRoutes } from "./dashboard.routing";
-import { ComponentsModule } from 'src/app/components/components.module';
+import { ComponentsModule } from 'src/app/@core/components/components.module';
 
 @NgModule({
   declarations: [DashboardComponent],

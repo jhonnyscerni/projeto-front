@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 
 export class CrudService<T> extends BaseService {
 
-    constructor(private http: HttpClient) { super() }
+  constructor(protected http: HttpClient, private API_URL) {
+    super();
+  }
 
     list(): Observable<T[]> {
-        return this.http.get<T[]>(this.UrlServiceV1)
+        return this.http.get<T[]>(this.API_URL)
         .pipe(
             delay(2000),
             tap(console.log),
@@ -16,14 +18,14 @@ export class CrudService<T> extends BaseService {
     }
 
     loadByID(id): Observable<T> {
-        return this.http.get<T>(`${this.UrlServiceV1}/${id}`)
+        return this.http.get<T>(`${this.API_URL}/${id}`)
         .pipe(
             catchError(super.serviceError));
     }
 
     private create(record: T): Observable<T> {
         return this.http
-        .post(this.UrlServiceV1, record)
+        .post(this.API_URL, record)
         .pipe(
             map(super.extractData),
             catchError(super.serviceError));
@@ -31,7 +33,7 @@ export class CrudService<T> extends BaseService {
 
     private update(record: T): Observable<T> {
         return this.http
-        .put(`${this.UrlServiceV1}/${record['id']}`, record)
+        .put(`${this.API_URL}/${record['id']}`, record)
         .pipe(
             map(super.extractData),
             catchError(super.serviceError));;
@@ -45,7 +47,7 @@ export class CrudService<T> extends BaseService {
     }
 
     remove(id): Observable<T> {
-        return this.http.delete(`${this.UrlServiceV1}/${id}`)
+        return this.http.delete(`${this.API_URL}/${id}`)
         .pipe(
             map(super.extractData),
             catchError(super.serviceError));;
