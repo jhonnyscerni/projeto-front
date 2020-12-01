@@ -1,14 +1,13 @@
 <div class=" main-content">
-  <div class=" header bg-gradient-danger py-7 py-lg-8 pt-lg-9">
+  <div class=" header bg-gradient-danger py-7 py-lg-6 pt-lg-9">
     <div class=" container">
       <div class=" header-body text-center mb-7">
         <div class=" row justify-content-center">
           <div class=" col-xl-5 col-lg-6 col-md-8 px-5">
-            <h1 class=" text-white">Welcome!</h1>
+            <h1 class=" text-white">Bem vindo(a)!</h1>
 
             <p class=" text-lead text-white">
-              Use these awesome forms to login or create new account in your
-              project for free.
+              Use este formulário para fazer login ou criar uma nova conta gratuitamente.
             </p>
           </div>
         </div>
@@ -16,26 +15,19 @@
     </div>
 
     <div class="separator separator-bottom separator-skew zindex-100">
-      <svg
-        x="0"
-        y="0"
-        viewBox="0 0 2560 100"
-        preserveAspectRatio="none"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
         <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
   </div>
-
   <div class=" container mt--8 pb-5">
     <div class=" row justify-content-center">
       <div class=" col-lg-5 col-md-7">
         <div class=" card bg-secondary border-0 mb-0">
-          <div class=" card-header bg-transparent pb-5">
+          <!-- <div class=" card-header bg-transparent pb-5">
             <div class=" text-muted text-center mt-2 mb-3">
-              <small> Sign in with </small>
+              <small> Entrar com</small>
             </div>
 
             <div class=" btn-wrapper text-center">
@@ -55,66 +47,63 @@
                 <span class=" btn-inner--text"> Google </span>
               </a>
             </div>
-          </div>
+          </div> -->
 
           <div class=" card-body px-lg-5 py-lg-5">
             <div class=" text-center text-muted mb-4">
-              <small> Or sign in with credentials </small>
+              <!-- <small> Or sign in with credentials </small> -->
+              <small>Faça login com credenciais </small>
             </div>
+            <!-- <alert class="alert-dismissible" [dismissible]="dismissible" [type]="'danger'" *ngFor="let error of errors">
+              <span class=" alert-icon"> <i class=" ni ni-like-2"> </i> </span>
 
-            <form role="form">
-              <div
-                class="form-group mb-3"
-                [ngClass]="{ focused: focus === true }"
-              >
+              <span class=" alert-text">
+                <strong> Alerta! </strong> {{ error }}
+              </span>
+            </alert> -->
+
+            <div role="alert" class="alert alert-danger alert-dismissible" ng-reflect-ng-class="alert-dismissible" *ngFor="let error of errors"><!--bindings={
+              "ng-reflect-ng-if": "true"
+            }--><span class="alert-icon"><i class="ni ni-like-2"></i></span><span class="alert-text" style="width: 84%;"><strong> Alerta! </strong> {{ error }} </span>
+          </div>
+          
+
+            <form role="form" novalidate (ngSubmit)="submit()" [formGroup]="cadastroForm">
+              <div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="ni ni-email-83"></i
-                    ></span>
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                   </div>
-                  <input
-                    class="form-control"
-                    placeholder="Email"
-                    type="email"
-                    (focus)="focus = true"
-                    (blur)="focus = false"
-                  />
+                  <input class="form-control" placeholder="E-mail (requerido)" type="email" name="email"
+                    [ngClass]="{'is-invalid':verificaValidTouched('email') }" formControlName="email"
+                    (focus)="focus = true" (blur)="focus = false" />
                 </div>
+                <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
+                <!-- <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'VALID'"
+                  msgErro="Email válido!">
+                </app-campo-control-erro> -->
               </div>
               <div class="form-group" [ngClass]="{ focused: focus1 === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="ni ni-lock-circle-open"></i
-                    ></span>
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input
-                    class="form-control"
-                    placeholder="Password"
-                    type="password"
-                    (focus)="focus1 = true"
-                    (blur)="focus1 = false"
-                  />
+                  <input class="form-control" placeholder="Senha (requerido)" type="password" formControlName="senha"
+                    name="senha" (focus)="focus1 = true" (blur)="focus1 = false" />
                 </div>
+                <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
               </div>
-              <div
-                class="custom-control custom-control-alternative custom-checkbox"
-              >
-                <input
-                  class="custom-control-input"
-                  id=" customCheckLogin"
-                  type="checkbox"
-                />
+              <div class="custom-control custom-control-alternative custom-checkbox">
+                <input class="custom-control-input" id=" customCheckLogin" type="checkbox" />
                 <label class="custom-control-label" for=" customCheckLogin">
-                  <span>Remember me</span>
+                  <span>Lembre de mim</span>
                 </label>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary my-4">
-                  Sign in
-                </button>
+                <button class="btn btn-primary my-4" id="Login" [disabled]="!cadastroForm.valid"
+                  type="submit">Login</button>
               </div>
+              <!-- <app-form-debug [form]="cadastroForm"></app-form-debug> -->
             </form>
           </div>
         </div>
@@ -122,13 +111,13 @@
         <div class=" row mt-3">
           <div class=" col-6">
             <a class=" text-light" href="javascript:void(0)">
-              <small> Forgot password? </small>
+              <small> Esqueceu a senha? </small>
             </a>
           </div>
 
           <div class=" col-6 text-right">
             <a class=" text-light" href="javascript:void(0)">
-              <small> Create new account </small>
+              <small> Criar nova conta </small>
             </a>
           </div>
         </div>

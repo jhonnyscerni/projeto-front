@@ -1,9 +1,9 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
-import { BsDropdownModule } from "ngx-bootstrap";
+import { BsDropdownModule, ModalModule } from "ngx-bootstrap";
 import { ToastrModule } from "ngx-toastr";
 import { TagInputModule } from "ngx-chips";
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -37,6 +37,8 @@ export const httpInterceptorProviders = [
     TagInputModule,
     PresentationModule,
     SharedModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [httpInterceptorProviders],

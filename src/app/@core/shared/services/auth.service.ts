@@ -67,6 +67,8 @@ export class AuthService {
       'Authorization': 'Basic ' + btoa(`${this.clientID}:${this.clientSecret}`),
       'Content-Type': 'application/x-www-form-urlencoded'
     }
+    // console.log(params)
+    // console.log(headers)
     
     return this.http.post( this.tokenURL, params.toString(), { headers });
   }

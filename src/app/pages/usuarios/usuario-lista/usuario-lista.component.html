@@ -1,0 +1,125 @@
+<!-- <section class="py-2"> -->
+<section>
+    <div class=" header bg-danger pb-6">
+        <div class=" container-fluid">
+            <div class=" header-body">
+                <div class="container">
+                    <div class=" row align-items-center py-4">
+                        <div class=" col-lg-6 col-7">
+                            <nav aria-label="breadcrumb" class=" d-none d-md-inline-block" style="margin-right: 1.5rem">
+                                <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                                    <li class=" breadcrumb-item">
+                                        <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+                                    </li>
+                                </ol>
+                            </nav>
+                            <h6 class=" h2 text-white d-inline-block mb-0">Meus Usuários</h6>
+                            <!-- <nav
+                          aria-label="breadcrumb"
+                          class=" d-none d-md-inline-block ml-md-4"
+                          >
+                       <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                             <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+                             </li>
+                             <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> Tables </a>
+                             </li>
+                             <li aria-current="page" class=" breadcrumb-item active">
+                                Tables
+                             </li>
+                          </ol> 
+                       </nav>-->
+                        </div>
+                        <div class=" col-lg-6 col-5 text-right">
+                            <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
+                                [routerLink]="['/usuarios/adicionar']">
+                                Criar Usuário </a>
+                            <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
+                                Atualizar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt--6">
+        <!-- <div class=" container-fluid mt-6"> -->
+        <div class=" card">
+            <div class=" card-header border-0">
+                <div class=" row">
+                    <div class=" col-6">
+                        <h3 class=" mb-0">Lista de Usuários</h3>
+                    </div>
+                    <div class=" col-6 text-right">
+                        <a class=" btn btn-sm btn-primary btn-round btn-icon" href="javascript:void(0)"
+                            tooltip="Edit product" placement="top">
+                            <span class=" btn-inner--icon">
+                                <i class=" fas fa-user-edit"> </i>
+                            </span>
+                            <span class=" btn-inner--text"> Export </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Inicio da Table-->
+            <div class=" table-responsive">
+                <!--(usuarios$ | async) as usuarios; else loadingError-->
+                <table class=" table align-items-center table-flush table-striped"
+                    *ngIf="usuarios; else loadingError">
+                    <thead class=" thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>
+                            <th>EMAIL</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios">
+                            <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
+                            <td><span class=" text-muted"> {{ usuario?.nome }}</span></td>
+                            <td><span class=" text-muted"> {{ usuario.email }} </span>
+                            </td>
+                            <td class=" table-actions">
+                                <a class="table-action" tooltip="Editar usuario" placement="top"
+                                    href="javascript:void(0)" (click)="onEdit(usuario.id)">
+                                    <i class=" fas fa-user-edit"> </i>
+                                </a>
+                                <a class=" table-action table-action-delete" tooltip="Deletar usuario" placement="top"
+                                    href="javascript:void(0)" (click)="onDelete(usuario)">
+                                    <i class=" fas fa-trash"> </i>
+                                </a>
+                                <a class="table-action" tooltip="Detalhes usuario" placement="top"
+                                    href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
+                                    <i class="fas fa-cogs"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <ng-template #loading>
+                    <span>Carregando Eventos...</span>
+                 </ng-template> -->
+
+                <ng-template #loadingError>
+                    <div *ngIf="error$ | async; else loading">
+                        Erro ao carregar usuarios. Tente novamente mais tarde.
+                    </div>
+                    <ng-template #loading>
+                        <span>Carregando Usuarios...</span>
+                    </ng-template>
+                </ng-template>
+            </div>
+            <div class=" card-footer py-4">
+                <nav aria-label="...">
+                    <pagination [totalItems]="25" class="justify-content-end mb-0"
+                        previousText="<i class='fas fa-angle-left'></i>" nextText="<i class='fas fa-angle-right'></i>">
+                    </pagination>
+                </nav>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+</section>

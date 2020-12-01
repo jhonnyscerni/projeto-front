@@ -130,6 +130,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Charts",
     type: "link",
     icontype: "ni-chart-pie-35 text-info"
+  },
+  {
+    path: "/usuarios",
+    title: "Usuários",
+    type: "link",
+    icontype: "ni-single-02 text-info"
   }
 ];
 

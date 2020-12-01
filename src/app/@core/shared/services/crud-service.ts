@@ -13,7 +13,7 @@ export class CrudService<T> extends BaseService {
         return this.http.get<T[]>(this.API_URL)
         .pipe(
             delay(2000),
-            tap(console.log),
+            // tap(console.log),
             catchError(super.serviceError));
     }
 

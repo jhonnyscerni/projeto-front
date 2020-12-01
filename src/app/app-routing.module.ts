@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from "./@core/layouts/auth-layout/auth-layout.com
 import { PresentationComponent } from "./pages/presentation/presentation.component";
 import { AcessoNegadoComponent } from './@core/components/acesso-negado/acesso-negado.component';
 import { NotFoundComponent } from './@core/components/not-found/not-found.component';
+import { AuthGuard } from './@core/shared/services/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: "",
-    component: AdminLayoutComponent,
+    component: AdminLayoutComponent, 
+    canActivate : [AuthGuard],
     children: [
       {
         path: "dashboard",
@@ -49,7 +51,11 @@ const routes: Routes = [
       },
       {
         path: "portal",
-        loadChildren: "./pages/portal/portal.module#portalModule"
+        loadChildren: "./pages/portal/portal.module#PortalModule"
+      },
+      {
+        path: "usuarios",
+        loadChildren: "./pages/usuarios/usuarios.module#UsuariosModule"
       }
     ]
   },

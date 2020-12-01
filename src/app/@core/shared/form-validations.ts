@@ -59,6 +59,7 @@ export class FormValidations {
       'required': `${fieldName} é obrigatório.`,
       'minlength': `${fieldName} precisa ter no mínimo ${validatorValue.requiredLength} caracteres.`,
       'maxlength': `${fieldName} precisa ter no máximo ${validatorValue.requiredLength} caracteres.`,
+      'email': 'Por favor insira um endereço de e-mail válido',
       'cepInvalido': 'CEP inválido.',
       'emailInvalido': 'Email já cadastrado!',
       'equalsTo': 'Campos não são iguais',

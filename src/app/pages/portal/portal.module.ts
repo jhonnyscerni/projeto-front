@@ -18,4 +18,4 @@ import { portalRoutes } from "./portal.routing";
     CollapseModule.forRoot()
   ]
 })
-export class portalModule {}
+export class PortalModule {}
