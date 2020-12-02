@@ -1,14 +1,13 @@
 <div class=" main-content">
-  <div class=" header bg-gradient-danger py-7 py-lg-8 pt-lg-9">
+  <div class=" header bg-gradient-danger py-7 py-lg-6 pt-lg-9">
     <div class=" container">
       <div class=" header-body text-center mb-7">
         <div class=" row justify-content-center">
           <div class=" col-xl-5 col-lg-6 col-md-8 px-5">
-            <h1 class=" text-white">Create an account</h1>
+            <h1 class=" text-white">Crie a sua conta aqui</h1>
 
             <p class=" text-lead text-white">
-              Use these awesome forms to login or create new account in your
-              project for free.
+              Use este formulário para criar uma nova conta gratuitamente.
             </p>
           </div>
         </div>
@@ -16,14 +15,8 @@
     </div>
 
     <div class="separator separator-bottom separator-skew zindex-100">
-      <svg
-        x="0"
-        y="0"
-        viewBox="0 0 2560 100"
-        preserveAspectRatio="none"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
         <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
@@ -33,7 +26,7 @@
     <div class=" row justify-content-center">
       <div class=" col-lg-6 col-md-8">
         <div class=" card bg-secondary border-0">
-          <div class=" card-header bg-transparent pb-5">
+          <!-- <div class=" card-header bg-transparent pb-5">
             <div class=" text-muted text-center mt-2 mb-4">
               <small> Sign up with </small>
             </div>
@@ -58,94 +51,71 @@
                 <span class=" btn-inner--text"> Google </span>
               </a>
             </div>
-          </div>
+          </div> -->
 
           <div class=" card-body px-lg-5 py-lg-5">
             <div class=" text-center text-muted mb-4">
-              <small> Or sign up with credentials </small>
+              <small> Informe os dados para cadastro </small>
             </div>
 
-            <form role="form">
+            <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
               <div class="form-group" [ngClass]="{ focused: focus === true }">
                 <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="ni ni-hat-3"></i
-                    ></span>
+                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input
-                    class="form-control"
-                    placeholder="Name"
-                    type="text"
-                    (focus)="focus = true"
-                    (blur)="focus = false"
-                  />
+                  <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('nome') }" id="nome"
+                    placeholder="Nome do Usuário" type="text" formControlName="nome" />
                 </div>
+                <app-error-msg [control]="cadastroForm.get('nome')" label="Nome"></app-error-msg>
               </div>
               <div class="form-group" [ngClass]="{ focused: focus1 === true }">
                 <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="ni ni-email-83"></i
-                    ></span>
+                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                   </div>
-                  <input
-                    class="form-control"
-                    placeholder="Email"
-                    type="email"
-                    (focus)="focus1 = true"
-                    (blur)="focus1 = false"
-                  />
+                  <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('email') }" id="email"
+                    placeholder="E-mail" type="text" formControlName="email" />
                 </div>
+                <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
+                <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'PENDING'"
+                  msgErro="Validando email...">
+                </app-campo-control-erro>
               </div>
               <div class="form-group" [ngClass]="{ focused: focus2 === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"
-                      ><i class="ni ni-lock-circle-open"></i
-                    ></span>
+                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input
-                    class="form-control"
-                    placeholder="Password"
-                    type="password"
-                    (focus)="focus2 = true"
-                    (blur)="focus2 = false"
-                  />
+                  <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha"
+                    (focus)="focus = true" (blur)="focus = false" />
+
                 </div>
+                <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
               </div>
-              <div class="text-muted font-italic">
-                <small
-                  >password strength:
+              <!-- <div class="text-muted font-italic">
+                <small>password strength:
                   <span class="text-success font-weight-700">strong</span>
                 </small>
-              </div>
+              </div> -->
               <div class="row my-4">
                 <div class="col-12">
-                  <div
-                    class="custom-control custom-control-alternative custom-checkbox"
-                  >
-                    <input
-                      class="custom-control-input"
-                      id="customCheckRegister"
-                      type="checkbox"
-                    />
-                    <label
-                      class="custom-control-label"
-                      for="customCheckRegister"
-                    >
-                      <span
-                        >I agree with the
-                        <a href="javascript:void(0)">Privacy Policy</a>
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="customCheckRegister" type="checkbox" />
+                    <label class="custom-control-label" for="customCheckRegister">
+                      <span>Eu concordo com a
+                        <a href="javascript:void(0)">Política de Privacidade</a>
                       </span>
                     </label>
                   </div>
                 </div>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary mt-4">
-                  Create account
+                <button type="submit" class="btn btn-primary mt-4" [disabled]="!cadastroForm.valid">
+                  Criar Conta
                 </button>
+                <button class="btn  btn-primary mt-4" id="cancelar" (click)="canecelar()" type="submit">Cancelar
+                  </button>
               </div>
             </form>
           </div>

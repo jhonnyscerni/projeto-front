@@ -19,7 +19,8 @@ export const usuarioRoutes: Routes = [
     path: "",
     children: [
       { path: "adicionar" , component: UsuarioFormComponent },
-      { path: "editar/:id", component: UsuarioFormComponent },
+      { path: "editar/:idUsuario", component: UsuarioFormComponent },
+      { path: "detalhe/:idUsuario", component: UsuarioFormComponent },
       { path: "lista", component: UsuarioListaComponent },
       { path: "", redirectTo : '/usuarios/lista', pathMatch: 'full' }
     ]

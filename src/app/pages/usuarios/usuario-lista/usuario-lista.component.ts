@@ -38,11 +38,11 @@ export class UsuarioListaComponent implements OnInit {
 
 
   onEdit(id) {
-    this.router.navigate(['usuarios/editar', id], { relativeTo: this.route });
+    this.router.navigate(['/usuarios/editar', id], { relativeTo: this.route });
   }
 
   onDetalhe(id) {
-    this.router.navigate(['usuarios/detalhe', id], { relativeTo: this.route });
+    this.router.navigate(['/usuarios/detalhe', id], { relativeTo: this.route });
   }
 
   onDelete(usuario) {

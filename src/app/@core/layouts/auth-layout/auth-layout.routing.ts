@@ -29,7 +29,7 @@ export const AuthLayoutRoutes: Routes = [
     path: "",
     children: [
       {
-        path: "register",
+        path: "cadastrar",
         component: RegisterComponent
       }
     ]

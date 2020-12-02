@@ -7,6 +7,9 @@ import { ProgressbarModule, CollapseModule, TooltipModule, BsDropdownModule } fr
 import { usuarioRoutes } from './usuario.routing';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { ComponentsModule } from 'src/app/@core/components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/@core/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +19,12 @@ import { ComponentsModule } from 'src/app/@core/components/components.module';
     BsDropdownModule.forRoot(),
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
-    RouterModule.forChild(usuarioRoutes)
+    RouterModule.forChild(usuarioRoutes),
+
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule
+    
   ],
   declarations: [UsuariosComponent, UsuarioListaComponent, UsuarioFormComponent],
   exports:[UsuariosComponent, UsuarioListaComponent, UsuarioFormComponent]
