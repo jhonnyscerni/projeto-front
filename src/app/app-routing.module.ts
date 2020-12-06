@@ -30,32 +30,16 @@ const routes: Routes = [
         loadChildren: "./pages/dashboard/dashboard.module#DashboardModule"
       },
       {
-        path: "components",
-        loadChildren: "./pages/components/components.module#ComponentsModule"
-      },
-      {
-        path: "forms",
-        loadChildren: "./pages/forms/forms.module#FormsModules"
-      },
-      {
-        path: "tables",
-        loadChildren: "./pages/tables/tables.module#TablesModule"
-      },
-      {
-        path: "widgets",
-        loadChildren: "./pages/widgets/widgets.module#WidgetsModule"
-      },
-      {
-        path: "charts",
-        loadChildren: "./pages/charts/charts.module#ChartsModule"
-      },
-      {
-        path: "portal",
-        loadChildren: "./pages/portal/portal.module#PortalModule"
-      },
-      {
         path: "usuarios",
         loadChildren: "./pages/usuarios/usuarios.module#UsuariosModule"
+      },
+      {
+        path: "grupos",
+        loadChildren: "./pages/grupos/grupos.module#GruposModule"
+      },
+      {
+        path: "permissoes",
+        loadChildren: "./pages/permissoes/permissoes.module#PermissoesModule"
       },
       { path: 'painel/acesso-negado', component: AcessoNegadoComponent }
     ]
@@ -75,7 +59,7 @@ const routes: Routes = [
   //   path: "**",
   //   redirectTo: "dashboard"
   // },
-  { path: 'acesso-negado', component: AcessoNegadoComponent },
+  // { path: 'acesso-negado', component: AcessoNegadoComponent },
   { path: 'nao-encontrado', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent }
 ];

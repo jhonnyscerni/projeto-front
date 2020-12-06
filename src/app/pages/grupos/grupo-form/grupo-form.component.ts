@@ -1,42 +1,44 @@
-import { UsuarioService } from './../../../services/usuario.service';
-import { Usuario } from './../../../models/usuario';
 import { Component, OnInit } from '@angular/core';
+import { Grupo } from 'src/app/models/grupo';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PermissaoService } from 'src/app/services/permissao.service';
+import { ToastrService } from 'ngx-toastr';
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
 import { Location } from '@angular/common';
+import { GrupoService } from 'src/app/services/grupo.service';
 
 @Component({
-  selector: 'app-usuario-form',
-  templateUrl: './usuario-form.component.html',
-  styleUrls: ['./usuario-form.component.scss']
+  selector: 'app-grupo-form',
+  templateUrl: './grupo-form.component.html',
+  styleUrls: ['./grupo-form.component.scss']
 })
-export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
- 
-  usuario: Usuario;
-  idUsuario: number;
-  validarEmail: any;
+export class GrupoFormComponent extends BaseFormComponent implements OnInit {
+  
+  grupo: Grupo;
+  idGrupo: number;
 
   constructor(
     private fb: FormBuilder,
     private alertService: AlertModalService,
     private location: Location,
     private route: ActivatedRoute,
-    private usuarioService: UsuarioService,
     private router: Router,
-  ) {
+    private grupoService: GrupoService,
+    private toastr: ToastrService,
+  ) { 
     super();
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      const idUsuario = params['idUsuario'];
-      if (idUsuario) {
-        console.log(idUsuario);
-        const usuario$ = this.usuarioService.loadByID(idUsuario);
-        usuario$.subscribe(usuario => {
-          this.updateForm(usuario);
+      const idGrupo = params['idGrupo'];
+      if (idGrupo) {
+        console.log(idGrupo);
+        const grupo$ = this.grupoService.loadByID(idGrupo);
+        grupo$.subscribe(grupo => {
+          this.updateForm(grupo);
           // this.cadastroForm.setValue(evento)
         });
       }
@@ -51,34 +53,31 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(250),
         ],
-      ],
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]]
+      ]
     });
   }
 
-  updateForm(usuario) {
+  updateForm(grupo) {
     this.cadastroForm.patchValue({
-      id: usuario.id,
-      nome: usuario.nome,
-      email: usuario.email,
-      senha: usuario.senha
+      id: grupo.id,
+      nome: grupo.nome
     });
   }
 
   submit() {
     console.log('submit');
 
-    let msgSuccess = 'Usuário criado com sucesso!';
-    let msgError = 'Erro ao criar usuario, tente novamente!';
+    let msgSuccess = 'Grupo criado com sucesso!';
+    let msgError = 'Erro ao criar grupo, tente novamente!';
     if (this.cadastroForm.value.id) {
       console.log(this.cadastroForm.value);
-      msgSuccess = 'Usuário atualizado com sucesso!';
-      msgError = 'Erro ao atualizar usuario, tente novamente!';
+      msgSuccess = 'Grupo atualizado com sucesso!';
+      msgError = 'Erro ao atualizar grupo, tente novamente!';
     }
 
-    this.usuarioService.save(this.cadastroForm.value).subscribe(
+    this.grupoService.save(this.cadastroForm.value).subscribe(
       success => {
+        //this.toastr.success(msgSuccess, 'Sucesso'),
         this.alertService.showAlertSuccess(msgSuccess);
         this.location.back();
       },
@@ -87,6 +86,7 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
   }
 
   canecelar(){
-    this.router.navigate(['/usuarios/lista'], { relativeTo: this.route });
+    this.router.navigate(['/grupos/lista'], { relativeTo: this.route });
   }
+
 }

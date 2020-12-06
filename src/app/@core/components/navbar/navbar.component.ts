@@ -7,6 +7,7 @@ import {
   LocationStrategy,
   PathLocationStrategy
 } from "@angular/common";
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: "app-navbar",
@@ -18,11 +19,13 @@ export class NavbarComponent implements OnInit {
   public listTitles: any[];
   public location: Location;
   sidenavOpen: boolean = true;
+  user: any;
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
-  ) {
+    private router: Router,
+    private authService: AuthService,
+  ) {    
     this.location = location;
     this.router.events.subscribe((event: Event) => {
        if (event instanceof NavigationStart) {
@@ -47,6 +50,16 @@ export class NavbarComponent implements OnInit {
        }
    });
 
+  }
+
+  usuarioLogado(): boolean {
+    this.user = this.authService.getUsuarioAutenticado()
+    return this.authService.isAuthenticated()
+  }
+
+  logout() {
+    this.authService.encerrarSessao()
+    this.router.navigate(['/home'])
   }
 
   ngOnInit() {

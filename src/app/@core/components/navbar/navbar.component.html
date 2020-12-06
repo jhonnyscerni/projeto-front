@@ -290,8 +290,8 @@
         </li>
       </ul>
       <!-- User -->
-      <ul class="navbar-nav align-items-center ml-auto ml-md-0">
-        <li class="nav-item dropdown" dropdown placement="bottom-right">
+      <ul [ngSwitch]="usuarioLogado()" class="navbar-nav align-items-center ml-auto ml-md-0">
+        <li *ngSwitchCase="true" class="nav-item dropdown" dropdown placement="bottom-right">
           <a class="nav-link pr-0 dropdown-toggle" role="button" dropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
@@ -301,7 +301,7 @@
                 />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                <span class="mb-0 text-sm  font-weight-bold">{{user}}</span>
               </div>
             </div>
           </a>
@@ -310,7 +310,7 @@
             *dropdownMenu
           >
             <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome!</h6>
+              <h6 class="text-overflow m-0">Bem Vindo!</h6>
             </div>
             <a
               routerLinkActive="active"
@@ -341,7 +341,7 @@
               <i class="ni ni-support-16"></i> <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="javascript:void()" class="dropdown-item">
+            <a href="javascript:void()" (click)="logout()" class="dropdown-item">
               <i class="ni ni-user-run"></i> <span>Logout</span>
             </a>
           </div>
