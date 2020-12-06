@@ -13,6 +13,7 @@ import { ProgressbarModule, BsDropdownModule, PaginationModule, TooltipModule } 
 import { SharedModule } from '../../shared/shared.module';
 import { NgxPrintModule } from 'ngx-print';
 import { HttpClientModule } from '@angular/common/http';
+import { ContaGuard } from '../../shared/services/conta.guard';
 
 @NgModule({
   imports: [
@@ -34,6 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     PricingComponent,
     LockComponent,
     RegisterComponent
+  ],
+  providers: [
+    ContaGuard
   ]
 })
 export class AuthLayoutModule {}

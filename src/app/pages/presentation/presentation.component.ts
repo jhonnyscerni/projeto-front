@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { AuthService } from 'src/app/@core/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-presentation",
@@ -8,7 +10,24 @@ import { Component, OnInit } from "@angular/core";
 export class PresentationComponent implements OnInit {
   test: Date = new Date();
   isCollapsed = true;
-  constructor() {}
+  user: any;
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  usuarioLogado(): boolean {
+    this.user = this.authService.getUsuarioAutenticado()
+    return this.authService.isAuthenticated()
+  }
+
+  logout() {
+    this.authService.encerrarSessao()
+    this.router.navigate(['/home'])
+  }
 }
+
+
+

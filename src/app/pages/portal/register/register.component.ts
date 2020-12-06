@@ -64,7 +64,7 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
   }
 
   canecelar(){
-    this.router.navigate(['/presentation'], { relativeTo: this.route });
+    this.router.navigate(['/home'], { relativeTo: this.route });
   }
 
 }

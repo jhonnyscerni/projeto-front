@@ -4,7 +4,7 @@ import { LoginComponent } from "../../../pages/portal/login/login.component";
 import { PricingComponent } from "../../../pages/portal/pricing/pricing.component";
 import { LockComponent } from "../../../pages/portal/lock/lock.component";
 import { RegisterComponent } from "../../../pages/portal/register/register.component";
-import { PresentationComponent } from "../../../pages/presentation/presentation.component";
+import { ContaGuard } from '../../shared/services/conta.guard';
 
 export const AuthLayoutRoutes: Routes = [
   {
@@ -12,7 +12,7 @@ export const AuthLayoutRoutes: Routes = [
     children: [
       {
         path: "login",
-        component: LoginComponent
+        component: LoginComponent, canActivate: [ContaGuard]
       }
     ]
   },
@@ -30,7 +30,7 @@ export const AuthLayoutRoutes: Routes = [
     children: [
       {
         path: "cadastrar",
-        component: RegisterComponent
+        component: RegisterComponent,canActivate: [ContaGuard]
       }
     ]
   },

@@ -63,11 +63,11 @@ export class UsuarioListaComponent implements OnInit {
         success => {
           this.onRefresh();
         },
-        error => {
-          this.alertService.showAlertDanger(
-            'Erro ao remover curso. Tente novamente mais tarde.',
-          );
-        },
+        // error => {
+        //   this.alertService.showAlertDanger(
+        //     'Erro ao remover curso. Tente novamente mais tarde.',
+        //   );
+        // },
       );
   }
 

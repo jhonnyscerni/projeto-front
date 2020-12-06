@@ -15,6 +15,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
   usuario: Usuario;
   cadastrando: boolean;
   mensagemSucesso: string;
+  returnUrl: string;
   
   focus;
   focus1;
@@ -23,9 +24,10 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     super(); 
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
   }
 
   ngOnInit() {
@@ -42,8 +44,14 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
           .subscribe(response => {
             const access_token = JSON.stringify(response);
             localStorage.setItem('access_token', access_token)
-            this.router.navigate(['/portal'])
+            // this.router.navigate(['/dashboard'])
+            this.authService.getUsuarioAutenticado()
+            this.authService.getAutorizacoes()
+            this.returnUrl
+            ? this.router.navigate([this.returnUrl])
+            : this.router.navigate(['/dashboard']);
           }, errorResponse => {
+            this.toastr.error('Ocorreu um erro!', 'Opa :(')
             this.errors = ['Usuário e/ou senha incorreto(s).']
           })
 

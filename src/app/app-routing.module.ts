@@ -13,11 +13,11 @@ import { AuthGuard } from './@core/shared/services/auth.guard';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "presentation",
+    redirectTo: "home",
     pathMatch: "full"
   },
   {
-    path: "presentation",
+    path: "home",
     component: PresentationComponent
   },
   {
@@ -56,7 +56,8 @@ const routes: Routes = [
       {
         path: "usuarios",
         loadChildren: "./pages/usuarios/usuarios.module#UsuariosModule"
-      }
+      },
+      { path: 'painel/acesso-negado', component: AcessoNegadoComponent }
     ]
   },
   {

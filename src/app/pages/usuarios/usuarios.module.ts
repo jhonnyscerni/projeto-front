@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ import { SharedModule } from 'src/app/@core/shared/shared.module';
     TooltipModule.forRoot(),
     RouterModule.forChild(usuarioRoutes),
 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule

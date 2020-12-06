@@ -39,10 +39,22 @@ export class AuthService {
     const token = this.obterToken();
     if(token){
       const usuario = this.jwtHelper.decodeToken(token).user_name
+      //console.log("Usuario: "+ usuario)
       return usuario;
     }
     return null;
   }
+
+  getAutorizacoes(){
+    const token = this.obterToken();
+    if(token){
+      const autorizacoes = this.jwtHelper.decodeToken(token).authorities
+      //console.log("Autorizações: "+ autorizacoes)
+      return autorizacoes;
+    }
+    return null;
+  }
+
 
   isAuthenticated() : boolean {
     const token = this.obterToken();

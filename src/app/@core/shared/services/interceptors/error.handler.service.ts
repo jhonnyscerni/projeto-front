@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                     this.router.navigate(['/portal/login'], { queryParams: { returnUrl: this.router.url }});
                 }
                 if (error.status === 403) {
-                    this.router.navigate(['/acesso-negado']);
+                    this.router.navigate(['/painel/acesso-negado']);
                 }
             }
 
