@@ -1,8 +1,11 @@
 import { CrudService } from '../@core/shared/services/crud-service';
 import { Usuario } from '../models/usuario';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsuarioFilter } from '../models/filter/usuario-filter';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

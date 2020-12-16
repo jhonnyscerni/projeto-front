@@ -12,7 +12,9 @@ export const AuthLayoutRoutes: Routes = [
     children: [
       {
         path: "login",
-        component: LoginComponent, canActivate: [ContaGuard]
+        component: LoginComponent
+        //verificar a implementação do ContGuard
+        // component: LoginComponent, canActivate: [ContaGuard]
       }
     ]
   },
@@ -30,7 +32,9 @@ export const AuthLayoutRoutes: Routes = [
     children: [
       {
         path: "cadastrar",
-        component: RegisterComponent,canActivate: [ContaGuard]
+        component: RegisterComponent
+        //verificar a implementação do ContGuard
+        //component: RegisterComponent,canActivate: [ContaGuard]
       }
     ]
   },

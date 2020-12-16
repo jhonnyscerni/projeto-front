@@ -44,14 +44,63 @@
         </div>
     </div>
 
-    <div class=" container-fluid mt--6">
+  <!-- Inicio do Form -->
+  <div class=" container-fluid mt--6">
+        <div class=" card mb-6">
+            <div class=" card-header">
+                <h3 class=" mb-0">Filtro de Pesquisa</h3>
+            </div>
+
+            <div class=" card-body">
+                <!-- inicio da Row -->
+                <form novalidate [formGroup]="searchForm">
+                    <div class=" row">
+
+                        <div class=" col-md-5">
+                            <div class=" form-group">
+                                <!-- <label class=" form-control-label" for="nome">
+                                    Nome do Usuário
+                                </label> -->
+
+                                <input class=" form-control" id="nome" placeholder="Nome do Usuário" type="text"
+                                    formControlName="nomeControl" />
+                            </div>
+                        </div>
+
+                        <div class=" col-sm-12 col-md-5">
+                            <div class=" form-group">
+                                <!-- <label class=" form-control-label" for="email">
+                                    E-mail:
+                                </label> -->
+
+                                <input class=" form-control" id="email" placeholder="E-mail" type="text"
+                                    formControlName="emailControl" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 form-group text-center">
+                            <div>
+                                <label class=" form-control-label">
+                                </label>
+                                <span>
+                                    <button class="btn btn-success form-control" (click)="onSearch()">Pesquisar</button>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class=" container-fluid mt--5">
         <div class=" row">
             <div class=" col">
                 <div class=" card">
                     <div class=" card-header border-0">
                         <h3 class=" mb-0">Lista de Usuários</h3>
                     </div>
-
                     <div class=" table-responsive">
                         <!--(usuarios$ | async) as usuarios; else loadingError-->
                         <table class=" table align-items-center table-flush table-striped"
@@ -65,7 +114,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let usuario of usuarios">
+                                <tr *ngFor="let usuario of usuarios.content">
                                     <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario?.nome }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario.email }} </span>
