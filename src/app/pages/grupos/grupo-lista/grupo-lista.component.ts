@@ -17,6 +17,7 @@ export class GrupoListaComponent implements OnInit {
   errorMessage: string; 
 
   grupoSelecionado: Grupo;
+  page:number = 1;
 
   constructor(
     private router: Router,

@@ -35,8 +35,8 @@
                         <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
                             [routerLink]="['/usuarios/adicionar']">
                             Criar Usuário </a>
-                        <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
-                            Atualizar </a>
+                        <!-- <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
+                            Atualizar </a> -->
                     </div>
                 </div>
                 <!-- </div> -->
@@ -160,23 +160,9 @@
                         </ng-template>
                     </div>
 
-                    <div class=" card-footer py-4">
+                    <div class=" card-footer py-4 text-center ngx-pagination">
                         <pagination-controls previousLabel="Anterior"
                         nextLabel="Próximo" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls> 
-
-                        <!-- <pagination-controls id="pagnitation" (pageChange)="page = $event"
-                            (pageBoundsCorrection)="page = $event" maxSize="9" directionLinks="true"
-                            autoHide="true" responsive="true" previousLabel="Previous" nextLabel="Next"
-                            screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
-                            screenReaderCurrentLabel="You're on page">
-                        </pagination-controls> -->
-
-                        <nav aria-label="...">
-                            <pagination [totalItems]="5" class="justify-content-end mb-0"
-                                previousText="<i class='fas fa-angle-left'></i>"
-                                nextText="<i class='fas fa-angle-right'></i>">
-                            </pagination>
-                        </nav>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ import { grupoRoutes } from './grupo.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/@core/shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { SharedModule } from 'src/app/@core/shared/shared.module';
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(grupoRoutes),
+    NgxPaginationModule,
 
     FormsModule,
     ReactiveFormsModule,

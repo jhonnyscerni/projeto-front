@@ -1,5 +1,5 @@
 <!-- <section class="py-2"> -->
-  <section>
+<section>
     <div class=" header bg-danger pb-6">
         <div class=" container-fluid">
             <div class=" header-body">
@@ -35,8 +35,8 @@
                         <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
                             [routerLink]="['/permissoes/adicionar']">
                             Criar Permissão </a>
-                        <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
-                            Atualizar </a>
+                        <!-- <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
+                            Atualizar </a> -->
                     </div>
                 </div>
                 <!-- </div> -->
@@ -65,7 +65,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let permissao of permissoes | paginate: { itemsPerPage: 10, currentPage: page }">
+                                <tr
+                                    *ngFor="let permissao of permissoes | paginate: { itemsPerPage: 10, currentPage: page }">
                                     <td><span class=" text-muted"> {{ permissao?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ permissao?.nome }}</span></td>
                                     <td><span class=" text-muted"> {{ permissao?.descricao }}</span></td>
@@ -107,15 +108,9 @@
                         </ng-template>
                     </div>
 
-                    <div class=" card-footer py-4">
-                            <pagination-controls previousLabel="Anterior"
-                            nextLabel="Próximo" (pageChange)="page = $event"></pagination-controls> 
-                        <nav aria-label="...">
-                            <pagination [totalItems]="5" class="justify-content-end mb-0"
-                                previousText="<i class='fas fa-angle-left'></i>"
-                                nextText="<i class='fas fa-angle-right'></i>">
-                            </pagination>
-                        </nav>
+                    <div class=" card-footer py-4 text-center ngx-pagination">
+                        <pagination-controls previousLabel="Anterior" nextLabel="Próximo" responsive="true"
+                            (pageChange)="page = $event"></pagination-controls>
                     </div>
                 </div>
             </div>
