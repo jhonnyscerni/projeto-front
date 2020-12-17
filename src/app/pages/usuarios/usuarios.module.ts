@@ -11,6 +11,7 @@ import { ComponentsModule } from 'src/app/@core/components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/@core/shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SharedModule } from 'src/app/@core/shared/shared.module';
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(usuarioRoutes),
+    NgxPaginationModule,
 
     FormsModule,
     ReactiveFormsModule,

@@ -65,7 +65,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let permissao of permissoes">
+                                <tr *ngFor="let permissao of permissoes | paginate: { itemsPerPage: 10, currentPage: page }">
                                     <td><span class=" text-muted"> {{ permissao?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ permissao?.nome }}</span></td>
                                     <td><span class=" text-muted"> {{ permissao?.descricao }}</span></td>
@@ -108,6 +108,8 @@
                     </div>
 
                     <div class=" card-footer py-4">
+                            <pagination-controls previousLabel="Anterior"
+                            nextLabel="Próximo" (pageChange)="page = $event"></pagination-controls> 
                         <nav aria-label="...">
                             <pagination [totalItems]="5" class="justify-content-end mb-0"
                                 previousText="<i class='fas fa-angle-left'></i>"

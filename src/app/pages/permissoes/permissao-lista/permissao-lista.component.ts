@@ -18,6 +18,8 @@ export class PermissaoListaComponent implements OnInit {
 
   permissaoSelecionado: Permissao;
 
+  page:number = 1;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -32,7 +34,10 @@ export class PermissaoListaComponent implements OnInit {
   onRefresh() {
     this.permissaoService.list()
     .subscribe(
-      permissoes => this.permissoes = permissoes,
+      permissoes => {
+        console.log(permissoes)
+        this.permissoes = permissoes
+      },
       error => this.errorMessage
     );
   }

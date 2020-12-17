@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/@core/shared/shared.module';
 import { PermissaoListaComponent } from './permissao-lista/permissao-lista.component';
 import { PermissaoFormComponent } from './permissao-form/permissao-form.component';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { PermissaoFormComponent } from './permissao-form/permissao-form.componen
     ProgressbarModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(permissaoRoutes),
+    NgxPaginationModule,
 
     FormsModule,
     ReactiveFormsModule,

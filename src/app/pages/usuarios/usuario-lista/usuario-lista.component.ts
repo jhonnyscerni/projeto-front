@@ -24,12 +24,45 @@ export class UsuarioListaComponent implements OnInit {
   nomeControl: FormControl
   emailControl: FormControl
 
+  // Paginação
+  totalElements = 0;
+  page = 1;
+  pageElement = 0;
+  size = 10
+
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertModalService,
     private usuarioService: UsuarioService,
     private fb: FormBuilder) {
+  }
+
+  getRequestParams(pageElement, size) {
+    // tslint:disable-next-line:prefer-const
+    console.log(this.nomeControl.value);
+    let nome = this.nomeControl.value;
+    let email = this.emailControl.value;
+    let params = {};
+
+    if (pageElement) {
+      params[`page`] = pageElement;
+    }
+
+    if (size) {
+      params[`size`] = size;
+    }
+
+    if (nome && (nome = nome.trim()) !== '') {
+      params[`nome`] = nome;
+    }
+
+    if (email && (email = email.trim()) !== '') {
+      params[`email`] = email;
+    }
+
+    return params;
   }
 
   ngOnInit() {
@@ -43,34 +76,33 @@ export class UsuarioListaComponent implements OnInit {
     this.onRefresh();
   }
 
+  handlePageChange(event) {
+    this.page = event;
+    this.pageElement = this.page - 1
+    this.onRefresh();
+  }
+
   onRefresh() {
-    this.usuarioService.list()
+    const params = this.getRequestParams(this.pageElement, this.size);
+
+    this.usuarioService.listSearchPage(params)
       .subscribe(
-        usuarios => this.usuarios = usuarios,
+        usuarios => { 
+          this.usuarios = usuarios.content
+          this.totalElements = usuarios.totalElements
+          this.pageElement = usuarios.number
+          this.size = usuarios.size
+        },
         error => this.errorMessage
       );
   }
 
   onSearch() {
-    console.log(this.nomeControl.value);
-    let nome = this.nomeControl.value;
-    let email = this.emailControl.value;
-    let params = new HttpParams();
-
-    if (nome && (nome = nome.trim()) !== '') {
-      params = params.set('nome', nome);
-    }
-
-    if (email && (email = email.trim()) !== '') {
-      params = params.set('email', email);
-    }
-
-    this.usuarioService.search(params).subscribe(
-      usuarios => {
-        this.usuarios = usuarios
-      },
-      error => this.errorMessage
-    )
+    this.totalElements = 0;
+    this.page = 1;
+    this.pageElement = 0;
+    this.size = 10
+    this.onRefresh()
   }
 
   onEdit(id) {

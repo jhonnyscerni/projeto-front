@@ -44,8 +44,8 @@
         </div>
     </div>
 
-  <!-- Inicio do Form -->
-  <div class=" container-fluid mt--6">
+    <!-- Inicio do Form -->
+    <div class=" container-fluid mt--6">
         <div class=" card mb-6">
             <div class=" card-header">
                 <h3 class=" mb-0">Filtro de Pesquisa</h3>
@@ -114,7 +114,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let usuario of usuarios.content">
+                                <tr
+                                    *ngFor="let usuario of usuarios | paginate: { itemsPerPage: size,
+                                                                                                    currentPage: page,
+                                                                                                    totalItems: totalElements }">
                                     <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario?.nome }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario.email }} </span>
@@ -158,6 +161,16 @@
                     </div>
 
                     <div class=" card-footer py-4">
+                        <pagination-controls previousLabel="Anterior"
+                        nextLabel="Próximo" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls> 
+
+                        <!-- <pagination-controls id="pagnitation" (pageChange)="page = $event"
+                            (pageBoundsCorrection)="page = $event" maxSize="9" directionLinks="true"
+                            autoHide="true" responsive="true" previousLabel="Previous" nextLabel="Next"
+                            screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                            screenReaderCurrentLabel="You're on page">
+                        </pagination-controls> -->
+
                         <nav aria-label="...">
                             <pagination [totalItems]="5" class="justify-content-end mb-0"
                                 previousText="<i class='fas fa-angle-left'></i>"
