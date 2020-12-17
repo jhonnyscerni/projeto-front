@@ -19,7 +19,7 @@ export class CrudService<T> extends BaseService {
     list(): Observable<T[]> {
         return this.http.get<T[]>(this.API_URL)
             .pipe(
-                delay(1000),
+                //delay(1000),
                 // tap(console.log),
                 catchError(super.serviceError));
     }
