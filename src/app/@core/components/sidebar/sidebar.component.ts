@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthService } from '../../shared/services/auth.service';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -14,6 +15,7 @@ export interface RouteInfo {
   isCollapsed?: boolean;
   isCollapsing?: any;
   children?: ChildrenItems[];
+  permissao?: string
 }
 
 export interface ChildrenItems {
@@ -35,7 +37,8 @@ export const ROUTES: RouteInfo[] = [
     path: "/dashboard",
     title: "Análise Geral",
     type: "link",
-    icontype: "ni-shop text-primary"
+    icontype: "ni-shop text-primary",
+    permissao: "CONSULTAR_DASHBOARD"
   },
   // {
   //   path: "/dashboard",
@@ -135,19 +138,22 @@ export const ROUTES: RouteInfo[] = [
     path: "/usuarios",
     title: "Usuários",
     type: "link",
-    icontype: "ni-single-02 text-info"
+    icontype: "ni-single-02 text-info",
+    permissao: "CONSULTAR_USUARIOS"
   },
   {
     path: "/grupos",
     title: "Grupos",
     type: "link",
-    icontype: "ni-ungroup text-orange"
+    icontype: "ni-ungroup text-orange",
+    permissao: "CONSULTAR_GRUPOS"
   },
   {
     path: "/permissoes",
     title: "Permissões",
     type: "link",
-    icontype: "ni-settings-gear-65 text-black"
+    icontype: "ni-settings-gear-65 text-black",
+    permissao: "CONSULTAR_PERMISSOES"
   }
 ];
 
@@ -158,16 +164,26 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
+  public menuItemsPermissao: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) {}
+
+  constructor(
+    private authService: AuthService,
+    private router: Router) {}
 
   ngOnInit() {
+    let authorities = this.authService.getAutorizacoes();
+
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe(event => {
       this.isCollapsed = true;
     });
+    console.log(authorities)
+    this.menuItemsPermissao = this.menuItems.filter(f => authorities.includes(f.permissao));
+    console.log(this.menuItemsPermissao);
   }
+
   onMouseEnterSidenav() {
     if (!document.body.classList.contains("g-sidenav-pinned")) {
       document.body.classList.add("g-sidenav-show");
