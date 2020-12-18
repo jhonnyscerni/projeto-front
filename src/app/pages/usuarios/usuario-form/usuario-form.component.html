@@ -1,4 +1,3 @@
- 
 <div class=" header bg-danger pb-6">
   <div class=" container-fluid">
     <div class=" header-body">
@@ -43,7 +42,7 @@
       <!-- inicio da Row -->
       <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
         <div class=" row">
-       
+
           <div class=" col-md-6">
             <div class=" form-group">
               <label class=" form-control-label" for="nome">
@@ -66,8 +65,8 @@
 
               <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('email') }" id="email"
                 placeholder="E-mail" type="text" formControlName="email" />
-                <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
-                <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'PENDING'"
+              <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
+              <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'PENDING'"
                 msgErro="Validando email...">
               </app-campo-control-erro>
               <!-- <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'VALID'"
@@ -78,7 +77,7 @@
 
         </div>
 
-      
+
         <div class=" row">
           <div class=" col-md-6">
             <div class=" form-group">
@@ -86,8 +85,26 @@
                 Senha:
               </label>
 
-              <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha" (focus)="focus = true" (blur)="focus = false" />
-            <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
+              <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha"
+                (focus)="focus = true" (blur)="focus = false" />
+              <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
+            </div>
+          </div>
+
+          <div class=" col-md-6">
+            <div class="form-group">
+              <label class=" form-control-label" for="grupos">
+                Grupos:
+              </label>
+              <!-- <select multiple="" class="form-control" id="grupos" formControlName="grupos">
+                <option *ngFor="let grupo of grupos" [value]="grupo">{{grupo.nome}}</option>
+              </select> -->
+
+              <select multiple="" class="form-control" id="grupos" placeholder="Grupos do Usuario"
+                formControlName="grupos" [ngClass]="{'is-invalid':verificaValidTouched('grupos') }" [compareWith]="compareFn">
+                <option *ngFor="let grupo of grupos" [value]="grupo">
+                  {{ grupo.nome }}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -104,7 +121,7 @@
           </span>
           <span>
             <!-- [disabled]="!cadastroForm.valid" -->
-            <button class="btn " id="cancelar" (click)="canecelar()" type="submit">Cancelar
+            <button class="btn " id="cancelar" (click)="cancelar()" type="submit">Cancelar
             </button>
           </span>
         </div>

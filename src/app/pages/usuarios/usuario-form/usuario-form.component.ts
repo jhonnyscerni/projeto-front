@@ -1,3 +1,6 @@
+import { filter } from 'rxjs/operators';
+import { GrupoService } from 'src/app/services/grupo.service';
+import { Grupo } from './../../../models/grupo';
 import { UsuarioService } from './../../../services/usuario.service';
 import { Usuario } from './../../../models/usuario';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +21,7 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
   idUsuario: number;
   validarEmail: any;
 
+  grupos: Grupo[];
   constructor(
     private fb: FormBuilder,
     private alertService: AlertModalService,
@@ -25,11 +29,13 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
     private router: Router,
+    private grupoService: GrupoService
   ) {
     super();
   }
 
   ngOnInit() {
+    this.carregarGrupos();
     this.route.params.subscribe((params: any) => {
       const idUsuario = params['idUsuario'];
       if (idUsuario) {
@@ -37,6 +43,8 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
         const usuario$ = this.usuarioService.loadByID(idUsuario);
         usuario$.subscribe(usuario => {
           this.updateForm(usuario);
+          // this.grupos = usuario.grupos
+          //this.carregarGrupos();
           // this.cadastroForm.setValue(evento)
         });
       }
@@ -53,7 +61,8 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]]
+      senha: ['', [Validators.required]],
+      grupos: [''],
     });
   }
 
@@ -62,7 +71,8 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
       id: usuario.id,
       nome: usuario.nome,
       email: usuario.email,
-      senha: usuario.senha
+      senha: usuario.senha,
+      grupos: usuario.grupos
     });
   }
 
@@ -86,7 +96,16 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
     );
   }
 
-  canecelar(){
+  cancelar(){
     this.router.navigate(['/usuarios/lista'], { relativeTo: this.route });
   }
+
+  carregarGrupos() {
+    return this.grupoService.list()
+      .subscribe(grupos => this.grupos = grupos);
+  }
+
+  compareFn(compared1: { id: number }, compared2: { id: number }) {
+    return compared1 && compared2 ? compared1.id === compared2.id : compared1 === compared2;
+}
 }

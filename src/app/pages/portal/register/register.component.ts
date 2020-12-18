@@ -46,15 +46,10 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
   submit() {
     console.log('submit');
 
-    let msgSuccess = 'Usuário criado com sucesso!';
-    let msgError = 'Erro ao criar usuario, tente novamente!';
-    if (this.cadastroForm.value.id) {
-      console.log(this.cadastroForm.value);
-      msgSuccess = 'Curso atualizado com sucesso!';
-      msgError = 'Erro ao atualizar curso, tente novamente!';
-    }
+    let msgSuccess = 'Cadastro Realizado. OBRIGADO! Enviamos um e-mail para você ativar sua conta. Caso o email não esteja na caixa de entrada, verifique sua caixa de spam/lixo eletrônico.!';
+    let msgError = 'Erro ao cadastrar usuario, tente novamente!';
 
-    this.usuarioService.save(this.cadastroForm.value).subscribe(
+    this.usuarioService.saveUserCommon(this.cadastroForm.value).subscribe(
       success => {
         this.alertService.showAlertSuccess(msgSuccess);
         this.location.back();
