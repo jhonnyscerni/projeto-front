@@ -8,6 +8,9 @@ import { TimelineComponent } from "./timeline/timeline.component";
 
 import { RouterModule } from "@angular/router";
 import { portalRoutes } from "./portal.routing";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/@core/shared/shared.module';
 
 @NgModule({
   declarations: [ProfileComponent, TimelineComponent],
@@ -15,7 +18,12 @@ import { portalRoutes } from "./portal.routing";
     CommonModule,
     RouterModule.forChild(portalRoutes),
     ProgressbarModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule
   ]
 })
 export class PortalModule {}

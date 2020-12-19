@@ -64,7 +64,7 @@
               </label>
 
               <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('email') }" id="email"
-                placeholder="E-mail" type="text" formControlName="email" />
+                placeholder="E-mail" type="text" formControlName="email"/>
               <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
               <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'PENDING'"
                 msgErro="Validando email...">

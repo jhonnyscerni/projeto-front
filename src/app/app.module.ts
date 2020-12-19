@@ -32,7 +32,9 @@ export const httpInterceptorProviders = [
     RouterModule,
     BsDropdownModule.forRoot(),
     AppRoutingModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    }),
     CollapseModule.forRoot(),
     TagInputModule,
     PresentationModule,

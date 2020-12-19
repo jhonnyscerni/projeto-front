@@ -1,8 +1,5 @@
-<nav
-  id="navbar-main"
-  class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-danger"
->
-<!-- <nav
+<nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-danger">
+  <!-- <nav
   class="navbar navbar-top navbar-expand navbar-dark bg-danger border-bottom"
   id="navbar-main"
 > -->
@@ -10,22 +7,13 @@
     <a class="navbar-brand" [routerLink]="['/']">
       <img src="assets/img/brand/white.png" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbar-collapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      (click)="isCollapsed = !isCollapsed"
-      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+      aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="navbar-collapse navbar-custom-collapse collapse"
-      id="collapseBasic" [collapse]="isCollapsed" id="navbarSupportedContent"
-    >
+    <div class="navbar-collapse navbar-custom-collapse collapse" id="collapseBasic" [collapse]="isCollapsed"
+      id="navbarSupportedContent">
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
@@ -34,16 +22,9 @@
             </a>
           </div>
           <div class="col-6 collapse-close">
-            <button
-              type="button"
-              class="navbar-toggler"
-              data-toggle="collapse"
-              data-target="#navbar-collapse"
-              aria-controls="navbar-collapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              (click)="isCollapsed = !isCollapsed"
-            >
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"
+              aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation"
+              (click)="isCollapsed = !isCollapsed">
               <span></span> <span></span>
             </button>
           </div>
@@ -81,36 +62,22 @@
       <hr class="d-lg-none" />
       <!--Menu-->
       <ul [ngSwitch]="usuarioLogado()" class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li *ngSwitchCase="false" class="nav-item">
-          <a
-            class="nav-link nav-link-icon"
-            href="https://www.facebook.com/creativetim"
-            target="_blank"
-            data-toggle="tooltip"
-            data-original-title="Like us on Facebook"
-          >
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank"
+            data-toggle="tooltip" data-original-title="Like us on Facebook">
             <i class="fab fa-facebook-square"></i>
             <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
-        <li *ngSwitchCase="false" class="nav-item">
-          <a
-            class="nav-link nav-link-icon"
-            href="https://www.instagram.com/creativetimofficial"
-            target="_blank"
-            data-toggle="tooltip"
-            data-original-title="Follow us on Instagram"
-          >
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank"
+            data-toggle="tooltip" data-original-title="Follow us on Instagram">
             <i class="fab fa-instagram"></i>
             <span class="nav-link-inner--text d-lg-none">Instagram</span>
           </a>
         </li>
         <li *ngSwitchCase="false" class="nav-item d-none d-lg-block ml-lg-4">
-          <a
-            class="btn btn-neutral btn-icon"
-            routerLinkActive="active"
-            [routerLink]="['/portal/login']"
-          >
+          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/portal/login']">
             <span class="btn-inner--icon">
               <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
               <i class="fas fa-sign-in-alt mr-2"></i>
@@ -120,11 +87,7 @@
         </li>
 
         <li *ngSwitchCase="false" class="nav-item d-none d-lg-block ml-lg-4">
-          <a
-            class="btn btn-neutral btn-icon"
-            routerLinkActive="active"
-            [routerLink]="['/portal/cadastrar']"
-          >
+          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/portal/cadastrar']">
             <span class="btn-inner--icon">
               <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
               <i class="fas fa-sign-in-alt mr-2"></i>
@@ -132,39 +95,40 @@
             <span class="nav-link-inner--text">CADASTRE-SE</span>
           </a>
         </li>
-      <!-- </ul> -->
+        <!-- </ul> -->
 
-       <!-- User -->
-       <!-- <ul class="navbar-nav align-items-center ml-auto ml-md-0"> -->
+        <!-- User -->
+        <!-- <ul class="navbar-nav align-items-center ml-auto ml-md-0"> -->
+
+        <li *ngSwitchCase="true" class="nav-item d-none d-lg-block ml-lg-4">
+          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
+            <span class="btn-inner--icon">
+              <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
+              <i class="fas fa-columns mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">PAINEL</span>
+          </a>
+        </li>
+
         <li *ngSwitchCase="true" class="nav-item dropdown" dropdown placement="bottom-right">
           <a class="nav-link pr-0 dropdown-toggle" role="button" dropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img
-                  alt="Image placeholder"
-                  src="assets/img/theme/team-4.jpg"
-                />
+                <img alt="Image placeholder" src="assets/img/theme/team-4.jpg" />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
                 <span class="mb-0 text-sm  font-weight-bold">{{user}}</span>
               </div>
             </div>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
-            *dropdownMenu
-          >
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" *dropdownMenu>
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Bem Vindo!</h6>
             </div>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/user-profile']"
-              class="dropdown-item"
-            >
-              <i class="ni ni-single-02"></i> <span>My profile</span>
+            <a routerLinkActive="active" [routerLink]="['/configuracao/minha-conta']" class="dropdown-item">
+              <i class="ni ni-single-02"></i> <span>Minha Conta</span>
             </a>
-            <a
+            <!-- <a
               routerLinkActive="active"
               [routerLink]="['/user-profile']"
               class="dropdown-item"
@@ -184,10 +148,10 @@
               class="dropdown-item"
             >
               <i class="ni ni-support-16"></i> <span>Support</span>
-            </a>
+            </a> -->
             <div class="dropdown-divider"></div>
             <a href="javascript:void()" (click)="logout()" class="dropdown-item">
-              <i class="ni ni-user-run"></i> <span>Logout</span>
+              <i class="ni ni-user-run"></i> <span>Sair</span>
             </a>
           </div>
         </li>
@@ -196,11 +160,7 @@
   </div>
 </nav>
 
-<div
-  *ngIf="sidenavOpen === true"
-  class="backdrop d-xl-none"
-  (click)="toggleSidenav()"
-></div>
+<div *ngIf="sidenavOpen === true" class="backdrop d-xl-none" (click)="toggleSidenav()"></div>
 
 <div class="main-content">
   <!-- Header -->
@@ -217,15 +177,11 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </h2>
               <p class="text-white mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed rhoncus condimentum orci ut dictum. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Sed rhoncus condimentum orci ut dictum.
               </p>
               <div class="mt-5">
-                <a
-                  [routerLink]="['/dashboard']"
-                  class="btn btn-neutral my-2"
-                  >COMECE AGORA</a
-                >
+                <a [routerLink]="['/dashboard']" class="btn btn-neutral my-2">COMECE AGORA</a>
                 <!-- <a
                   href="https://www.creative-tim.com/product/argon-dashboard-pro-angular?ref=adpa-presentation-page"
                   class="btn btn-default my-2"
@@ -239,9 +195,7 @@
               <div class="col-md-6">
                 <div class="card">
                   <div class="card-body">
-                    <div
-                      class="icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4"
-                    >
+                    <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4">
                       <i class="ni ni-active-40"></i>
                     </div>
                     <h5 class="h3">TITULO 01</h5>
@@ -250,9 +204,7 @@
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <div
-                      class="icon icon-shape bg-gradient-info text-white rounded-circle shadow mb-4"
-                    >
+                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow mb-4">
                       <i class="ni ni-active-40"></i>
                     </div>
                     <h5 class="h3">TITULO 02</h5>
@@ -265,9 +217,7 @@
               <div class="col-md-6 pt-lg-5 pt-4">
                 <div class="card mb-4">
                   <div class="card-body">
-                    <div
-                      class="icon icon-shape bg-gradient-success text-white rounded-circle shadow mb-4"
-                    >
+                    <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow mb-4">
                       <i class="ni ni-active-40"></i>
                     </div>
                     <h5 class="h3">TITULO 03</h5>
@@ -278,9 +228,7 @@
                 </div>
                 <div class="card mb-4">
                   <div class="card-body">
-                    <div
-                      class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow mb-4"
-                    >
+                    <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow mb-4">
                       <i class="ni ni-active-40"></i>
                     </div>
                     <h5 class="h3">TITULO 04</h5>
@@ -294,14 +242,8 @@
       </div>
     </div>
     <div class="separator separator-bottom separator-skew zindex-100">
-      <svg
-        x="0"
-        y="0"
-        viewBox="0 0 2560 100"
-        preserveAspectRatio="none"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
         <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
@@ -312,10 +254,14 @@
         <div class="col-md-6">
           <h2 class="display-3 text-white">Veja como funciona o Projeto Inicial</h2>
           <p class="lead text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et leo eget tortor imperdiet facilisis a vitae diam. 
-            Quisque mollis odio turpis. Praesent euismod arcu mi, vitae ultricies magna fringilla sit amet. Proin pellentesque quam leo, 
-            quis pellentesque nibh pharetra at. Maecenas vehicula consequat arcu. Sed vitae vestibulum neque. Cras eros libero, 
-            laoreet eget ipsum quis, ultrices luctus massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et leo eget tortor imperdiet facilisis a
+            vitae diam.
+            Quisque mollis odio turpis. Praesent euismod arcu mi, vitae ultricies magna fringilla sit amet. Proin
+            pellentesque quam leo,
+            quis pellentesque nibh pharetra at. Maecenas vehicula consequat arcu. Sed vitae vestibulum neque. Cras eros
+            libero,
+            laoreet eget ipsum quis, ultrices luctus massa. Interdum et malesuada fames ac ante ipsum primis in
+            faucibus.
           </p>
         </div>
       </div>
@@ -329,9 +275,7 @@
             <div class="col-lg-4">
               <div class="card card-lift--hover shadow border-0">
                 <div class="card-body py-5">
-                  <div
-                    class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4"
-                  >
+                  <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4">
                     <i class="ni ni-check-bold"></i>
                   </div>
                   <h4 class="h3 text-primary text-uppercase">
@@ -355,9 +299,7 @@
             <div class="col-lg-4">
               <div class="card card-lift--hover shadow border-0">
                 <div class="card-body py-5">
-                  <div
-                    class="icon icon-shape bg-gradient-success text-white rounded-circle mb-4"
-                  >
+                  <div class="icon icon-shape bg-gradient-success text-white rounded-circle mb-4">
                     <i class="ni ni-istanbul"></i>
                   </div>
                   <h4 class="h3 text-success text-uppercase">
@@ -381,9 +323,7 @@
             <div class="col-lg-4">
               <div class="card card-lift--hover shadow border-0">
                 <div class="card-body py-5">
-                  <div
-                    class="icon icon-shape bg-gradient-warning text-white rounded-circle mb-4"
-                  >
+                  <div class="icon icon-shape bg-gradient-warning text-white rounded-circle mb-4">
                     <i class="ni ni-planet"></i>
                   </div>
                   <h4 class="h3 text-warning text-uppercase">
@@ -471,14 +411,10 @@
           <div class="pr-md-5">
             <h1>Plataforma completa</h1>
             <p>
-              Tenha acesso à nossa Loja de Estratégias prontas. Opere, simule e gerencie todas as suas estratégias de 
+              Tenha acesso à nossa Loja de Estratégias prontas. Opere, simule e gerencie todas as suas estratégias de
               forma simples e segura. Nossos robôs são acessíveis a partir de qualquer computador, tablet ou celular.
             </p>
-            <a
-              [routerLink]="['/portal/profile']"
-              class="font-weight-bold text-warning mt-5"
-              >Conheça mais</a
-            >
+            <a [routerLink]="['/portal/profile']" class="font-weight-bold text-warning mt-5">Conheça mais</a>
           </div>
         </div>
       </div>
@@ -518,12 +454,8 @@
             Aprenda como funcionam nossos robôs traders e como configurar sua estratégia na plataforma da SmarttBot.
           </p>
           <div class="btn-wrapper">
-            <a
-              [routerLink]="['/documentation/icons']"
-              target="_blank"
-              class="btn btn-primary"
-              >Baixe o Guia Completo sobre Robôs Investidoress</a
-            >
+            <a [routerLink]="['/documentation/icons']" target="_blank" class="btn btn-primary">Baixe o Guia Completo
+              sobre Robôs Investidoress</a>
             <!-- <a
               href="https://nucleoapp.com/?ref=1712"
               target="_blank"
@@ -713,12 +645,8 @@
       <div class="col-xl-6">
         <div class="copyright text-center text-xl-left text-muted">
           &copy; {{ test | date: "yyyy" }}
-          <a
-            href="https://www.creative-tim.com?ref=adpa-presentation-page"
-            class="font-weight-bold ml-1"
-            target="_blank"
-            >Projeto</a
-          >
+          <a href="https://www.creative-tim.com?ref=adpa-presentation-page" class="font-weight-bold ml-1"
+            target="_blank">Projeto</a>
         </div>
       </div>
       <!-- <div class="col-xl-6">

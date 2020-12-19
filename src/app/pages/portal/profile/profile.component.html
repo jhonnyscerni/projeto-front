@@ -1,20 +1,18 @@
-<div
-  class=" header pb-6 d-flex align-items-center"
-  style="min-height: 500px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;"
->
+<div class=" header pb-6 d-flex align-items-center"
+  style="min-height: 250px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
   <span class=" mask bg-gradient-danger opacity-8"> </span>
 
   <div class=" container-fluid d-flex align-items-center">
     <div class=" row">
-      <div class=" col-lg-7 col-md-10">
-        <h1 class=" display-2 text-white">Hello Jesse</h1>
+      <div class=" col-lg-10 col-md-10">
+        <h1 class=" display-3 text-white">Olá, {{usuario?.nome}}</h1>
 
         <p class=" text-white mt-0 mb-5">
-          This is your profile page. You can see the progress you've made with
-          your work and manage your projects or assigned tasks
+          Esta é a sua página de perfil. Você pode ver atualizar informações e verificar seus dados cadastrados no
+          sistema.
         </p>
 
-        <a class=" btn btn-neutral" href="javascript:void(0)"> Edit profile </a>
+        <!-- <a class=" btn btn-neutral" href="javascript:void(0)"> Edit profile </a> -->
       </div>
     </div>
   </div>
@@ -24,30 +22,21 @@
   <div class=" row">
     <div class=" col-xl-4 order-xl-2">
       <div class=" card card-profile">
-        <img
-          alt="Image placeholder"
-          class=" card-img-top"
-          src="assets/img/theme/img-1-1000x600.jpg"
-        />
+        <img alt="Image placeholder" class=" card-img-top" src="assets/img/theme/img-1-1000x600.jpg" />
 
         <div class=" row justify-content-center">
           <div class=" col-lg-3 order-lg-2">
             <div class=" card-profile-image">
               <a href="javascript:void(0)">
-                <img
-                  class=" rounded-circle"
-                  src="assets/img/theme/team-4.jpg"
-                />
+                <img class=" rounded-circle" src="assets/img/theme/team-4.jpg" />
               </a>
             </div>
           </div>
         </div>
 
-        <div
-          class=" card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-        >
+        <div class=" card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
           <div class=" d-flex justify-content-between">
-            <a class=" btn btn-sm btn-info mr-4" href="javascript:void(0)">
+            <!-- <a class=" btn btn-sm btn-info mr-4" href="javascript:void(0)">
               Connect
             </a>
 
@@ -56,7 +45,7 @@
               href="javascript:void(0)"
             >
               Message
-            </a>
+            </a> -->
           </div>
         </div>
 
@@ -65,21 +54,21 @@
             <div class=" col">
               <div class=" card-profile-stats d-flex justify-content-center">
                 <div>
-                  <span class=" heading"> 22 </span>
+                  <!-- <span class=" heading"> 22 </span>
 
-                  <span class=" description"> Friends </span>
+                  <span class=" description"> Friends </span> -->
                 </div>
 
                 <div>
-                  <span class=" heading"> 10 </span>
+                  <!-- <span class=" heading"> 10 </span>
 
-                  <span class=" description"> Photos </span>
+                  <span class=" description"> Photos </span> -->
                 </div>
 
                 <div>
-                  <span class=" heading"> 89 </span>
+                  <!-- <span class=" heading"> 89 </span>
 
-                  <span class=" description"> Comments </span>
+                  <span class=" description"> Comments </span> -->
                 </div>
               </div>
             </div>
@@ -87,10 +76,14 @@
 
           <div class=" text-center">
             <h5 class=" h3">
-              Jessica Jones<span class=" font-weight-light"> , 27 </span>
+              {{usuario?.nome}}<span class=" font-weight-light"> </span>
             </h5>
 
             <div class=" h5 font-weight-300">
+              <i class=" ni business_briefcase-24 mr-2"> </i> {{usuario?.email}}
+            </div>
+
+            <!-- <div class=" h5 font-weight-300">
               <i class=" ni location_pin mr-2"> </i> Bucharest, Romania
             </div>
 
@@ -102,12 +95,12 @@
             <div>
               <i class=" ni education_hat mr-2"> </i> University of Computer
               Science
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
 
-      <div class=" card">
+      <!-- <div class=" card">
         <div class=" card-header"><h5 class=" h3 mb-0">Progress track</h5></div>
 
         <div class=" card-body">
@@ -218,11 +211,11 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class=" col-xl-8 order-xl-1">
-      <div class=" row">
+      <!-- <div class=" row">
         <div class=" col-lg-6">
           <div class=" card bg-gradient-info border-0">
             <div class=" card-body">
@@ -294,55 +287,58 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class=" card">
         <div class=" card-header">
           <div class=" row align-items-center">
-            <div class=" col-8"><h3 class=" mb-0">Edit profile</h3></div>
+            <div class=" col-8">
+              <h3 class=" mb-0">Editar Conta</h3>
+            </div>
 
-            <div class=" col-4 text-right">
+            <!-- <div class=" col-4 text-right">
               <a class=" btn btn-sm btn-primary" href="javascript:void(0)">
                 Settings
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class=" card-body">
-          <form>
-            <h6 class=" heading-small text-muted mb-4">User information</h6>
+          <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+            <h6 class=" heading-small text-muted mb-4">Informações do Usuário</h6>
 
             <div class=" pl-lg-4">
               <div class=" row">
                 <div class=" col-lg-6">
                   <div class=" form-group">
-                    <label class=" form-control-label" for="input-username">
-                      Username
+                    <label class=" form-control-label" for="nome">
+                      Nome do Usuário
                     </label>
 
-                    <input
-                      class=" form-control"
-                      id="input-username"
-                      placeholder="Username"
-                      type="text"
-                      value="lucky.jesse"
-                    />
+                    <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('nome') }" id="nome"
+                      placeholder="Nome do Usuário" type="text" formControlName="nome" />
+                    <app-error-msg [control]="cadastroForm.get('nome')" label="Nome"></app-error-msg>
+                    <!--app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório.">
+                         </app-campo-control-erro -->
                   </div>
                 </div>
 
                 <div class=" col-lg-6">
                   <div class=" form-group">
-                    <label class=" form-control-label" for="input-email">
-                      Email address
+                    <label class=" form-control-label" for="email">
+                      E-mail:
                     </label>
 
-                    <input
-                      class=" form-control"
-                      id="input-email"
-                      placeholder="jesse@example.com"
-                      type="email"
-                    />
+                    <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('email') }" id="email"
+                      placeholder="E-mail" type="text" formControlName="email" disabled="disabled" />
+                    <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
+                    <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'PENDING'"
+                      msgErro="Validando email...">
+                    </app-campo-control-erro>
+                    <!-- <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'VALID'"
+                          msgErro="Email válido!">
+                        </app-campo-control-erro> -->
                   </div>
                 </div>
               </div>
@@ -350,39 +346,48 @@
               <div class=" row">
                 <div class=" col-lg-6">
                   <div class=" form-group">
-                    <label class=" form-control-label" for="input-first-name">
-                      First name
+                    <label class=" form-control-label" for="senha">
+                      Senha:
                     </label>
 
-                    <input
-                      class=" form-control"
-                      id="input-first-name"
-                      placeholder="First name"
-                      type="text"
-                      value="Lucky"
-                    />
+                    <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha"
+                      (focus)="focus = true" (blur)="focus = false" />
+                    <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
                   </div>
                 </div>
 
-                <div class=" col-lg-6">
+                <!-- <div class=" col-lg-6">
                   <div class=" form-group">
                     <label class=" form-control-label" for="input-last-name">
                       Last name
                     </label>
 
-                    <input
-                      class=" form-control"
-                      id="input-last-name"
-                      placeholder="Last name"
-                      type="text"
-                      value="Jesse"
-                    />
+                    <input class=" form-control" id="input-last-name" placeholder="Last name" type="text"
+                      value="Jesse" />
                   </div>
-                </div>
+                </div> -->
+              </div>
+
+              <div class="form-group text-right">
+                <span>
+                  <!-- [disabled]="!cadastroForm.valid" -->
+                  <button class="btn btn-success" id="registrar" [disabled]="!cadastroForm.valid"
+                    type="submit">Registrar
+                  </button>
+                </span>
+                <span>
+                  <button class="btn" id="cancelar" (click)="resetar()">Limpar
+                  </button>
+                </span>
+                <span>
+                  <!-- [disabled]="!cadastroForm.valid" -->
+                  <button class="btn " id="cancelar" (click)="cancelar()" type="submit">Cancelar
+                  </button>
+                </span>
               </div>
             </div>
 
-            <hr class=" my-4" />
+            <!-- <hr class=" my-4" />
 
             <h6 class=" heading-small text-muted mb-4">Contact information</h6>
 
@@ -453,9 +458,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <hr class=" my-4" />
+            <!-- <hr class=" my-4" />
 
             <h6 class=" heading-small text-muted mb-4">About me</h6>
 
@@ -468,11 +473,12 @@
                   placeholder="A few words about you ..."
                   rows="4"
                 >
-A beautiful premium dashboard for Bootstrap 4.
-</textarea
+                A beautiful premium dashboard for Bootstrap 4.
+                </textarea
                 >
               </div>
-            </div>
+            </div> -->
+            <app-form-debug [form]="cadastroForm"></app-form-debug>
           </form>
         </div>
       </div>

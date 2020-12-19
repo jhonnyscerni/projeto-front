@@ -9,6 +9,7 @@ import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.ser
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-form',
@@ -29,7 +30,8 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
     private router: Router,
-    private grupoService: GrupoService
+    private grupoService: GrupoService,
+    private toastr: ToastrService,
   ) {
     super();
   }
@@ -89,10 +91,14 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
 
     this.usuarioService.save(this.cadastroForm.value).subscribe(
       success => {
-        this.alertService.showAlertSuccess(msgSuccess);
+        //this.alertService.showAlertSuccess(msgSuccess);
+        this.toastr.success(msgSuccess, 'Informação :)')
+        
         this.location.back();
       },
-      error => this.alertService.showAlertDanger(msgError),
+      error => 
+      //this.alertService.showAlertDanger(msgError),
+      this.toastr.error(msgError, 'Opa :(')  
     );
   }
 

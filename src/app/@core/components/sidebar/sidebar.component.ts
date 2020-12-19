@@ -139,21 +139,21 @@ export const ROUTES: RouteInfo[] = [
     title: "Usuários",
     type: "link",
     icontype: "ni-single-02 text-info",
-    permissao: "CONSULTAR_USUARIOS"
+    permissao: "SEG_CONSULTAR_USUARIOS"
   },
   {
     path: "/grupos",
     title: "Grupos",
     type: "link",
     icontype: "ni-ungroup text-orange",
-    permissao: "CONSULTAR_GRUPOS"
+    permissao: "SEG_CONSULTAR_GRUPOS"
   },
   {
     path: "/permissoes",
     title: "Permissões",
     type: "link",
     icontype: "ni-settings-gear-65 text-black",
-    permissao: "CONSULTAR_PERMISSOES"
+    permissao: "SEG_CONSULTAR_PERMISSOES"
   }
 ];
 

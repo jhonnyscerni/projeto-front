@@ -8,7 +8,7 @@ export const portalRoutes: Routes = [
     path: "",
     children: [
       {
-        path: "profile",
+        path: "minha-conta",
         component: ProfileComponent
       },
       {

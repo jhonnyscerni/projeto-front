@@ -28,7 +28,7 @@ import { ContaGuard } from '../../shared/services/conta.guard';
     TooltipModule.forRoot(),
     NgxPrintModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     LoginComponent,

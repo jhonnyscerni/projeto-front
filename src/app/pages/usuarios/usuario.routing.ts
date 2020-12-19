@@ -11,12 +11,12 @@ export const usuarioRoutes: Routes = [
       {
         path: "adicionar", component: UsuarioFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CADASTRAR_USUARIOS']
+        data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
         path: "editar/:idUsuario", component: UsuarioFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['EDITAR_USUARIOS']
+        data: ['SEG_EDITAR_USUARIOS']
       },
       {
         path: "detalhe/:idUsuario", component: UsuarioFormComponent
@@ -25,12 +25,12 @@ export const usuarioRoutes: Routes = [
       // {
       //   path: "excluir/:idUsuario", component: UsuarioListaComponent,
       //   canActivate: [AuthoritiesGuard],
-      //   data: ['REMOVER_USUARIOS']
+      //   data: ['SEG_REMOVER_USUARIOS']
       // },
       {
         path: "lista", component: UsuarioListaComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CONSULTAR_USUARIOS']
+        data: ['SEG_CONSULTAR_USUARIOS']
       },
       { path: "", redirectTo: '/usuarios/lista', pathMatch: 'full' }
     ]

@@ -78,10 +78,13 @@ export class GrupoFormComponent extends BaseFormComponent implements OnInit {
     this.grupoService.save(this.cadastroForm.value).subscribe(
       success => {
         //this.toastr.success(msgSuccess, 'Sucesso'),
-        this.alertService.showAlertSuccess(msgSuccess);
+        // this.alertService.showAlertSuccess(msgSuccess);
+        this.toastr.success(msgSuccess, 'Informação :)')
         this.location.back();
       },
-      error => this.alertService.showAlertDanger(msgError),
+      error => 
+      //this.alertService.showAlertDanger(msgError),
+      this.toastr.error(msgError, 'Opa :(')
     );
   }
 

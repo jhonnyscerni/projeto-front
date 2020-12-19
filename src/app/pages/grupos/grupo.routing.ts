@@ -11,12 +11,12 @@ export const grupoRoutes: Routes = [
       {
         path: "adicionar", component: GrupoFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CADASTRAR_GRUPOS']
+        data: ['SEG_CADASTRAR_GRUPOS']
       },
       {
         path: "editar/:idGrupo", component: GrupoFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['EDITAR_GRUPOS']
+        data: ['SEG_EDITAR_GRUPOS']
       },
       {
         path: "detalhe/:idGrupo", component: GrupoFormComponent
@@ -25,12 +25,12 @@ export const grupoRoutes: Routes = [
       // {
       //   path: "excluir/:idUsuario", component: UsuarioListaComponent,
       //   canActivate: [AuthoritiesGuard],
-      //   data: ['REMOVER_USUARIOS']
+      //   data: ['SEG_REMOVER_USUARIOS']
       // },
       {
         path: "lista", component: GrupoListaComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CONSULTAR_GRUPOS']
+        data: ['SEG_CONSULTAR_GRUPOS']
       },
       { path: "", redirectTo: '/grupos/lista', pathMatch: 'full' }
     ]

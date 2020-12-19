@@ -6,6 +6,7 @@ import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.ser
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-register",
@@ -23,6 +24,7 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private usuarioService: UsuarioService,
+    private toastr: ToastrService,
     private router: Router,) {
     super();
   }
@@ -51,10 +53,13 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
 
     this.usuarioService.saveUserCommon(this.cadastroForm.value).subscribe(
       success => {
-        this.alertService.showAlertSuccess(msgSuccess);
+        // this.alertService.showAlertSuccess(msgSuccess);
+        this.toastr.success('OBRIGADO! Enviamos um e-mail para você ativar sua conta. Caso o email não esteja na caixa de entrada, verifique sua caixa de spam/lixo eletrônico.!', 'Cadastro Realizado com Sucesso!')
         this.location.back();
       },
-      error => this.alertService.showAlertDanger(msgError),
+      error => 
+      //this.alertService.showAlertDanger(msgError),
+      this.toastr.error('Ocorreu um erro!', 'Opa :(')  
     );
   }
 

@@ -30,6 +30,10 @@ const routes: Routes = [
         loadChildren: "./pages/dashboard/dashboard.module#DashboardModule"
       },
       {
+        path: "configuracao",
+        loadChildren: "./pages/portal/portal.module#PortalModule"
+      },
+      {
         path: "usuarios",
         loadChildren: "./pages/usuarios/usuarios.module#UsuariosModule"
       },

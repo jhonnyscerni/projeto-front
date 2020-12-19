@@ -11,12 +11,12 @@ export const permissaoRoutes: Routes = [
       {
         path: "adicionar", component: PermissaoFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CADASTRAR_PERMISSOES']
+        data: ['SEG_CADASTRAR_PERMISSOES']
       },
       {
         path: "editar/:idPermissao", component: PermissaoFormComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['EDITAR_PERMISSOES']
+        data: ['SEG_EDITAR_PERMISSOES']
       },
       {
         path: "detalhe/:idPermissao", component: PermissaoFormComponent
@@ -25,12 +25,12 @@ export const permissaoRoutes: Routes = [
       // {
       //   path: "excluir/:idUsuario", component: UsuarioListaComponent,
       //   canActivate: [AuthoritiesGuard],
-      //   data: ['REMOVER_USUARIOS']
+      //   data: ['SEG_REMOVER_USUARIOS']
       // },
       {
         path: "lista", component: PermissaoListaComponent,
         canActivate: [AuthoritiesGuard],
-        data: ['CONSULTAR_PERMISSOES']
+        data: ['SEG_CONSULTAR_PERMISSOES']
       },
       { path: "", redirectTo: '/permissoes/lista', pathMatch: 'full' }
     ]
