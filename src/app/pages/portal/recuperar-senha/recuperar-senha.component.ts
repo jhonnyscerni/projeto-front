@@ -38,7 +38,7 @@ export class RecuperarSenhaComponent extends BaseFormComponent implements OnInit
 
     this.authService.recuperarLogin(this.usuario)
         .subscribe(response => {
-          this.toastr.success("Foi enviado para seu e-mail uma nova senha de acesso!", 'Recuperação de senha com Sucesso :)');
+          this.toastr.success("Foi enviado para seu e-mail uma nova senha de acesso, verifique seu email e faça Login!", 'Recuperação de senha com Sucesso :)');
           this.router.navigate(['/portal/login']);
         }, errorResponse => {
           this.toastr.error('Ocorreu um erro!', 'Opa :(')
