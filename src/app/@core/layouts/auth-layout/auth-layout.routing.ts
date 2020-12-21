@@ -5,6 +5,7 @@ import { PricingComponent } from "../../../pages/portal/pricing/pricing.componen
 import { LockComponent } from "../../../pages/portal/lock/lock.component";
 import { RegisterComponent } from "../../../pages/portal/register/register.component";
 import { ContaGuard } from '../../shared/services/conta.guard';
+import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
 
 export const AuthLayoutRoutes: Routes = [
   {
@@ -33,6 +34,17 @@ export const AuthLayoutRoutes: Routes = [
       {
         path: "cadastrar",
         component: RegisterComponent
+        //verificar a implementação do ContGuard
+        //component: RegisterComponent,canActivate: [ContaGuard]
+      }
+    ]
+  },
+  {
+    path: "",
+    children: [
+      {
+        path: "recuperar-senha",
+        component: RecuperarSenhaComponent
         //verificar a implementação do ContGuard
         //component: RegisterComponent,canActivate: [ContaGuard]
       }

@@ -14,6 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { NgxPrintModule } from 'ngx-print';
 import { HttpClientModule } from '@angular/common/http';
 import { ContaGuard } from '../../shared/services/conta.guard';
+import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { ContaGuard } from '../../shared/services/conta.guard';
     LoginComponent,
     PricingComponent,
     LockComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecuperarSenhaComponent
   ],
   providers: [
     ContaGuard
