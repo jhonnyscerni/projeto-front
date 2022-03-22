@@ -3,7 +3,7 @@
 ### Estágio 1 - Obter o source e gerar o build ###
 
 #Cria o Container Node e apelida de ng-builder
-FROM node:latest AS ng-builder
+FROM node:10.13-alpine AS ng-builder
 #Cria um Diretorio /app
 RUN mkdir -p /app
 #Path de trabalho
@@ -21,12 +21,12 @@ RUN $(npm bin)/ng build --prod
 ### Estágio 2 - Subir o source para o servidor NGINX com a app Angular ###
 FROM nginx
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=ng-builder /app/dist/fbotiqoption /usr/share/nginx/html
+COPY --from=ng-builder /app/dist/projeto-front /usr/share/nginx/html
 
 EXPOSE 80
 
 #Gerar imagem
-#docker build -t botiqoption .
+#docker build -t projeto-front .
 
 #Executar imagem
-#docker run -p 8081:80 botiqoption
+#docker run -p 8081:80 projeto-front

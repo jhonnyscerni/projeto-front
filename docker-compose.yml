@@ -1,8 +1,8 @@
 version: '2.1'
 
 services:
-  botiqoption:
-    image: botiqoption
+  projeto-front:
+    image: projeto-front
     build: .
     ports:
       - 8081:80

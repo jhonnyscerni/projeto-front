@@ -51,7 +51,6 @@
 
           <div class=" card-body px-lg-5 py-lg-5">
             <div class=" text-center text-muted mb-4">
-              <!-- <small> Or sign in with credentials </small> -->
               <small>Faça login com credenciais </small>
             </div>
             <!-- <alert class="alert-dismissible" [dismissible]="dismissible" [type]="'danger'" *ngFor="let error of errors">
@@ -72,13 +71,13 @@
               <div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                   </div>
-                  <input class="form-control" placeholder="E-mail (requerido)" type="email" name="email"
-                    [ngClass]="{'is-invalid':verificaValidTouched('email') }" formControlName="email"
+                  <input class="form-control" placeholder="Username (requerido)" type="username" name="username"
+                    [ngClass]="{'is-invalid':verificaValidTouched('username') }" formControlName="username"
                     (focus)="focus = true" (blur)="focus = false" />
                 </div>
-                <app-error-msg [control]="cadastroForm.get('email')" label="Email"></app-error-msg>
+                <app-error-msg [control]="cadastroForm.get('username')" label="Username"></app-error-msg>
                 <!-- <app-campo-control-erro [mostrarErro]="cadastroForm.get('email').status === 'VALID'"
                   msgErro="Email válido!">
                 </app-campo-control-erro> -->

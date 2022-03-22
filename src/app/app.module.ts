@@ -17,11 +17,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./@core/components/components.module";
 import { SharedModule } from './@core/shared/shared.module';
 import { ErrorInterceptor } from './@core/shared/services/interceptors/error.handler.service';
-import { TokenInterceptor } from './@core/shared/services/interceptors/token.interceptor';
+import {AuthInterceptor} from "./@core/shared/services/interceptors/auth.interceptor";
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ];
 @NgModule({
   imports: [
