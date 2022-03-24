@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from 'src/app/models/usuario';
+import { User } from 'src/app/models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
 import { EMPTY } from 'rxjs';
@@ -15,13 +15,13 @@ import { tap, map, filter, distinctUntilChanged, debounceTime, switchMap, take }
 })
 export class UsuarioListaComponent implements OnInit {
 
-  usuarios: Usuario[];
+  users: User[];
   errorMessage: string;
 
-  usuarioSelecionado: Usuario;
+  usuarioSelecionado: User;
 
   searchForm: FormGroup
-  nomeControl: FormControl
+  usernamecontrol: FormControl
   emailControl: FormControl
 
   // Paginação
@@ -41,8 +41,8 @@ export class UsuarioListaComponent implements OnInit {
 
   getRequestParams(pageElement, size) {
     // tslint:disable-next-line:prefer-const
-    console.log(this.nomeControl.value);
-    let nome = this.nomeControl.value;
+    console.log(this.usernamecontrol.value);
+    let username = this.usernamecontrol.value;
     let email = this.emailControl.value;
     let params = {};
 
@@ -54,8 +54,8 @@ export class UsuarioListaComponent implements OnInit {
       params[`size`] = size;
     }
 
-    if (nome && (nome = nome.trim()) !== '') {
-      params[`nome`] = nome;
+    if (username && (username = username.trim()) !== '') {
+      params[`username`] = username;
     }
 
     if (email && (email = email.trim()) !== '') {
@@ -67,10 +67,10 @@ export class UsuarioListaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.nomeControl = this.fb.control('')
+    this.usernamecontrol = this.fb.control('')
     this.emailControl = this.fb.control('')
     this.searchForm = this.fb.group({
-      nomeControl: this.nomeControl,
+      usernamecontrol: this.usernamecontrol,
       emailControl: this.emailControl
     })
     this.onRefresh();
@@ -87,11 +87,11 @@ export class UsuarioListaComponent implements OnInit {
 
     this.usuarioService.listSearchPage(params)
       .subscribe(
-        usuarios => { 
-          this.usuarios = usuarios.content
-          this.totalElements = usuarios.totalElements
-          this.pageElement = usuarios.number
-          this.size = usuarios.size
+        users => {
+          this.users = users.content
+          this.totalElements = users.totalElements
+          this.pageElement = users.number
+          this.size = users.size
         },
         error => this.errorMessage
       );

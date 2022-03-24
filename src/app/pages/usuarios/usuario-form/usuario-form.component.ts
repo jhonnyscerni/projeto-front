@@ -1,8 +1,8 @@
 import { filter } from 'rxjs/operators';
 import { GrupoService } from 'src/app/services/grupo.service';
-import { Grupo } from './../../../models/grupo';
+import { Role } from '../../../models/role';
 import { UsuarioService } from './../../../services/usuario.service';
-import { Usuario } from './../../../models/usuario';
+import { User } from '../../../models/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
@@ -18,11 +18,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
  
-  usuario: Usuario;
+  usuario: User;
   idUsuario: number;
   validarEmail: any;
 
-  grupos: Grupo[];
+  grupos: Role[];
   constructor(
     private fb: FormBuilder,
     private alertService: AlertModalService,

@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {BaseFormComponent} from 'src/app/@core/shared/base-form/base-form.component';
 import {AuthService} from 'src/app/@core/shared/services/auth.service';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Usuario} from 'src/app/models/usuario';
+import {User} from 'src/app/models/user';
 import {ToastrService} from 'ngx-toastr';
 import {FormBuilder, Validators, AbstractControl} from '@angular/forms';
 
@@ -12,7 +12,7 @@ import {FormBuilder, Validators, AbstractControl} from '@angular/forms';
 })
 export class LoginComponent extends BaseFormComponent implements OnInit {
 
-    usuario: Usuario;
+    usuario: User;
     cadastrando: boolean;
     mensagemSucesso: string;
     returnUrl: string;
@@ -35,19 +35,17 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
         this.cadastroForm = this.fb.group({
             //email: ['', [Validators.required, Validators.email]],
             username: ['', [Validators.required,]],
-            senha: ['', [Validators.required,]]
+            password: ['', [Validators.required,]]
         });
     }
 
     submit() {
         this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
-         console.log(this.usuario)
+        console.log(this.usuario)
         this.authService
             .login(this.cadastroForm.value)
             .subscribe(response => {
-                const access_token = JSON.stringify(response);
-                console.log(access_token)
-                this.authService.saveToken(access_token)
+                this.authService.saveToken(response)
                 this.authService.getUsuarioAutenticado()
                 this.authService.getAutorizacoes()
                 this.returnUrl
@@ -76,7 +74,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
                 this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
                 this.cadastrando = false;
                 this.usuario.email = '';
-                this.usuario.senha = '';
+                this.usuario.password = '';
                 this.errors = []
             }, errorResponse => {
                 this.mensagemSucesso = null;

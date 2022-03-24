@@ -87,10 +87,10 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Senha (requerido)" type="password" formControlName="senha"
+                  <input class="form-control" placeholder="Senha (requerido)" type="password" formControlName="password"
                     name="senha" (focus)="focus1 = true" (blur)="focus1 = false" />
                 </div>
-                <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
+                <app-error-msg [control]="cadastroForm.get('password')" label="Senha"></app-error-msg>
               </div>
               <div class="custom-control custom-control-alternative custom-checkbox">
                 <input class="custom-control-input" id=" customCheckLogin" type="checkbox" />

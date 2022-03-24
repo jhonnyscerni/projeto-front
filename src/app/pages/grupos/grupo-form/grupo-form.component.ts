@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Grupo } from 'src/app/models/grupo';
+import { Role } from 'src/app/models/role';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { GrupoService } from 'src/app/services/grupo.service';
 })
 export class GrupoFormComponent extends BaseFormComponent implements OnInit {
   
-  grupo: Grupo;
+  grupo: Role;
   idGrupo: number;
 
   constructor(
@@ -67,11 +67,11 @@ export class GrupoFormComponent extends BaseFormComponent implements OnInit {
   submit() {
     console.log('submit');
 
-    let msgSuccess = 'Grupo criado com sucesso!';
+    let msgSuccess = 'Role criado com sucesso!';
     let msgError = 'Erro ao criar grupo, tente novamente!';
     if (this.cadastroForm.value.id) {
       console.log(this.cadastroForm.value);
-      msgSuccess = 'Grupo atualizado com sucesso!';
+      msgSuccess = 'Role atualizado com sucesso!';
       msgError = 'Erro ao atualizar grupo, tente novamente!';
     }
 

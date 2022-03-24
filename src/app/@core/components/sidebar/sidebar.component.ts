@@ -166,7 +166,7 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public menuItemsPermissao: any[];
   public isCollapsed = true;
-
+  public dadoAuthorities: any[] = [];
 
   constructor(
     private authService: AuthService,
@@ -179,8 +179,13 @@ export class SidebarComponent implements OnInit {
     this.router.events.subscribe(event => {
       this.isCollapsed = true;
     });
-    console.log(authorities)
-    this.menuItemsPermissao = this.menuItems.filter(f => authorities.includes(f.permissao));
+
+    // Transformando o authorities em outra Lista so com os nomes
+    for (var i of authorities) {
+      this.dadoAuthorities.push(i.authority)
+    }
+
+    this.menuItemsPermissao = this.menuItems.filter(f => this.dadoAuthorities.includes(f.permissao));
     console.log(this.menuItemsPermissao);
   }
 

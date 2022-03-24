@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {Usuario} from 'src/app/models/usuario';
+import {User} from 'src/app/models/user';
 import {map, catchError} from 'rxjs/operators';
 import {BaseService} from './base.service';
 import {UsuarioRecuperarSenha} from 'src/app/models/dto/usuario-recuperar-senha';
@@ -22,6 +22,7 @@ export class AuthService extends BaseService {
 
     apiURL: string = environment.urlbase + "/auth"
     apiURLRecuperarSenha: string = this.apiURL + "/resetpassword"
+    apiURLRegistro: string = this.apiURL + "/signup"
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
@@ -30,9 +31,9 @@ export class AuthService extends BaseService {
         super();
     }
 
-    public saveToken(token: string): void {
+    public saveToken(token: any): void {
         localStorage.removeItem(TOKEN_KEY);
-        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(TOKEN_KEY, token.token);
     }
 
     public getToken(): string | null {
@@ -56,20 +57,21 @@ export class AuthService extends BaseService {
     obterToken() {
         const tokenString = localStorage.getItem(TOKEN_KEY)
         if (tokenString) {
-            const token = JSON.parse(tokenString).access_token
+            // const token = JSON.parse(tokenString)
+            const token = tokenString
             return token;
         }
         return null;
     }
 
-    encerrarSessao() {
+    public encerrarSessao() {
         localStorage.removeItem(TOKEN_KEY)
     }
 
-    getUsuarioAutenticado() {
+    public getUsuarioAutenticado() {
         const token = this.obterToken();
         if (token) {
-            const usuario = this.jwtHelper.decodeToken(token).user_name
+            const usuario = this.jwtHelper.decodeToken(token).sub
             return usuario;
         }
         return null;
@@ -85,18 +87,17 @@ export class AuthService extends BaseService {
         return null;
     }
 
-    getAutorizacoes() {
+    public getAutorizacoes() {
         const token = this.obterToken();
         if (token) {
             const autorizacoes = this.jwtHelper.decodeToken(token).authorities
-            //console.log("Autorizações: "+ autorizacoes)
             return autorizacoes;
         }
         return null;
     }
 
 
-    isAuthenticated(): boolean {
+    public isAuthenticated(): boolean {
         const token = this.obterToken();
         if (token) {
             const expired = this.jwtHelper.isTokenExpired(token)
@@ -105,11 +106,11 @@ export class AuthService extends BaseService {
         return false;
     }
 
-    salvar(usuario: Usuario): Observable<any> {
+    public salvar(usuario: User): Observable<any> {
         return this.http.post<any>(this.apiURL, usuario);
     }
 
-    login(usuarioLogin: UsuarioLogin): Observable<any> {
+    public login(usuarioLogin: UsuarioLogin): Observable<any> {
 
         return this.http
             .post(this.apiURL + '/login',
@@ -118,7 +119,19 @@ export class AuthService extends BaseService {
                 catchError(super.serviceError));
     }
 
-    recuperarLogin(record: UsuarioRecuperarSenha): Observable<UsuarioRecuperarSenha> {
+    saveUserCommon(record: User) {
+        return this.createUserCommon(record);
+    }
+
+
+    private createUserCommon(record: User): Observable<User> {
+        return this.http
+            .post(this.apiURLRegistro, record)
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+    public recuperarLogin(record: UsuarioRecuperarSenha): Observable<UsuarioRecuperarSenha> {
 
         return this.http.get<any>(`${this.apiURLRecuperarSenha}/${record.email}`)
             .pipe(

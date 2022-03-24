@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Usuario } from 'src/app/models/usuario';
+import { User } from 'src/app/models/user';
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import {AuthService} from '../../../@core/shared/services/auth.service';
 
 @Component({
   selector: "app-register",
@@ -14,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent extends BaseFormComponent implements OnInit {
  
-  usuario: Usuario;
+  usuario: User;
   idUsuario: number;
   validarEmail: any;
   
@@ -23,7 +24,7 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
     private alertService: AlertModalService,
     private location: Location,
     private route: ActivatedRoute,
-    private usuarioService: UsuarioService,
+    private authService: AuthService,
     private toastr: ToastrService,
     private router: Router,) {
     super();
@@ -32,7 +33,7 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
   ngOnInit() {
     this.cadastroForm = this.fb.group({
       id: [''],
-      nome: [
+      username: [
         '',
         [
           Validators.required,
@@ -41,7 +42,10 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      fullName: ['', [Validators.required]],
+      phoneNumber: [''],
+      cpf: ['', [Validators.required]]
     });
   }
 
@@ -51,7 +55,7 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
     let msgSuccess = 'Cadastro Realizado. OBRIGADO! Enviamos um e-mail para você ativar sua conta. Caso o email não esteja na caixa de entrada, verifique sua caixa de spam/lixo eletrônico.!';
     let msgError = 'Erro ao cadastrar usuario, tente novamente!';
 
-    this.usuarioService.saveUserCommon(this.cadastroForm.value).subscribe(
+    this.authService.saveUserCommon(this.cadastroForm.value).subscribe(
       success => {
         // this.alertService.showAlertSuccess(msgSuccess);
         this.toastr.success('OBRIGADO! Enviamos um e-mail para você ativar sua conta. Caso o email não esteja na caixa de entrada, verifique sua caixa de spam/lixo eletrônico.!', 'Cadastro Realizado com Sucesso!')

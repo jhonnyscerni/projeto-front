@@ -62,8 +62,8 @@
                                     Nome do Usuário
                                 </label> -->
 
-                                <input class=" form-control" id="nome" placeholder="Nome do Usuário" type="text"
-                                    formControlName="nomeControl" />
+                                <input class=" form-control" id="userName" placeholder="UserName" type="text"
+                                    formControlName="usernamecontrol" />
                             </div>
                         </div>
 
@@ -104,22 +104,22 @@
                     <div class=" table-responsive">
                         <!--(usuarios$ | async) as usuarios; else loadingError-->
                         <table class=" table align-items-center table-flush table-striped"
-                            *ngIf="usuarios; else loadingError">
+                            *ngIf="users; else loadingError">
                             <thead class=" thead-light">
                                 <tr>
                                     <th>ID</th>
-                                    <th>NOME</th>
+                                    <th>USERNAME</th>
                                     <th>EMAIL</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr
-                                    *ngFor="let usuario of usuarios | paginate: { itemsPerPage: size,
+                                    *ngFor="let usuario of users | paginate: { itemsPerPage: size,
                                                                                                     currentPage: page,
                                                                                                     totalItems: totalElements }">
                                     <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
-                                    <td><span class=" text-muted"> {{ usuario?.nome }}</span></td>
+                                    <td><span class=" text-muted"> {{ usuario?.username }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario.email }} </span>
                                     </td>
                                     <td class=" table-actions">

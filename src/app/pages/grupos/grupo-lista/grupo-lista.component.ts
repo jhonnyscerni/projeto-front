@@ -1,4 +1,4 @@
-import { Grupo } from './../../../models/grupo';
+import { Role } from '../../../models/role';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
@@ -13,10 +13,10 @@ import { EMPTY } from 'rxjs';
 })
 export class GrupoListaComponent implements OnInit {
 
-  grupos: Grupo[];
+  grupos: Role[];
   errorMessage: string; 
 
-  grupoSelecionado: Grupo;
+  grupoSelecionado: Role;
   page:number = 1;
 
   constructor(

@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';import { AuthService } from './auth.service';
 })
 export class AuthoritiesGuard implements CanActivate {
 
+  public namesAuthorities: any[] = [];
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -19,15 +21,20 @@ export class AuthoritiesGuard implements CanActivate {
 
       let authorities = this.authService.getAutorizacoes();
 
+      // Transformando o authorities em outra Lista so com os nomes
+      for (var i of authorities) {
+          this.namesAuthorities.push(i.authority)
+      }
+
       let authorized: any = next.data[0];
       //console.log(authorized)
 
       if (authorized !== undefined) {
-        if(!authorities){
+        if(!this.namesAuthorities){
           this.navegarAcessoNegado();
         }
 
-        let userAuthorities = authorities.find(x => x === authorized);
+        let userAuthorities = this.namesAuthorities.find(x => x === authorized);
                 
         if(!userAuthorities){
             this.navegarAcessoNegado();

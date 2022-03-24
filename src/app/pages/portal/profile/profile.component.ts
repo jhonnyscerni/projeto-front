@@ -1,4 +1,4 @@
-import { Usuario } from 'src/app/models/usuario';
+import { User } from 'src/app/models/user';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AuthService } from './../../../@core/shared/services/auth.service';
 import { Component, OnInit } from "@angular/core";
@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileComponent extends BaseFormComponent implements OnInit {
 
-  usuario: Usuario = new Usuario()
+  usuario: User = new User()
   idUsuario: number;
 
   constructor(

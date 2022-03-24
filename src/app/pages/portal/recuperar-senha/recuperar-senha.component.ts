@@ -1,5 +1,5 @@
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
-import { Usuario } from './../../../models/usuario';
+import { User } from '../../../models/user';
 import { AuthService } from './../../../@core/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
