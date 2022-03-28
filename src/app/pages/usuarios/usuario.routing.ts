@@ -10,13 +10,13 @@ export const usuarioRoutes: Routes = [
     children: [
       {
         path: "adicionar", component: UsuarioFormComponent,
-        canActivate: [AuthoritiesGuard],
-        data: ['SEG_CADASTRAR_USUARIOS']
+        // canActivate: [AuthoritiesGuard],
+        // data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
         path: "editar/:idUsuario", component: UsuarioFormComponent,
-        canActivate: [AuthoritiesGuard],
-        data: ['SEG_EDITAR_USUARIOS']
+        // canActivate: [AuthoritiesGuard],
+        // data: ['SEG_EDITAR_USUARIOS']
       },
       {
         path: "detalhe/:idUsuario", component: UsuarioFormComponent

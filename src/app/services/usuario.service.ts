@@ -27,17 +27,4 @@ export class UsuarioService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
-
-    saveUserCommon(record: User) {
-        return this.createUserCommon(record);
-    }
-
-
-    private createUserCommon(record: User): Observable<User> {
-        return this.http
-            .post(this.url + '/add-usuario-comum', record)
-            .pipe(
-                catchError(super.serviceError));
-    }
-
 }

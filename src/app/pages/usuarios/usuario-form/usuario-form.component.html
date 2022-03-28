@@ -45,15 +45,13 @@
 
           <div class=" col-md-6">
             <div class=" form-group">
-              <label class=" form-control-label" for="nome">
+              <label class=" form-control-label" for="username">
                 Nome do Usuário
               </label>
 
-              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('nome') }" id="nome"
-                placeholder="Nome do Usuário" type="text" formControlName="nome" />
-              <app-error-msg [control]="cadastroForm.get('nome')" label="Nome"></app-error-msg>
-              <!--app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório.">
-               </app-campo-control-erro -->
+              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('username') }" id="username"
+                placeholder="Nome do Usuário" type="text" formControlName="username" />
+              <app-error-msg [control]="cadastroForm.get('username')" label="username"></app-error-msg>
             </div>
           </div>
 
@@ -77,33 +75,67 @@
 
         </div>
 
+        <div class="row">
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="fullName">
+                Nome Completo
+              </label>
+
+              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('fullName') }" id="fullName"
+                     placeholder="Nome Completo" type="text" formControlName="fullName"  />
+              <app-error-msg [control]="cadastroForm.get('fullName')" label="Nome Completo  "></app-error-msg>
+            </div>
+          </div>
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="cpf">
+                CPF
+              </label>
+
+              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('cpf') }" id="cpf"
+                     placeholder="CPF" type="text" formControlName="cpf" />
+              <app-error-msg [control]="cadastroForm.get('cpf')" label="CPF"></app-error-msg>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6">
+            <div class=" form-group">
+              <label class=" form-control-label" for="phoneNumber">
+                Telefone
+              </label>
+
+              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('phoneNumber') }" id="phoneNumber"
+                     placeholder="Telefone" type="text" formControlName="phoneNumber"  />
+              <app-error-msg [control]="cadastroForm.get('phoneNumber')" label="Telefone  "></app-error-msg>
+            </div>
+          </div>
+
+        </div>
+
 
         <div class=" row">
           <div class=" col-md-6">
             <div class=" form-group">
-              <label class=" form-control-label" for="senha">
-                Senha:
+              <label class=" form-control-label" for="password">
+                Password:
               </label>
-
-              <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha"
-                (focus)="focus = true" (blur)="focus = false" />
-              <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
+              <input class="form-control" placeholder="Password" type="password" formControlName="password" name="password"/>
+              <app-error-msg [control]="cadastroForm.get('password')" label="Password"></app-error-msg>
             </div>
           </div>
 
           <div class=" col-md-6">
             <div class="form-group">
-              <label class=" form-control-label" for="grupos">
-                Grupos:
+              <label class=" form-control-label" for="roles">
+                Roles:
               </label>
-              <!-- <select multiple="" class="form-control" id="grupos" formControlName="grupos">
-                <option *ngFor="let grupo of grupos" [value]="grupo">{{grupo.nome}}</option>
-              </select> -->
-
-              <select multiple="" class="form-control" id="grupos" placeholder="Grupos do Usuario"
-                formControlName="grupos" [ngClass]="{'is-invalid':verificaValidTouched('grupos') }" [compareWith]="compareFn">
-                <option *ngFor="let grupo of grupos" [value]="grupo">
-                  {{ grupo.nome }}</option>
+              <select multiple="" class="form-control" id="roles" placeholder="Grupos do Usuario"
+                formControlName="roles" [ngClass]="{'is-invalid':verificaValidTouched('roles') }" [compareWith]="compareFn">
+                <option *ngFor="let role of roles" [value]="role">
+                  {{ role.roleName }}</option>
               </select>
             </div>
           </div>
@@ -111,7 +143,6 @@
 
         <div class="form-group text-right">
           <span>
-            <!-- [disabled]="!cadastroForm.valid" -->
             <button class="btn btn-success" id="registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar
             </button>
           </span>
@@ -120,7 +151,6 @@
             </button>
           </span>
           <span>
-            <!-- [disabled]="!cadastroForm.valid" -->
             <button class="btn " id="cancelar" (click)="cancelar()" type="submit">Cancelar
             </button>
           </span>

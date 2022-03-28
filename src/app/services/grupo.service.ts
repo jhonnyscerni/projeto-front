@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class GrupoService extends CrudService<Role> {
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/grupos`);
+    super(http, `${environment.urlbase}/roles`);
   }
 
 }

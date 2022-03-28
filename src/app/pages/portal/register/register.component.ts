@@ -4,7 +4,6 @@ import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.comp
 import { FormBuilder, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import {AuthService} from '../../../@core/shared/services/auth.service';

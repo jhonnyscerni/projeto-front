@@ -12,7 +12,7 @@ import {FormBuilder, Validators, AbstractControl} from '@angular/forms';
 })
 export class LoginComponent extends BaseFormComponent implements OnInit {
 
-    usuario: User;
+    user: User;
     cadastrando: boolean;
     mensagemSucesso: string;
     returnUrl: string;
@@ -40,8 +40,8 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
     }
 
     submit() {
-        this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
-        console.log(this.usuario)
+        this.user = Object.assign({}, this.user, this.cadastroForm.value);
+        console.log(this.user)
         this.authService
             .login(this.cadastroForm.value)
             .subscribe(response => {
@@ -58,23 +58,14 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
 
     }
 
-    preparaCadastrar(event) {
-        event.preventDefault();
-        this.cadastrando = true;
-    }
-
-    cancelaCadastro() {
-        this.cadastrando = false;
-    }
-
     cadastrar() {
         this.authService
-            .salvar(this.usuario)
+            .salvar(this.user)
             .subscribe(response => {
                 this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
                 this.cadastrando = false;
-                this.usuario.email = '';
-                this.usuario.password = '';
+                this.user.email = '';
+                this.user.password = '';
                 this.errors = []
             }, errorResponse => {
                 this.mensagemSucesso = null;

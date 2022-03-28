@@ -18,11 +18,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
  
-  usuario: User;
-  idUsuario: number;
+  user: User;
+  userId: number;
   validarEmail: any;
 
-  grupos: Role[];
+  roles: Role[];
   constructor(
     private fb: FormBuilder,
     private alertService: AlertModalService,
@@ -44,17 +44,25 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
         console.log(idUsuario);
         const usuario$ = this.usuarioService.loadByID(idUsuario);
         usuario$.subscribe(usuario => {
+          console.log(usuario)
           this.updateForm(usuario);
-          // this.grupos = usuario.grupos
-          //this.carregarGrupos();
-          // this.cadastroForm.setValue(evento)
+          this.roles = usuario.roles
+          this.carregarGrupos();
         });
       }
     });
 
     this.cadastroForm = this.fb.group({
       id: [''],
-      nome: [
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(250),
+        ],
+      ],
+      fullName: [
         '',
         [
           Validators.required,
@@ -63,42 +71,40 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
         ],
       ],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required]],
-      grupos: [''],
+      password: ['', [Validators.required]],
+      cpf: ['', ],
+      phoneNumber: ['',],
+      roles: [''],
     });
   }
 
-  updateForm(usuario) {
+  updateForm(user) {
     this.cadastroForm.patchValue({
-      id: usuario.id,
-      nome: usuario.nome,
-      email: usuario.email,
-      senha: usuario.senha,
-      grupos: usuario.grupos
+      id: user.id,
+      username: user.username,
+      fullName: user.fullName,
+      cpf: user.cpf,
+      email: user.email,
+      password: user.password,
+      phoneNumber: user.phoneNumber,
+      roles: user.roles
     });
   }
 
   submit() {
-    console.log('submit');
-
     let msgSuccess = 'Usuário criado com sucesso!';
     let msgError = 'Erro ao criar usuario, tente novamente!';
     if (this.cadastroForm.value.id) {
-      console.log(this.cadastroForm.value);
       msgSuccess = 'Usuário atualizado com sucesso!';
       msgError = 'Erro ao atualizar usuario, tente novamente!';
     }
 
     this.usuarioService.save(this.cadastroForm.value).subscribe(
       success => {
-        //this.alertService.showAlertSuccess(msgSuccess);
         this.toastr.success(msgSuccess, 'Informação :)')
-        
         this.location.back();
       },
-      error => 
-      //this.alertService.showAlertDanger(msgError),
-      this.toastr.error(msgError, 'Opa :(')  
+      error => this.toastr.error(msgError, 'Opa :(')
     );
   }
 
@@ -108,7 +114,7 @@ export class UsuarioFormComponent extends BaseFormComponent implements OnInit {
 
   carregarGrupos() {
     return this.grupoService.list()
-      .subscribe(grupos => this.grupos = grupos);
+      .subscribe(roles => this.roles = roles);
   }
 
   compareFn(compared1: { id: number }, compared2: { id: number }) {

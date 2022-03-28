@@ -40,8 +40,6 @@ export class UsuarioListaComponent implements OnInit {
   }
 
   getRequestParams(pageElement, size) {
-    // tslint:disable-next-line:prefer-const
-    console.log(this.usernamecontrol.value);
     let username = this.usernamecontrol.value;
     let email = this.emailControl.value;
     let params = {};
