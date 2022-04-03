@@ -35,15 +35,15 @@ const routes: Routes = [
       },
       {
         path: "usuarios",
-        loadChildren: "./pages/usuarios/usuarios.module#UsuariosModule"
+        loadChildren: "./pages/users/users.module#UsersModule"
       },
       {
         path: "grupos",
-        loadChildren: "./pages/grupos/grupos.module#GruposModule"
+        loadChildren: "./pages/roles/roles.module#RolesModule"
       },
       {
         path: "permissoes",
-        loadChildren: "./pages/permissoes/permissoes.module#PermissoesModule"
+        loadChildren: "./pages/permissions/permissions.module#PermissionsModule"
       },
       { path: 'painel/acesso-negado', component: AcessoNegadoComponent }
     ]

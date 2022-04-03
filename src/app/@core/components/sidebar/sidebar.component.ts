@@ -186,7 +186,6 @@ export class SidebarComponent implements OnInit {
     }
 
     this.menuItemsPermissao = this.menuItems.filter(f => this.dadoAuthorities.includes(f.permissao));
-    console.log(this.menuItemsPermissao);
   }
 
   onMouseEnterSidenav() {

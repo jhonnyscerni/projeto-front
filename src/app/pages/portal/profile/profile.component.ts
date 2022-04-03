@@ -1,5 +1,5 @@
 import { User } from 'src/app/models/user';
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UserService } from 'src/app/services/user.service';
 import { AuthService } from './../../../@core/shared/services/auth.service';
 import { Component, OnInit } from "@angular/core";
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
@@ -19,7 +19,7 @@ export class ProfileComponent extends BaseFormComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private usuarioService: UsuarioService,
+    private usuarioService: UserService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -91,7 +91,7 @@ export class ProfileComponent extends BaseFormComponent implements OnInit {
   }
 
   cancelar(){
-    this.router.navigate(['/usuarios/lista'], { relativeTo: this.route });
+    this.router.navigate(['/users/lista'], { relativeTo: this.route });
   }
 
 }

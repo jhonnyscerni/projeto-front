@@ -1,0 +1,93 @@
+<!-- <section class="py-2"> -->
+<section>
+    <div class=" header bg-danger pb-6">
+        <div class=" container-fluid">
+            <div class=" header-body">
+                <!-- <div class="container"> -->
+                <div class=" row align-items-center py-4">
+                    <div class=" col-lg-6 col-7">
+                        <nav aria-label="breadcrumb" class=" d-none d-md-inline-block" style="margin-right: 1.5rem">
+                            <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class=" breadcrumb-item">
+                                    <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+                                </li>
+                            </ol>
+                        </nav>
+                        <h6 class=" h2 text-white d-inline-block mb-0">Meus Grupos</h6>
+                    </div>
+                    <div class=" col-lg-6 col-5 text-right">
+                        <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
+                            [routerLink]="['/grupos/adicionar']">
+                            Criar Role </a>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class=" container-fluid mt--6">
+        <div class=" row">
+            <div class=" col">
+                <div class=" card">
+                    <div class=" card-header border-0">
+                        <h3 class=" mb-0">Lista de Grupos</h3>
+                    </div>
+
+                    <div class=" table-responsive">
+                        <!--(users$ | async) as users; else loadingError-->
+                        <table class=" table align-items-center table-flush table-striped"
+                            *ngIf="roles; else loadingError">
+                            <thead class=" thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NOME</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let role of roles | paginate: { itemsPerPage: 10, currentPage: page }">
+                                    <td><span class=" text-muted"> {{ role?.id }}</span></td>
+                                    <td><span class=" text-muted"> {{ role?.name }}</span></td>
+                                    <td class=" table-actions">
+                                        <a class="table-action" tooltip="Editar grupo" placement="top"
+                                            href="javascript:void(0)" (click)="onEdit(role.id)">
+                                            <i class=" fas fa-user-edit"> </i>
+                                        </a>
+                                        <a class=" table-action table-action-delete" tooltip="Deletar grupo"
+                                            placement="top" href="javascript:void(0)" (click)="onDelete(role)">
+                                            <i class=" fas fa-trash"> </i>
+                                        </a>
+                                        <a class="table-action" tooltip="Detalhes grupo" placement="top"
+                                            href="javascript:void(0)" (click)="onDetalhe(role.id)">
+                                            <i class="fas fa-cogs"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ng-template #loadingError>
+                            <div *ngIf="error$ | async; else loading">
+                                Erro ao carregar grupos. Tente novamente mais tarde.
+                            </div>
+                            <ng-template #loading>
+                                <div class=" card-body">
+                                    <div class=" row py-3 align-items-center">
+                                        <div class=" col-sm-9">
+                                            <h4 class=" mb-0">Carregando Grupos...</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                    </div>
+
+                    <div class=" card-footer py-4 text-center ngx-pagination">
+                        <pagination-controls previousLabel="Anterior" nextLabel="Próximo" responsive="true"
+                            (pageChange)="page = $event"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
