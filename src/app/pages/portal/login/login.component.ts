@@ -33,7 +33,6 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
 
     ngOnInit() {
         this.cadastroForm = this.fb.group({
-            //email: ['', [Validators.required, Validators.email]],
             username: ['', [Validators.required,]],
             password: ['', [Validators.required,]]
         });
@@ -64,7 +63,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
             .subscribe(response => {
                 this.mensagemSucesso = "Cadastro realizado com sucesso! Efetue o login.";
                 this.cadastrando = false;
-                this.user.email = '';
+                this.user.username = '';
                 this.user.password = '';
                 this.errors = []
             }, errorResponse => {

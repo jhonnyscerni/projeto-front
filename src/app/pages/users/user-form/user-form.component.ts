@@ -61,18 +61,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
           Validators.maxLength(250),
         ],
       ],
-      fullName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(250),
-        ],
-      ],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      cpf: ['', ],
-      phoneNumber: ['',],
       roles: [''],
     });
   }
@@ -81,11 +70,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
     this.cadastroForm.patchValue({
       id: user.id,
       username: user.username,
-      fullName: user.fullName,
-      cpf: user.cpf,
-      email: user.email,
       password: user.password,
-      phoneNumber: user.phoneNumber,
       roles: user.roles
     });
   }
