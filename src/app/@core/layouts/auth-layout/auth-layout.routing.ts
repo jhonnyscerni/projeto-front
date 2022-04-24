@@ -6,6 +6,7 @@ import { LockComponent } from "../../../pages/portal/lock/lock.component";
 import { RegisterComponent } from "../../../pages/portal/register/register.component";
 import { ContaGuard } from '../../shared/services/conta.guard';
 import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
+import {GoldFatherComponent} from '../../../pages/portal/gold-father/gold-father.component';
 
 export const AuthLayoutRoutes: Routes = [
   {
@@ -56,6 +57,15 @@ export const AuthLayoutRoutes: Routes = [
       {
         path: "pricing",
         component: PricingComponent
+      }
+    ]
+  },
+  {
+    path: "",
+    children: [
+      {
+        path: "gold-father",
+        component: GoldFatherComponent
       }
     ]
   }

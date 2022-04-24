@@ -15,6 +15,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { HttpClientModule } from '@angular/common/http';
 import { ContaGuard } from '../../shared/services/conta.guard';
 import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
+import {GoldFatherComponent} from '../../../pages/portal/gold-father/gold-father.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/re
     PricingComponent,
     LockComponent,
     RegisterComponent,
-    RecuperarSenhaComponent
+    RecuperarSenhaComponent,
+    GoldFatherComponent
   ],
   providers: [
     ContaGuard

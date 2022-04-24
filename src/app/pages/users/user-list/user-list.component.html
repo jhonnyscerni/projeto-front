@@ -108,9 +108,10 @@
                             <thead class=" thead-light">
                                 <tr>
                                     <th>ID</th>
+                                    <th>VOTO</th>
+                                    <th>NOME</th>
                                     <th>USERNAME</th>
                                     <th>EMAIL</th>
-                                    <th>NAME</th>
                                     <th>TELEFONE</th>
                                     <th></th>
                                 </tr>
@@ -121,9 +122,10 @@
                                                                                                     currentPage: page,
                                                                                                     totalItems: totalElements }">
                                     <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
+                                    <td><span class=" text-muted"> {{ usuario.person.vote }} </span>
+                                    <td><span class=" text-muted"> {{ usuario.person.name }} </span>
                                     <td><span class=" text-muted"> {{ usuario?.username }}</span></td>
                                     <td><span class=" text-muted"> {{ usuario.person.email }} </span>
-                                    <td><span class=" text-muted"> {{ usuario.person.name }} </span>
                                     <td><span class=" text-muted"> {{ usuario.person.phoneNumber }} </span>
                                     </td>
                                     <td class=" table-actions">

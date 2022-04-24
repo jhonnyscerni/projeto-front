@@ -23,7 +23,7 @@ export class FormValidations {
 
     const cep = control.value;
     if (cep && cep !== '') {
-      const validacep = /^[0-9]{8}$/;
+      const validacep = /^[0-9]{8}$/; // /^[0-9]{5}-[0-9]{3}$/  ou /^[0-9]{8}$/
       return validacep.test(cep) ? null : { cepInvalido : true };
     }
     return null;
