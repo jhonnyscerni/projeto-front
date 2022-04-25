@@ -18,6 +18,8 @@ import {ConsultaCepService} from 'src/app/@core/shared/services/consulta-cep.ser
 import {VerificaEmailService} from 'src/app/@core/shared/services/verifica-email.service';
 import {FormValidations} from 'src/app/@core/shared/form-validations';
 import {PersonPhysical} from '../../../models/person';
+import {AuthService} from '../../../@core/shared/services/auth.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
     selector: 'app-gold-father',
@@ -34,7 +36,10 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
                 private route: ActivatedRoute,
                 private dropdownService: DropdownService,
                 private cepService: ConsultaCepService,
-                private verificaEmailService: VerificaEmailService) {
+                private verificaEmailService: VerificaEmailService,
+                private authService: AuthService,
+                private toastr: ToastrService,
+                private location: Location) {
         super();
     }
 
@@ -42,7 +47,6 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
 
         this.route.params.subscribe((params: any) => {
             this.id = params['id'];
-            console.log(this.id)
         });
 
         this.cadastroForm = this.fb.group({
@@ -59,6 +63,10 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
                 '',
                 [Validators.required, Validators.email],
                 [this.validarEmail.bind(this)],
+            ],
+            cpf: [
+                '',
+                [Validators.required],
             ],
             phoneNumber: [''],
             address: this.fb.group({
@@ -88,15 +96,21 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
     }
 
     submit() {
-        console.log('submit');
-
-        let msgSuccess = 'Curso criado com sucesso!';
-        let msgError = 'Erro ao criar curso, tente novamente!';
+        let msgSuccess = 'Cadastro criado com sucesso!';
+        let msgError = 'Erro ao criar Cadastro, tente novamente!';
         if (this.cadastroForm.value.id) {
             console.log(this.cadastroForm.value);
-            msgSuccess = 'Curso atualizado com sucesso!';
-            msgError = 'Erro ao atualizar curso, tente novamente!';
+            msgSuccess = 'Cadastro atualizado com sucesso!';
+            msgError = 'Erro ao atualizar cadastro, tente novamente!';
         }
+
+        this.authService.savarComPadrinho(this.cadastroForm.value, this.id).subscribe(
+            success => {
+                this.toastr.success(msgSuccess, 'Informação :)')
+                super.resetar();
+            },
+            error => this.toastr.error(msgError, 'Opa :(')
+        );
 
     }
 

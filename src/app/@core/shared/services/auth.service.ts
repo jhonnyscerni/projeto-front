@@ -7,8 +7,9 @@ import {User} from 'src/app/models/user';
 import {map, catchError} from 'rxjs/operators';
 import {BaseService} from './base.service';
 import {UsuarioRecuperarSenha} from 'src/app/models/dto/usuario-recuperar-senha';
-import {UsuarioLogin} from "../../../models/dto/login";
-import {Page} from "../../../models/page/page";
+import {UsuarioLogin} from '../../../models/dto/login';
+import {Page} from '../../../models/page/page';
+import {Person} from '../../../models/person';
 
 const TOKEN_KEY = 'token';
 const USER_KEY = 'auth-user';
@@ -20,9 +21,9 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class AuthService extends BaseService {
 
 
-    apiURL: string = environment.urlbase + "/auth"
-    apiURLRecuperarSenha: string = this.apiURL + "/resetpassword"
-    apiURLRegistro: string = this.apiURL + "/signup"
+    apiURL: string = environment.urlbase + '/auth'
+    apiURLRecuperarSenha: string = this.apiURL + '/resetpassword'
+    apiURLRegistro: string = this.apiURL + '/signup'
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
@@ -138,5 +139,13 @@ export class AuthService extends BaseService {
                 catchError(super.serviceError));
     }
 
+    public savarComPadrinho(person: Person, id: any): Observable<any> {
+        console.log(person)
+        return this.http
+            .post(this.apiURL + '/persongoldfather/' + id,
+                person, {headers})
+            .pipe(
+                catchError(super.serviceError));
+    }
 
 }

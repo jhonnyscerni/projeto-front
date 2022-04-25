@@ -55,15 +55,15 @@
                                 </div>
                                 <div class=" col-md-4">
                                     <div class="form-group">
-                                        <label class=" form-control-label" for="email">
-                                            Telefone:
+                                        <label class=" form-control-label" for="cpf">
+                                            CPF:
                                         </label>
-                                            <input class=" form-control"
-                                                   [ngClass]="{'is-invalid':verificaValidTouched('phoneNumber') }"
-                                                   id="phoneNumber"
-                                                   placeholder="Telefone" type="text" formControlName="phoneNumber"/>
-                                        <app-error-msg [control]="cadastroForm.get('phoneNumber')"
-                                                       label="Telefone"></app-error-msg>
+                                        <input class=" form-control"
+                                               [ngClass]="{'is-invalid':verificaValidTouched('cpf') }"
+                                               id="cpf"
+                                               placeholder="CPF" type="text" formControlName="cpf"/>
+                                        <app-error-msg [control]="cadastroForm.get('cpf')"
+                                                       label="CPF"></app-error-msg>
                                     </div>
                                 </div>
 
@@ -89,6 +89,19 @@
                                                 [mostrarErro]="cadastroForm.get('email').status === 'VALID'"
                                                 msgErro="Email válido!">
                                         </app-campo-control-erro>
+                                    </div>
+                                </div>
+                                <div class=" col-md-4">
+                                    <div class="form-group">
+                                        <label class=" form-control-label" for="email">
+                                            Telefone:
+                                        </label>
+                                        <input class=" form-control"
+                                               [ngClass]="{'is-invalid':verificaValidTouched('phoneNumber') }"
+                                               id="phoneNumber"
+                                               placeholder="Telefone" type="text" formControlName="phoneNumber"/>
+                                        <app-error-msg [control]="cadastroForm.get('phoneNumber')"
+                                                       label="Telefone"></app-error-msg>
                                     </div>
                                 </div>
                             </div>
