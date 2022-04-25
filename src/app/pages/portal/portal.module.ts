@@ -14,7 +14,7 @@ import {SharedModule} from 'src/app/@core/shared/shared.module';
 import {GoldFatherComponent} from './gold-father/gold-father.component';
 
 @NgModule({
-  declarations: [ProfileComponent, TimelineComponent, GoldFatherComponent],
+  declarations: [ProfileComponent, TimelineComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(portalRoutes),

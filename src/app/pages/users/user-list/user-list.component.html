@@ -122,11 +122,11 @@
                                                                                                     currentPage: page,
                                                                                                     totalItems: totalElements }">
                                     <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
-                                    <td><span class=" text-muted"> {{ usuario.person.vote }} </span>
-                                    <td><span class=" text-muted"> {{ usuario.person.name }} </span>
+                                    <td><span class=" text-muted"> {{ usuario?.person?.vote }} </span>
+                                    <td><span class=" text-muted"> {{ usuario?.person?.name }} </span>
                                     <td><span class=" text-muted"> {{ usuario?.username }}</span></td>
-                                    <td><span class=" text-muted"> {{ usuario.person.email }} </span>
-                                    <td><span class=" text-muted"> {{ usuario.person.phoneNumber }} </span>
+                                    <td><span class=" text-muted"> {{ usuario?.person?.email }} </span>
+                                    <td><span class=" text-muted"> {{ usuario?.person?.phoneNumber }} </span>
                                     </td>
                                     <td class=" table-actions">
                                         <a class="table-action" tooltip="Editar usuario" placement="top"
@@ -139,6 +139,10 @@
                                         </a>
                                         <a class="table-action" tooltip="Detalhes usuario" placement="top"
                                             href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
+                                            <i class="fas fa-cogs"></i>
+                                        </a>
+                                        <a class="table-action" tooltip="Link Padrinho" placement="top"
+                                           href="javascript:void(0)" (click)="onPadrinho(usuario.person.id)">
                                             <i class="fas fa-cogs"></i>
                                         </a>
                                     </td>

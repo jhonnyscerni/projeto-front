@@ -27,6 +27,7 @@ import {PersonPhysical} from '../../../models/person';
 export class GoldFatherComponent extends BaseFormComponent implements OnInit {
 
     personPhysical: PersonPhysical;
+    id: number
 
     constructor(private fb: FormBuilder,
                 private alertService: AlertModalService,
@@ -38,6 +39,11 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.route.params.subscribe((params: any) => {
+            this.id = params['id'];
+            console.log(this.id)
+        });
 
         this.cadastroForm = this.fb.group({
             id: [''],

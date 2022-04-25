@@ -18,6 +18,7 @@ export class PersonPhysical extends Person{
     godfather?: PersonPhysical
     company?: PersonLegal
     observation?: string
+    vote?: string;
 }
 
 export class PersonLegal extends Person{
