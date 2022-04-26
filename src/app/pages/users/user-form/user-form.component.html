@@ -1,102 +1,340 @@
 <div class=" header bg-danger pb-6">
-  <div class=" container-fluid">
-    <div class=" header-body">
-      <div class=" row align-items-center py-4">
-        <div class=" col-lg-6 col-7">
-          <h6 class=" h2 text-white d-inline-block mb-0">Criar Usuário</h6>
+    <div class=" container-fluid">
+        <div class=" header-body">
+            <div class=" row align-items-center py-4">
+                <div class=" col-lg-6 col-7">
+                    <h6 class=" h2 text-white d-inline-block mb-0">Criar Usuário</h6>
 
-          <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
-            <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class=" breadcrumb-item">
-                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
-              </li>
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+                            </li>
 
-              <li class=" breadcrumb-item">
-                <a href="javascript:void(0)"> Usuários </a>
-              </li>
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> Usuários </a>
+                            </li>
 
-              <li aria-current="page" class=" breadcrumb-item active">
-                Criar Usuário
-              </li>
-            </ol>
-          </nav>
+                            <li aria-current="page" class=" breadcrumb-item active">
+                                Criar Usuário
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class=" col-lg-6 col-5 text-right">
+                    <a class=" btn btn-sm btn-neutral" [routerLink]="['/usuarios/lista']"> Lista de Usuários </a>
+                </div>
+            </div>
         </div>
-
-        <div class=" col-lg-6 col-5 text-right">
-          <a class=" btn btn-sm btn-neutral" [routerLink]="['/usuarios/lista']"> Lista de Usuários </a>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <!-- Inicio do Form -->
 <div class=" container-fluid mt--6">
-  <div class=" card mb-6">
-    <div class=" card-header">
-      <h3 class=" mb-0">Usuario</h3>
-    </div>
-
-    <div class=" card-body">
-      <!-- inicio da Row -->
-      <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
-        <div class=" row">
-
-          <div class=" col-md-6">
-            <div class=" form-group">
-              <label class=" form-control-label" for="username">
-                Nome do Usuário
-              </label>
-
-              <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('username') }" id="username"
-                placeholder="Nome do Usuário" type="text" formControlName="username" />
-              <app-error-msg [control]="cadastroForm.get('username')" label="username"></app-error-msg>
-            </div>
-          </div>
+    <div class=" card mb-6">
+        <div class=" card-header">
+            <h3 class=" mb-0">Usuario</h3>
         </div>
 
-        <div class=" row">
-          <div class=" col-md-6">
-            <div class=" form-group">
-              <label class=" form-control-label" for="password">
-                Password:
-              </label>
-              <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" name="password"/>
-              <app-error-msg [control]="cadastroForm.get('password')" label="Password"></app-error-msg>
-            </div>
-          </div>
+        <div class=" card-body">
+            <!-- inicio da Row -->
+            <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+                <div class=" row">
 
-          <div class=" col-md-6">
-            <div class="form-group">
-              <label class=" form-control-label" for="roles">
-                Roles:
-              </label>
-              <select multiple="" class="form-control" id="roles" placeholder="Grupos do Usuario"
-                formControlName="roles" [ngClass]="{'is-invalid':verificaValidTouched('roles') }" [compareWith]="compareFn">
-                <option *ngFor="let role of roles" [value]="role">
-                  {{ role.name }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
+                    <div class=" col-md-6">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="username">
+                                Nome do Usuário
+                            </label>
 
-        <div class="form-group text-right">
+                            <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('username') }"
+                                   id="username"
+                                   placeholder="Nome do Usuário" type="text" formControlName="username"/>
+                            <app-error-msg [control]="cadastroForm.get('username')" label="username"></app-error-msg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" row">
+                    <div class=" col-md-6">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="password">
+                                Password:
+                            </label>
+                            <input class="form-control" id="password" placeholder="Password" type="password"
+                                   formControlName="password" name="password"/>
+                            <app-error-msg [control]="cadastroForm.get('password')" label="Password"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="roles">
+                                Roles:
+                            </label>
+                            <select multiple="" class="form-control" id="roles" placeholder="Grupos do Usuario"
+                                    formControlName="roles" [ngClass]="{'is-invalid':verificaValidTouched('roles') }"
+                                    [compareWith]="compareFn">
+                                <option *ngFor="let role of roles" [value]="role">
+                                    {{ role.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class=" mb-10">Pessoa</h3>
+
+                <div class=" row" formGroupName="person">
+                    <div class=" col-md-8">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="name">
+                                Nome
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.name') }"
+                                   id="name"
+                                   placeholder="Nome" type="text" formControlName="name"/>
+                            <app-error-msg [control]="cadastroForm.get('person.name')"
+                                           label="Nome"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="cpf">
+                                CPF:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.cpf') }"
+                                   id="cpf" [textMask]="{mask: MASKS.cpf.textMask}"
+                                   placeholder="CPF" type="text" formControlName="cpf"/>
+                            <app-error-msg [control]="cadastroForm.get('person.cpf')"
+                                           label="CPF"></app-error-msg>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" formGroupName="person">
+                    <div class="col-md-8">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="email">
+                                E-mail:
+                            </label>
+
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.email') }" id="email"
+                                   placeholder="E-mail" type="text" formControlName="email"/>
+                            <app-error-msg [control]="cadastroForm.get('person.email')"
+                                           label="Email"></app-error-msg>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="phoneNumber">
+                                Telefone:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.phoneNumber') }"
+                                   id="phoneNumber"
+                                   placeholder="Telefone" type="text" formControlName="phoneNumber"/>
+                            <app-error-msg [control]="cadastroForm.get('person.phoneNumber')"
+                                           label="Telefone"></app-error-msg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" formGroupName="person">
+                    <div class="col-md-4">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="birthDate">
+                                Data Nascimento:
+                            </label>
+
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.birthDate') }" id="birthDate"
+                                   placeholder="Data Nascimento" type="text" formControlName="birthDate"/>
+                            <app-error-msg [control]="cadastroForm.get('person.birthDate')"
+                                           label="Email"></app-error-msg>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="gender">
+                                Genero:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.gender') }"
+                                   id="gender"
+                                   placeholder="Genero" type="text" formControlName="gender"/>
+                            <app-error-msg [control]="cadastroForm.get('person.gender')"
+                                           label="Genero"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="sectionVote">
+                                Seção de Votação:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.sectionVote') }"
+                                   id="sectionVote"
+                                   placeholder="Genero" type="text" formControlName="sectionVote"/>
+                            <app-error-msg [control]="cadastroForm.get('person.sectionVote')"
+                                           label="Genero"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="zoneVoting">
+                                Zona Votação:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.zoneVoting') }"
+                                   id="zoneVoting"
+                                   placeholder="Zona de Votação" type="text" formControlName="zoneVoting"/>
+                            <app-error-msg [control]="cadastroForm.get('person.zoneVoting')"
+                                           label="Zona Votação"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="surname">
+                                Apelido:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.surname') }"
+                                   id="surname"
+                                   placeholder="Apelido" type="text" formControlName="surname"/>
+                            <app-error-msg [control]="cadastroForm.get('person.surname')"
+                                           label="Apelido"></app-error-msg>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="vote">
+                                Voto:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.vote') }"
+                                   id="vote"
+                                   placeholder="Voto" type="text" formControlName="vote"/>
+                            <app-error-msg [control]="cadastroForm.get('person.vote')"
+                                           label="Voto"></app-error-msg>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <h3 class=" mb-10">Endereço</h3>
+                <!-- ENDERECO -->
+                <div formGroupName="person">
+                    <div class=" row" formGroupName="address">
+                        <div class=" col-md-2">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="zipCode">
+                                    CEP
+                                </label>
+                                <input class=" form-control"
+                                       id="zipCode"
+                                       placeholder="CEP" type="text" formControlName="zipCode"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-8">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="street">
+                                    Rua
+                                </label>
+
+                                <input class=" form-control"
+                                       id="street" placeholder="Rua" type="text" formControlName="street"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-2">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="number">
+                                    Número
+                                </label>
+
+                                <input class=" form-control"
+                                       id="number" placeholder="Número" type="text" formControlName="number"/>
+                            </div>
+                        </div>
+
+
+                        <div class=" col-md-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="complement">
+                                    Complemento
+                                </label>
+
+                                <input class=" form-control" id="complement" placeholder="Complemento"
+                                       type="text"
+                                       formControlName="complement"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="district">
+                                    Bairro
+                                </label>
+
+                                <input class=" form-control"
+                                       id="district" placeholder="Bairro" type="text"
+                                       formControlName="district"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-4">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="nameCity">
+                                    Cidade
+                                </label>
+                                <input class=" form-control"
+                                       id="nameCity" placeholder="Cidade" type="text"
+                                       formControlName="nameCity"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-2">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="state">
+                                    Estado
+                                </label>
+                                <input class=" form-control"
+                                       id="state" placeholder="Sigla Estado" type="text"
+                                       formControlName="state"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
           <span>
             <button class="btn btn-success" id="registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar
             </button>
           </span>
-          <span>
+                    <span>
             <button class="btn" id="cancelar" (click)="resetar()">Limpar
             </button>
           </span>
-          <span>
+                    <span>
             <button class="btn " id="cancelar" (click)="cancelar()" type="submit">Cancelar
             </button>
           </span>
-        </div>
+                </div>
 
-        <app-form-debug [form]="cadastroForm"></app-form-debug>
-      </form>
+                <app-form-debug [form]="cadastroForm"></app-form-debug>
+            </form>
+        </div>
     </div>
-  </div>
 </div>

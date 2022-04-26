@@ -20,6 +20,8 @@ import {FormValidations} from 'src/app/@core/shared/form-validations';
 import {PersonPhysical} from '../../../models/person';
 import {AuthService} from '../../../@core/shared/services/auth.service';
 import {ToastrService} from 'ngx-toastr';
+import { NgBrazilValidators } from 'ng-brazil';
+import { utilsBr } from 'js-brasil';
 
 @Component({
     selector: 'app-gold-father',
@@ -30,6 +32,8 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
 
     personPhysical: PersonPhysical;
     id: number
+
+    MASKS = utilsBr.MASKS;
 
     constructor(private fb: FormBuilder,
                 private alertService: AlertModalService,
@@ -64,10 +68,7 @@ export class GoldFatherComponent extends BaseFormComponent implements OnInit {
                 [Validators.required, Validators.email],
                 [this.validarEmail.bind(this)],
             ],
-            cpf: [
-                '',
-                [Validators.required],
-            ],
+            cpf: ['', [Validators.required, NgBrazilValidators.cpf]],
             phoneNumber: [''],
             address: this.fb.group({
                 zipCode: ['', [Validators.required, FormValidations.cepValidator]],

@@ -1,9 +1,9 @@
 import { Role } from './role';
-import {Person} from './person';
+import {Person, PersonPhysical} from './person';
 export class User {
     id?: number;
     username?: string;
     password?: string;
-    person?: Person;
+    person?: PersonPhysical;
     roles?: Role[] = []
 }

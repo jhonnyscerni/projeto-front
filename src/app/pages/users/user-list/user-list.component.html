@@ -33,7 +33,7 @@
                     </div>
                     <div class=" col-lg-6 col-5 text-right">
                         <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
-                            [routerLink]="['/usuarios/adicionar']">
+                           [routerLink]="['/usuarios/adicionar']">
                             Criar Usuário </a>
                         <!-- <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
                             Atualizar </a> -->
@@ -63,7 +63,7 @@
                                 </label> -->
 
                                 <input class=" form-control" id="userName" placeholder="UserName" type="text"
-                                    formControlName="usernamecontrol" />
+                                       formControlName="usernamecontrol"/>
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@
                                 </label> -->
 
                                 <input class=" form-control" id="email" placeholder="E-mail" type="text"
-                                    formControlName="emailControl" />
+                                       formControlName="emailControl"/>
                             </div>
                         </div>
 
@@ -104,49 +104,55 @@
                     <div class=" table-responsive">
                         <!--(users$ | async) as users; else loadingError-->
                         <table class=" table align-items-center table-flush table-striped"
-                            *ngIf="users; else loadingError">
+                               *ngIf="users; else loadingError">
                             <thead class=" thead-light">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>VOTO</th>
-                                    <th>NOME</th>
-                                    <th>USERNAME</th>
-                                    <th>EMAIL</th>
-                                    <th>TELEFONE</th>
-                                    <th></th>
-                                </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>VOTO</th>
+                                <th>NOME</th>
+                                <th>EMAIL</th>
+                                <th>TELEFONE</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr
+                            <tr
                                     *ngFor="let usuario of users | paginate: { itemsPerPage: size,
                                                                                                     currentPage: page,
                                                                                                     totalItems: totalElements }">
-                                    <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
-                                    <td><span class=" text-muted"> {{ usuario?.person?.vote }} </span>
-                                    <td><span class=" text-muted"> {{ usuario?.person?.name }} </span>
-                                    <td><span class=" text-muted"> {{ usuario?.username }}</span></td>
-                                    <td><span class=" text-muted"> {{ usuario?.person?.email }} </span>
-                                    <td><span class=" text-muted"> {{ usuario?.person?.phoneNumber }} </span>
-                                    </td>
-                                    <td class=" table-actions">
-                                        <a class="table-action" tooltip="Editar usuario" placement="top"
-                                            href="javascript:void(0)" (click)="onEdit(usuario.id)">
-                                            <i class=" fas fa-user-edit"> </i>
-                                        </a>
-                                        <a class=" table-action table-action-delete" tooltip="Deletar usuario"
-                                            placement="top" href="javascript:void(0)" (click)="onDelete(usuario)">
-                                            <i class=" fas fa-trash"> </i>
-                                        </a>
-                                        <a class="table-action" tooltip="Detalhes usuario" placement="top"
-                                            href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
-                                            <i class="fas fa-cogs"></i>
-                                        </a>
-                                        <a class="table-action" tooltip="Link Padrinho" placement="top"
+                                <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
+                                <td *ngIf="usuario?.person?.vote =='CONQUISTADO' "><i class="fas fa-user-check"></i></td>
+                                <td *ngIf="usuario?.person?.vote =='PERDIDO' "> <i class="fas fa-user-slash"></i></td>
+                                <td *ngIf="usuario?.person?.vote =='A_CONQUISTAR' "> <i class="fas fa-eye"></i></td>
+                                <td *ngIf="usuario?.person?.vote == null "></td>
+                                <td><span class=" text-muted"> {{ usuario?.person?.name }} </span>
+                                <td><span class=" text-muted"> {{ usuario?.person?.email }} </span>
+                                <td><span class=" text-muted"> {{ usuario?.person?.phoneNumber }} </span>
+                                <td>
+                                    <span class=" text-muted">
+                                        <a class="table-action" tooltip="Link Padrinho" placement="top" target="_self"
                                            href="javascript:void(0)" (click)="onPadrinho(usuario.person.id)">
+                                        <i class="fas fa-link"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td class=" table-actions">
+                                    <a class="table-action" tooltip="Editar usuario" placement="top"
+                                       href="javascript:void(0)" (click)="onEdit(usuario.id)">
+                                        <i class=" fas fa-user-edit"> </i>
+                                    </a>
+                                    <a class=" table-action table-action-delete" tooltip="Deletar usuario"
+                                       placement="top" href="javascript:void(0)" (click)="onDelete(usuario)">
+                                        <i class=" fas fa-trash"> </i>
+                                    </a>
+                                    <!--    <a class="table-action" tooltip="Detalhes usuario" placement="top"
+                                           href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
                                             <i class="fas fa-cogs"></i>
                                         </a>
-                                    </td>
-                                </tr>
+                                      -->
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
 
@@ -172,7 +178,8 @@
 
                     <div class=" card-footer py-4 text-center ngx-pagination">
                         <pagination-controls previousLabel="Anterior"
-                        nextLabel="Próximo" responsive="true" (pageChange)="handlePageChange($event)"></pagination-controls> 
+                                             nextLabel="Próximo" responsive="true"
+                                             (pageChange)="handlePageChange($event)"></pagination-controls>
                     </div>
                 </div>
             </div>

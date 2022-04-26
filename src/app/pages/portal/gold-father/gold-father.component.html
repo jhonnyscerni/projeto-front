@@ -60,7 +60,7 @@
                                         </label>
                                         <input class=" form-control"
                                                [ngClass]="{'is-invalid':verificaValidTouched('cpf') }"
-                                               id="cpf"
+                                               id="cpf" [textMask]="{mask: MASKS.cpf.textMask}"
                                                placeholder="CPF" type="text" formControlName="cpf"/>
                                         <app-error-msg [control]="cadastroForm.get('cpf')"
                                                        label="CPF"></app-error-msg>

@@ -1,4 +1,4 @@
-import { filter } from 'rxjs/operators';
+import {distinctUntilChanged, filter, switchMap, tap} from 'rxjs/operators';
 import { RoleService } from 'src/app/services/role.service';
 import { Role } from '../../../models/role';
 import { UserService } from '../../../services/user.service';
@@ -10,6 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BaseFormComponent } from 'src/app/@core/shared/base-form/base-form.component';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import {PersonPhysical} from '../../../models/person';
+import {FormValidations} from '../../../@core/shared/form-validations';
+import { NgBrazilValidators } from 'ng-brazil';
+import { utilsBr } from 'js-brasil';
+import {empty} from 'rxjs';
+import {ConsultaCepService} from '../../../@core/shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-user-form',
@@ -20,6 +26,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
  
   user: User;
   userId: number;
+  MASKS = utilsBr.MASKS;
 
   roles: Role[];
   constructor(
@@ -31,6 +38,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
     private router: Router,
     private grupoService: RoleService,
     private toastr: ToastrService,
+    private cepService: ConsultaCepService,
   ) {
     super();
   }
@@ -62,8 +70,48 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
         ],
       ],
       password: ['', [Validators.required]],
+      person: this.fb.group({
+        name: ['', Validators.required],
+        cpf: ['', [Validators.required, NgBrazilValidators.cpf]],
+        email: [
+          '',
+          [Validators.required, Validators.email],
+        ],
+        phoneNumber: [''],
+        birthDate: [''],
+        gender: [''],
+        sectionVote: [''],
+        zoneVoting: [''],
+        surname: [''],
+        vote: [''],
+        address: this.fb.group({
+          zipCode: ['', [Validators.required, FormValidations.cepValidator]],
+          street: ['', Validators.required],
+          number: ['', Validators.required],
+          complement: [''],
+          district: ['', Validators.required],
+          nameCity: ['', Validators.required],
+          state: ['', Validators.required]
+        }),
+      }),
       roles: [''],
     });
+
+
+    this.cadastroForm
+        .get('person.address.zipCode')
+        .statusChanges.pipe(
+        distinctUntilChanged(),
+        tap(value => console.log('status CEP:', value)),
+        switchMap(status =>
+            status === 'VALID'
+                ? this.cepService.consultaCEP(
+                    this.cadastroForm.get('person.address.zipCode').value,
+                )
+                : empty(),
+        ),
+    )
+        .subscribe(dados => (dados ? this.populaDadosForm(dados) : {}));
   }
 
   updateForm(user) {
@@ -71,7 +119,41 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
       id: user.id,
       username: user.username,
       password: user.password,
+      person: {
+        name: user.person.name,
+        cpf: user.person.cpf,
+        email: user.person.email,
+        phoneNumber: user.person.phoneNumber,
+        birthDate: user.person.birthDate,
+        gender: user.person.gender,
+        sectionVote: user.person.sectionVote,
+        zoneVoting: user.person.zoneVoting,
+        surname: user.person.surname,
+        vote: user.person.vote,
+        address:{
+          zipCode: user?.person?.address?.zipCode,
+          street: user?.person?.address?.street,
+          number: user?.person?.address?.number,
+          complement: user?.person?.address?.complement,
+          district: user?.person?.address?.district,
+          nameCity: user?.person?.address?.nameCity,
+          state: user?.person?.address?.state
+        }
+      },
       roles: user.roles
+    });
+  }
+
+  populaDadosForm(dados) {
+    console.log(dados);
+    this.cadastroForm.patchValue({
+      address: {
+        street: dados.logradouro,
+        district: dados.bairro,
+        nameCity: dados.localidade,
+        state: dados.uf,
+        complement: dados.complemento
+      },
     });
   }
 

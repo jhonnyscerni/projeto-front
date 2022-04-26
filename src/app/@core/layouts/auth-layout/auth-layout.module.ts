@@ -1,21 +1,23 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AuthLayoutRoutes } from "./auth-layout.routing";
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthLayoutRoutes} from './auth-layout.routing';
 
-import { LoginComponent } from "../../../pages/portal/login/login.component";
-import { PricingComponent } from "../../../pages/portal/pricing/pricing.component";
-import { LockComponent } from "../../../pages/portal/lock/lock.component";
-import { RegisterComponent } from "../../../pages/portal/register/register.component";
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ProgressbarModule, BsDropdownModule, PaginationModule, TooltipModule } from 'ngx-bootstrap';
-import { SharedModule } from '../../shared/shared.module';
-import { NgxPrintModule } from 'ngx-print';
-import { HttpClientModule } from '@angular/common/http';
-import { ContaGuard } from '../../shared/services/conta.guard';
-import { RecuperarSenhaComponent } from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
+import {LoginComponent} from '../../../pages/portal/login/login.component';
+import {PricingComponent} from '../../../pages/portal/pricing/pricing.component';
+import {LockComponent} from '../../../pages/portal/lock/lock.component';
+import {RegisterComponent} from '../../../pages/portal/register/register.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {BsDropdownModule, PaginationModule, ProgressbarModule, TooltipModule} from 'ngx-bootstrap';
+import {SharedModule} from '../../shared/shared.module';
+import {NgxPrintModule} from 'ngx-print';
+import {HttpClientModule} from '@angular/common/http';
+import {ContaGuard} from '../../shared/services/conta.guard';
+import {RecuperarSenhaComponent} from 'src/app/pages/portal/recuperar-senha/recuperar-senha.component';
 import {GoldFatherComponent} from '../../../pages/portal/gold-father/gold-father.component';
+import {NgBrazil} from 'ng-brazil';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import {GoldFatherComponent} from '../../../pages/portal/gold-father/gold-father
     NgxPrintModule,
     SharedModule,
     HttpClientModule,
+    NgBrazil,
+    TextMaskModule,
   ],
   declarations: [
     LoginComponent,
