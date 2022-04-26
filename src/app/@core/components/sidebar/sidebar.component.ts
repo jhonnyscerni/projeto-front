@@ -135,6 +135,20 @@ export const ROUTES: RouteInfo[] = [
   //   icontype: "ni-chart-pie-35 text-info"
   // },
   {
+    path: "/pessoas",
+    title: "Pessoas",
+    type: "link",
+    icontype: "ni-circle-08 text-green",
+    permissao: "SEG_CONSULTAR_PESSOAS"
+  },
+  {
+    path: "/empresas",
+    title: "Empresas",
+    type: "link",
+    icontype: "ni-building text-pink",
+    permissao: "SEG_CONSULTAR_EMPRESAS"
+  },
+  {
     path: "/usuarios",
     title: "Usuários",
     type: "link",

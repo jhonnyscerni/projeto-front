@@ -34,6 +34,14 @@ const routes: Routes = [
         loadChildren: "./pages/portal/portal.module#PortalModule"
       },
       {
+        path: "pessoas",
+        loadChildren: "./pages/persons/persons.module#PersonsModule"
+      },
+      {
+        path: "empresas",
+        loadChildren: "./pages/companies/companies.module#CompaniesModule"
+      },
+      {
         path: "usuarios",
         loadChildren: "./pages/users/users.module#UsersModule"
       },
