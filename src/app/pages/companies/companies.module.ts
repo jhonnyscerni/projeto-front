@@ -9,10 +9,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../../@core/shared/shared.module';
 import {companiesRoutes} from './companies.routing';
+import { CompanyFormComponent } from './company-form/company-form.component';
 
 
 @NgModule({
-  declarations: [CompanyListComponent],
+  declarations: [CompanyListComponent, CompanyFormComponent],
   imports: [
     CommonModule,
     ComponentsModule,

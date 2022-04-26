@@ -9,10 +9,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../../@core/shared/shared.module';
 import {personRoutes} from './persons.routing';
+import { PersonFormComponent } from './person-form/person-form.component';
 
 
 @NgModule({
-  declarations: [PersonListComponent],
+  declarations: [PersonListComponent, PersonFormComponent],
     imports: [
         CommonModule,
         ComponentsModule,

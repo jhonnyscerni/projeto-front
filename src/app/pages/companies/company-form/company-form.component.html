@@ -1,0 +1,222 @@
+<div class=" header bg-danger pb-6">
+    <div class=" container-fluid">
+        <div class=" header-body">
+            <div class=" row align-items-center py-4">
+                <div class=" col-lg-6 col-7">
+                    <h6 class=" h2 text-white d-inline-block mb-0">Criar Empresa</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+                            </li>
+
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> Empresas </a>
+                            </li>
+
+                            <li aria-current="page" class=" breadcrumb-item active">
+                                Criar Empresa
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class=" col-lg-6 col-5 text-right">
+                    <a class=" btn btn-sm btn-neutral" [routerLink]="['/empresas/lista']"> Lista de Empresas </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inicio do Form -->
+<div class=" container-fluid mt--6">
+    <div class=" card mb-6">
+        <div class=" card-header">
+            <h3 class=" mb-0">Empresa</h3>
+        </div>
+
+        <div class=" card-body">
+            <!-- inicio da Row -->
+            <form novalidate [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+
+                <div class=" row">
+                    <div class=" col-md-8">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="name">
+                                Nome
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('name') }"
+                                   id="name"
+                                   placeholder="Nome" type="text" formControlName="name"/>
+                            <app-error-msg [control]="cadastroForm.get('name')"
+                                           label="Nome"></app-error-msg>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="email">
+                                E-mail:
+                            </label>
+
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('email') }" id="email"
+                                   placeholder="E-mail" type="text" formControlName="email"/>
+                            <app-error-msg [control]="cadastroForm.get('email')"
+                                           label="Email"></app-error-msg>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="phoneNumber">
+                                Telefone:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('phoneNumber') }"
+                                   id="phoneNumber"
+                                   placeholder="Telefone" type="text" formControlName="phoneNumber"/>
+                            <app-error-msg [control]="cadastroForm.get('phoneNumber')"
+                                           label="Telefone"></app-error-msg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="cnpj">
+                                CNPJ:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('cnpj') }"
+                                   id="cnpj" [textMask]="{mask: MASKS.cnpj.textMask}"
+                                   placeholder="CNPJ" type="text" formControlName="cnpj"/>
+                            <app-error-msg [control]="cadastroForm.get('cnpj')"
+                                           label="CNPJ"></app-error-msg>
+                        </div>
+                    </div>
+                    <div class=" col-md-4">
+                        <div class="form-group">
+                            <label class=" form-control-label" for="vote">
+                                Voto:
+                            </label>
+                            <input class=" form-control"
+                                   [ngClass]="{'is-invalid':verificaValidTouched('vote') }"
+                                   id="vote"
+                                   placeholder="Voto" type="text" formControlName="vote"/>
+                            <app-error-msg [control]="cadastroForm.get('vote')"
+                                           label="Voto"></app-error-msg>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class=" mb-10">Endereço</h3>
+                <!-- ENDERECO -->
+                <div class=" row" formGroupName="address">
+                    <div class=" col-md-2">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="zipCode">
+                                CEP
+                            </label>
+                            <input class=" form-control"
+                                   id="zipCode"
+                                   placeholder="CEP" type="text" formControlName="zipCode"/>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-8">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="street">
+                                Rua
+                            </label>
+
+                            <input class=" form-control"
+                                   id="street" placeholder="Rua" type="text" formControlName="street"/>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-2">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="number">
+                                Número
+                            </label>
+
+                            <input class=" form-control"
+                                   id="number" placeholder="Número" type="text" formControlName="number"/>
+                        </div>
+                    </div>
+
+
+                    <div class=" col-md-6">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="complement">
+                                Complemento
+                            </label>
+
+                            <input class=" form-control" id="complement" placeholder="Complemento"
+                                   type="text"
+                                   formControlName="complement"/>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-6">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="district">
+                                Bairro
+                            </label>
+
+                            <input class=" form-control"
+                                   id="district" placeholder="Bairro" type="text"
+                                   formControlName="district"/>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="nameCity">
+                                Cidade
+                            </label>
+                            <input class=" form-control"
+                                   id="nameCity" placeholder="Cidade" type="text"
+                                   formControlName="nameCity"/>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-2">
+                        <div class=" form-group">
+                            <label class=" form-control-label" for="state">
+                                Estado
+                            </label>
+                            <input class=" form-control"
+                                   id="state" placeholder="Sigla Estado" type="text"
+                                   formControlName="state"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+          <span>
+            <button class="btn btn-success" id="registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar
+            </button>
+          </span>
+                    <span>
+            <button class="btn" id="cancelar" (click)="resetar()">Limpar
+            </button>
+          </span>
+                    <span>
+            <button class="btn " id="cancelar" (click)="cancelar()" type="submit">Cancelar
+            </button>
+          </span>
+                </div>
+
+                <app-form-debug [form]="cadastroForm"></app-form-debug>
+            </form>
+        </div>
+    </div>
+</div>
