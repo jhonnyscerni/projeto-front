@@ -10,10 +10,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../../@core/shared/shared.module';
 import {personRoutes} from './persons.routing';
 import { PersonFormComponent } from './person-form/person-form.component';
+import { PersonUserFormComponent } from './person-user-form/person-user-form.component';
 
 
 @NgModule({
-  declarations: [PersonListComponent, PersonFormComponent],
+  declarations: [PersonListComponent, PersonFormComponent, PersonUserFormComponent],
     imports: [
         CommonModule,
         ComponentsModule,

@@ -1,11 +1,10 @@
 import {CrudService} from '../@core/shared/services/crud-service';
 import {User} from '../models/user';
 import {environment} from 'src/environments/environment';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {UsuarioFilter} from '../models/filter/usuario-filter';
 import {Observable} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {Page} from '../models/page/page';
 import {AuthService} from '../@core/shared/services/auth.service';
 
@@ -26,5 +25,18 @@ export class UserService extends CrudService<User> {
             .pipe(
                 catchError(super.serviceError));
     }
+
+    loadByPersonID(id): Observable<User> {
+        return this.http.get<User>(`${this.url}/person/${id}`)
+    }
+
+    savePersonUser(record: User , personId : number  ): Observable<User> {
+        return this.http
+            .post(`${this.url}/person/${personId}`, record)
+            .pipe(
+                map(super.extractData),
+                catchError(super.serviceError));;
+    }
+
 
 }
