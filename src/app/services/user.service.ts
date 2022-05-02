@@ -26,13 +26,23 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
+    //Extrair para um outro Service
+
+    saveUser(record: User) {
+        return this.http
+            .put(`${this.url}/person-physical/${record['id']}`, record)
+            .pipe(
+                map(super.extractData),
+                catchError(super.serviceError));
+    }
+
     loadByPersonID(id): Observable<User> {
-        return this.http.get<User>(`${this.url}/person/${id}`)
+        return this.http.get<User>(`${this.url}/person-physical/${id}`)
     }
 
     savePersonUser(record: User , personId : number  ): Observable<User> {
         return this.http
-            .post(`${this.url}/person/${personId}`, record)
+            .post(`${this.url}/person-physical/${personId}`, record)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));;

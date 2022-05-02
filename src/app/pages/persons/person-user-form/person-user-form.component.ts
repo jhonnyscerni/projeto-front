@@ -54,7 +54,6 @@ export class PersonUserFormComponent extends BaseFormComponent implements OnInit
                 const user$ = this.userService.loadByPersonID(this.personId);
                 person$.subscribe(person => {
                     this.person = person
-                    console.log(this.person)
                     this.updateForm(this.user);
                     this.carregarGrupos();
                     user$.subscribe(user => {
@@ -81,10 +80,10 @@ export class PersonUserFormComponent extends BaseFormComponent implements OnInit
 
     updateForm(user:User) {
         this.cadastroForm.patchValue({
-            id: user.id,
-            username: user.username,
-            password: user.password,
-            roles: user.roles,
+            id: user?.id,
+            username: user?.username,
+            password: user?.password,
+            roles: user?.roles,
             person: this.person
         });
     }
@@ -96,9 +95,9 @@ export class PersonUserFormComponent extends BaseFormComponent implements OnInit
             msgSuccess = 'Usuário atualizado com sucesso!';
             msgError = 'Erro ao atualizar usuario, tente novamente!';
         }
-        console.log(this.cadastroForm.value.id)
+        console.log("id"+this.cadastroForm.value.id)
         if (this.cadastroForm.value.id) {
-            this.userService.save(this.cadastroForm.value).subscribe(
+            this.userService.saveUser(this.cadastroForm.value).subscribe(
                 success => {
                     this.toastr.success(msgSuccess, 'Informação :)')
                     this.location.back();
@@ -106,7 +105,7 @@ export class PersonUserFormComponent extends BaseFormComponent implements OnInit
                 error => this.toastr.error(msgError, 'Opa :(')
             );
         }else {
-            console.log(this.personId)
+            console.log("personID"+this.personId)
             this.userService.savePersonUser(this.cadastroForm.value, this.personId).subscribe(
                 success => {
                     this.toastr.success(msgSuccess, 'Informação :)')
