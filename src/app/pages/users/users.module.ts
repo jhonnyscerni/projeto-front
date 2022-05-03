@@ -13,6 +13,7 @@ import {SharedModule} from 'src/app/@core/shared/shared.module';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgBrazil} from 'ng-brazil';
 import {TextMaskModule} from 'angular2-text-mask';
+import { UserFormEditComponent } from './user-form-edit/user-form-edit.component';
 
 
 @NgModule({
@@ -34,8 +35,8 @@ import {TextMaskModule} from 'angular2-text-mask';
         TextMaskModule,
         NgBrazil,
     ],
-    declarations: [UsersComponent, UserListComponent, UserFormComponent],
-    exports: [UsersComponent, UserListComponent, UserFormComponent]
+    declarations: [UsersComponent, UserListComponent, UserFormComponent, UserFormEditComponent],
+    exports: [UsersComponent, UserListComponent, UserFormComponent, UserFormEditComponent]
 })
 export class UsersModule {
 }

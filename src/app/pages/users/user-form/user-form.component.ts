@@ -45,19 +45,6 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
 
   ngOnInit() {
     this.carregarGrupos();
-    this.route.params.subscribe((params: any) => {
-      const idUsuario = params['userId'];
-      if (idUsuario) {
-        console.log(idUsuario);
-        const usuario$ = this.usuarioService.loadByID(idUsuario);
-        usuario$.subscribe(usuario => {
-          console.log(usuario)
-          this.updateForm(usuario);
-          this.roles = usuario.roles
-          this.carregarGrupos();
-        });
-      }
-    });
 
     this.cadastroForm = this.fb.group({
       id: [''],
@@ -115,37 +102,6 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
         .subscribe(dados => (dados ? this.populaDadosForm(dados) : {}));
   }
 
-  updateForm(user) {
-    this.cadastroForm.patchValue({
-      id: user.id,
-      username: user.username,
-      password: user.password,
-      person: {
-        id: user.person.id,
-        name: user.person.name,
-        cpf: user.person.cpf,
-        email: user.person.email,
-        phoneNumber: user.person.phoneNumber,
-        birthDate: user.person.birthDate,
-        gender: user.person.gender,
-        sectionVote: user.person.sectionVote,
-        zoneVoting: user.person.zoneVoting,
-        surname: user.person.surname,
-        vote: user.person.vote,
-        address:{
-          zipCode: user?.person?.address?.zipCode,
-          street: user?.person?.address?.street,
-          number: user?.person?.address?.number,
-          complement: user?.person?.address?.complement,
-          district: user?.person?.address?.district,
-          nameCity: user?.person?.address?.nameCity,
-          state: user?.person?.address?.state
-        }
-      },
-      roles: user.roles
-    });
-  }
-
   populaDadosForm(dados) {
     console.log(dados);
     this.cadastroForm.patchValue({
@@ -167,7 +123,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
       msgError = 'Erro ao atualizar usuario, tente novamente!';
     }
 
-    this.usuarioService.save(this.cadastroForm.value).subscribe(
+    this.usuarioService.savePersonPhysical(this.cadastroForm.value).subscribe(
       success => {
         this.toastr.success(msgSuccess, 'Informação :)')
         this.location.back();

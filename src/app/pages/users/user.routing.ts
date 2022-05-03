@@ -2,6 +2,7 @@ import { AuthoritiesGuard } from './../../@core/shared/services/authorities.guar
 import { UserFormComponent } from './user-form/user-form.component';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
+import {UserFormEditComponent} from './user-form-edit/user-form-edit.component';
 
 
 export const userRoutes: Routes = [
@@ -14,7 +15,7 @@ export const userRoutes: Routes = [
          data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
-        path: "editar/:userId", component: UserFormComponent,
+        path: "editar/:userId", component: UserFormEditComponent,
          canActivate: [AuthoritiesGuard],
          data: ['SEG_EDITAR_USUARIOS']
       },

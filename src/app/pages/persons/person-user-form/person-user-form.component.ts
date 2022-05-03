@@ -97,7 +97,7 @@ export class PersonUserFormComponent extends BaseFormComponent implements OnInit
         }
         console.log("id"+this.cadastroForm.value.id)
         if (this.cadastroForm.value.id) {
-            this.userService.saveUser(this.cadastroForm.value).subscribe(
+            this.userService.savePersonPhysical(this.cadastroForm.value).subscribe(
                 success => {
                     this.toastr.success(msgSuccess, 'Informação :)')
                     this.location.back();
