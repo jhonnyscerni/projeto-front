@@ -59,14 +59,6 @@
                                 <td><span class=" text-muted"> {{ person?.name }} </span>
                                 <td><span class=" text-muted"> {{ person?.email }} </span>
                                 <td><span class=" text-muted"> {{ person?.phoneNumber }} </span>
-                                <td>
-                                    <span class=" text-muted">
-                                        <a class="table-action" tooltip="Link Padrinho" placement="top" target="_self"
-                                           href="javascript:void(0)" (click)="onPadrinho(person.id)">
-                                        <i class="fas fa-link"></i>
-                                        </a>
-                                    </span>
-                                </td>
                                 <td class=" table-actions">
                                     <a class="table-action" tooltip="Tornar um usuario" placement="top"
                                        href="javascript:void(0)" (click)="onUser(person.id)">
@@ -80,11 +72,6 @@
                                        placement="top" href="javascript:void(0)" (click)="onDelete(person)">
                                         <i class=" fas fa-trash"> </i>
                                     </a>
-                                    <!--    <a class="table-action" tooltip="Detalhes usuario" placement="top"
-                                           href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
-                                            <i class="fas fa-cogs"></i>
-                                        </a>
-                                      -->
                                 </td>
                             </tr>
                             </tbody>

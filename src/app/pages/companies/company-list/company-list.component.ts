@@ -71,8 +71,10 @@ export class CompanyListComponent implements OnInit {
         );
   }
 
-  onPadrinho(id){
-    this.router.navigate(['/portal/gold-father', id], { relativeTo: this.route });
+  onUser(id) {
+    console.log(id)
+    this.router.navigate(['/empresas', id, 'usuarios'], {relativeTo: this.route});
+
   }
 
 }

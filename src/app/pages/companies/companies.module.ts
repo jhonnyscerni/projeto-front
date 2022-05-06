@@ -10,10 +10,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from '../../@core/shared/shared.module';
 import {companiesRoutes} from './companies.routing';
 import { CompanyFormComponent } from './company-form/company-form.component';
+import { CompanyUserFormComponent } from './company-user-form/company-user-form.component';
 
 
 @NgModule({
-  declarations: [CompanyListComponent, CompanyFormComponent],
+  declarations: [CompanyListComponent, CompanyFormComponent, CompanyUserFormComponent],
   imports: [
     CommonModule,
     ComponentsModule,

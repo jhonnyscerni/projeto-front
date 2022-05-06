@@ -54,6 +54,10 @@
                                 <td><span class=" text-muted"> {{ person?.email }} </span>
                                 <td><span class=" text-muted"> {{ person?.phoneNumber }} </span>
                                 <td class=" table-actions">
+                                    <a class="table-action" tooltip="Tornar um usuario" placement="top"
+                                       href="javascript:void(0)" (click)="onUser(person.id)">
+                                        <i class=" fas fa-user-plus"> </i>
+                                    </a>
                                     <a class="table-action" tooltip="Editar" placement="top"
                                        href="javascript:void(0)" (click)="onEdit(person.id)">
                                         <i class=" fas fa-user-edit"> </i>
@@ -62,11 +66,6 @@
                                        placement="top" href="javascript:void(0)" (click)="onDelete(person)">
                                         <i class=" fas fa-trash"> </i>
                                     </a>
-                                    <!--    <a class="table-action" tooltip="Detalhes usuario" placement="top"
-                                           href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
-                                            <i class="fas fa-cogs"></i>
-                                        </a>
-                                      -->
                                 </td>
                             </tr>
                             </tbody>

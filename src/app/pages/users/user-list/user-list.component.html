@@ -109,9 +109,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>VOTO</th>
-                                <th>NOME</th>
-                                <th>EMAIL</th>
-                                <th>TELEFONE</th>
+                                <th>NOME PESSOA</th>
+                                <th>EMAIL PESSOA</th>
+                                <th>TELEFONE PESSOA</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -132,7 +132,7 @@
                                 <td>
                                     <span class=" text-muted">
                                         <a class="table-action" tooltip="Link Padrinho" placement="top" target="_self"
-                                           href="javascript:void(0)" (click)="onPadrinho(usuario.person.id)">
+                                           href="javascript:void(0)" (click)="onPadrinho(usuario.id)">
                                         <i class="fas fa-link"></i>
                                         </a>
                                     </span>
@@ -146,11 +146,6 @@
                                        placement="top" href="javascript:void(0)" (click)="onDelete(usuario)">
                                         <i class=" fas fa-trash"> </i>
                                     </a>
-                                    <!--    <a class="table-action" tooltip="Detalhes usuario" placement="top"
-                                           href="javascript:void(0)" (click)="onDetalhe(usuario.id)">
-                                            <i class="fas fa-cogs"></i>
-                                        </a>
-                                      -->
                                 </td>
                             </tr>
                             </tbody>

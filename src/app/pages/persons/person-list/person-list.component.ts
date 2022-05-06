@@ -44,10 +44,6 @@ export class PersonListComponent implements OnInit {
         this.router.navigate(['/pessoas/editar', id], {relativeTo: this.route});
     }
 
-    onDetalhe(id) {
-        this.router.navigate(['/pessoas/detalhe', id], {relativeTo: this.route});
-    }
-
     onDelete(person) {
         this.roleselected = person;
         const result$ = this.alertService.showConfirm(
@@ -67,10 +63,6 @@ export class PersonListComponent implements OnInit {
                     this.onRefresh();
                 }
             );
-    }
-
-    onPadrinho(id) {
-        this.router.navigate(['/portal/gold-father', id], {relativeTo: this.route});
     }
 
     onUser(id) {

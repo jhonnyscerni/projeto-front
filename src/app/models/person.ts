@@ -5,6 +5,7 @@ export abstract class Person {
     name?: string;
     email?: string;
     phoneNumber?: string
+    vote?: string;
     address?: Address;
 }
 
@@ -15,12 +16,12 @@ export class PersonPhysical extends Person{
     gender?: string
     zoneVoting?: string
     sectionVote?: string
-    godfather?: PersonPhysical
-    company?: PersonLegal
+    userId?: number
     observation?: string
-    vote?: string;
+
 }
 
 export class PersonLegal extends Person{
     cnpj?: string
+    userId?: number
 }
