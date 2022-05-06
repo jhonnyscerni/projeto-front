@@ -11,6 +11,16 @@ import {SharedModule} from '../../@core/shared/shared.module';
 import {personRoutes} from './persons.routing';
 import { PersonFormComponent } from './person-form/person-form.component';
 import { PersonUserFormComponent } from './person-user-form/person-user-form.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -27,7 +37,19 @@ import { PersonUserFormComponent } from './person-user-form/person-user-form.com
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        SharedModule
+        SharedModule,
+
+        // MAT
+        MatTableModule,
+        MatPaginatorModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatSortModule,
+        MatDatepickerModule,
+        MatTabsModule,
+        MatCheckboxModule,
+        MatFormFieldModule
     ]
 })
 export class PersonsModule { }

@@ -50,8 +50,8 @@ export class RoleListComponent implements OnInit {
   onDelete(grupo) {
     this.roleselected = grupo;
     const result$ = this.alertService.showConfirm(
-      'Confirmacao',
-      'Tem certeza que deseja remover esse grupo?',
+      'Confirmação',
+      'Tem certeza que deseja remover esse item?',
     );
     result$
       .asObservable()

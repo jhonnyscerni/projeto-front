@@ -106,10 +106,12 @@
                             <label class=" form-control-label" for="vote">
                                 Voto:
                             </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('vote') }"
-                                   id="vote"
-                                   placeholder="Voto" type="text" formControlName="vote"/>
+                            <select class="form-control" id="vote" placeholder="Vote" formControlName="vote"
+                                    [ngClass]="{'is-invalid':verificaValidTouched('vote') }">
+                                <option>CONQUISTADO</option>
+                                <option>A_CONQUISTAR</option>
+                                <option>PERDIDO</option>
+                            </select>
                             <app-error-msg [control]="cadastroForm.get('vote')"
                                            label="Voto"></app-error-msg>
                         </div>

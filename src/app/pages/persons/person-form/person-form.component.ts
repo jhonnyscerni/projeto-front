@@ -13,11 +13,17 @@ import {BaseFormComponent} from '../../../@core/shared/base-form/base-form.compo
 import {utilsBr} from 'js-brasil';
 import {distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {empty} from 'rxjs';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import {APP_DATE_FORMATS, AppDateAdapter} from '../../../@core/shared/utils/format-datepicker';
 
 @Component({
     selector: 'app-person-form',
     templateUrl: './person-form.component.html',
-    styleUrls: ['./person-form.component.scss']
+    styleUrls: ['./person-form.component.scss'],
+    providers: [
+        { provide: DateAdapter, useClass: AppDateAdapter },
+        { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+    ]
 })
 export class PersonFormComponent extends BaseFormComponent implements OnInit {
 
@@ -65,7 +71,7 @@ export class PersonFormComponent extends BaseFormComponent implements OnInit {
             sectionVote: [''],
             zoneVoting: [''],
             surname: [''],
-            vote: [''],
+            vote: ['', [Validators.required]],
             address: this.fb.group({
                 zipCode: ['', [FormValidations.cepValidator]],
                 street: [''],

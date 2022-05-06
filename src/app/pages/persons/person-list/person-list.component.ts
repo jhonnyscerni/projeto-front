@@ -47,8 +47,8 @@ export class PersonListComponent implements OnInit {
     onDelete(person) {
         this.roleselected = person;
         const result$ = this.alertService.showConfirm(
-            'Confirmacao',
-            'Tem certeza que deseja remover esse grupo?',
+            'Confirmação',
+            'Tem certeza que deseja remover esse item?',
         );
         result$
             .asObservable()

@@ -118,8 +118,8 @@ export class UserListComponent implements OnInit {
   onDelete(usuario) {
     this.usuarioSelecionado = usuario;
     const result$ = this.alertService.showConfirm(
-      'Confirmacao',
-      'Tem certeza que deseja remover esse usuario?',
+      'Confirmação',
+      'Tem certeza que deseja remover esse item?',
     );
     result$
       .asObservable()

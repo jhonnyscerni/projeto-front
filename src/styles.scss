@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family:Open Sans, sans-serif !important;
+}
+
+.mat-h6, .mat-typography h6 {
+  font: 400 calc(22px * 0.67)/20px Roboto, "Helvetica Neue", sans-serif !important;
+  margin: 0 0 12px;
+}
+
+h5 {
+  font: 400 calc(22px * 0.83)/20px Roboto, "Helvetica Neue", sans-seri !important;
+  margin: 0 0 12px;
+}

@@ -52,8 +52,8 @@ export class PermissionListComponent implements OnInit {
   onDelete(permission) {
     this.permissionSelected = permission;
     const result$ = this.alertService.showConfirm(
-      'Confirmacao',
-      'Tem certeza que deseja remover esse grupo?',
+      'Confirmação',
+      'Tem certeza que deseja remover esse item?',
     );
     result$
       .asObservable()

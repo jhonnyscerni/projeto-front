@@ -63,7 +63,7 @@ export class CompanyFormComponent extends BaseFormComponent implements OnInit {
                 [Validators.required, Validators.email],
             ],
             phoneNumber: [''],
-            vote: [''],
+            vote: ['', [Validators.required]],
             cnpj: ['', [Validators.required, NgBrazilValidators.cnpj]],
             address: this.fb.group({
                 zipCode: ['', [FormValidations.cepValidator]],
