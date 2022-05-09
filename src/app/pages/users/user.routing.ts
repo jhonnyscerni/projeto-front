@@ -3,6 +3,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import {UserFormEditComponent} from './user-form-edit/user-form-edit.component';
+import {PersonFormComponent} from '../persons/person-form/person-form.component';
 
 
 export const userRoutes: Routes = [
@@ -18,6 +19,9 @@ export const userRoutes: Routes = [
         path: "editar/:userId", component: UserFormEditComponent,
          canActivate: [AuthoritiesGuard],
          data: ['SEG_EDITAR_USUARIOS']
+      },
+      {
+        path: "pessoa/:personId", component: PersonFormComponent,
       },
       {
         path: "detalhe/:userId", component: UserFormComponent

@@ -52,6 +52,9 @@ import {ComponentDatepickerModule} from '../../@core/components/component-datepi
         MatCheckboxModule,
         MatFormFieldModule,
         ComponentDatepickerModule
+    ],
+    exports:[
+        PersonListComponent, PersonFormComponent, PersonUserFormComponent
     ]
 })
 export class PersonsModule { }

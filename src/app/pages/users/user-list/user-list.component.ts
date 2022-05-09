@@ -111,6 +111,10 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/usuarios/detalhe', id], { relativeTo: this.route });
   }
 
+  onEditPerson(id){
+    this.router.navigate(['/usuarios/pessoa', id], { relativeTo: this.route });
+  }
+
   onPadrinho(id){
     this.router.navigate(['/portal/gold-father', id], { relativeTo: this.route });
   }

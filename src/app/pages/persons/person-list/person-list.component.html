@@ -40,7 +40,6 @@
                                *ngIf="persons; else loadingError">
                             <thead class=" thead-light">
                             <tr>
-                                <th>ID</th>
                                 <th>VOTO</th>
                                 <th>NOME</th>
                                 <th>EMAIL</th>
@@ -52,7 +51,6 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let person of persons | paginate: { itemsPerPage: 10, currentPage: page }">
-                                <td><span class=" text-muted"> {{ person?.id }}</span></td>
                                 <td *ngIf="person?.vote =='CONQUISTADO' "><i class="fas fa-user-check"></i></td>
                                 <td *ngIf="person?.vote =='PERDIDO' "> <i class="fas fa-user-slash"></i></td>
                                 <td *ngIf="person?.vote =='A_CONQUISTAR' "> <i class="fas fa-eye"></i></td>

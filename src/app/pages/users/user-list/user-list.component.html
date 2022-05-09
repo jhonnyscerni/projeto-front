@@ -107,8 +107,8 @@
                                *ngIf="users; else loadingError">
                             <thead class=" thead-light">
                             <tr>
-                                <th>ID</th>
                                 <th>VOTO</th>
+                                <th>USUARIO</th>
                                 <th>NOME PESSOA</th>
                                 <th>EMAIL PESSOA</th>
                                 <th>TELEFONE PESSOA</th>
@@ -121,11 +121,11 @@
                                     *ngFor="let usuario of users | paginate: { itemsPerPage: size,
                                                                                                     currentPage: page,
                                                                                                     totalItems: totalElements }">
-                                <td><span class=" text-muted"> {{ usuario?.id }}</span></td>
                                 <td *ngIf="usuario?.person?.vote =='CONQUISTADO' "><i class="fas fa-user-check"></i></td>
                                 <td *ngIf="usuario?.person?.vote =='PERDIDO' "> <i class="fas fa-user-slash"></i></td>
                                 <td *ngIf="usuario?.person?.vote =='A_CONQUISTAR' "> <i class="fas fa-eye"></i></td>
                                 <td *ngIf="usuario?.person?.vote == null "></td>
+                                <td><span class=" text-muted"> {{ usuario?.username }} </span>
                                 <td><span class=" text-muted"> {{ usuario?.person?.name }} </span>
                                 <td><span class=" text-muted"> {{ usuario?.person?.email }} </span>
                                 <td><span class=" text-muted"> {{ usuario?.person?.phoneNumber }} </span>
@@ -145,6 +145,10 @@
                                     <a class=" table-action table-action-delete" tooltip="Deletar usuario"
                                        placement="top" href="javascript:void(0)" (click)="onDelete(usuario)">
                                         <i class=" fas fa-trash"> </i>
+                                    </a>
+                                    <a class="table-action" tooltip="Editar Pessoa" placement="top"
+                                       href="javascript:void(0)" (click)="onEditPerson(usuario.person.id)">
+                                        <i class=" fas fa-user-edit"> </i>
                                     </a>
                                 </td>
                             </tr>

@@ -40,14 +40,12 @@
                             *ngIf="roles; else loadingError">
                             <thead class=" thead-light">
                                 <tr>
-                                    <th>ID</th>
                                     <th>NOME</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let role of roles | paginate: { itemsPerPage: 10, currentPage: page }">
-                                    <td><span class=" text-muted"> {{ role?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ role?.name }}</span></td>
                                     <td class=" table-actions">
                                         <a class="table-action" tooltip="Editar grupo" placement="top"
@@ -57,10 +55,6 @@
                                         <a class=" table-action table-action-delete" tooltip="Deletar grupo"
                                             placement="top" href="javascript:void(0)" (click)="onDelete(role)">
                                             <i class=" fas fa-trash"> </i>
-                                        </a>
-                                        <a class="table-action" tooltip="Detalhes grupo" placement="top"
-                                            href="javascript:void(0)" (click)="onDetalhe(role.id)">
-                                            <i class="fas fa-cogs"></i>
                                         </a>
                                     </td>
                                 </tr>

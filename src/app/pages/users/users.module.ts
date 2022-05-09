@@ -14,6 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {NgBrazil} from 'ng-brazil';
 import {TextMaskModule} from 'angular2-text-mask';
 import { UserFormEditComponent } from './user-form-edit/user-form-edit.component';
+import {PersonsModule} from '../persons/persons.module';
 
 
 @NgModule({

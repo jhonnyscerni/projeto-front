@@ -37,7 +37,6 @@
                             *ngIf="permissions; else loadingError">
                             <thead class=" thead-light">
                                 <tr>
-                                    <th>ID</th>
                                     <th>NOME</th>
                                     <th>DESCRIÇÃO</th>
                                     <th></th>
@@ -46,7 +45,6 @@
                             <tbody>
                                 <tr
                                     *ngFor="let permission of permissions | paginate: { itemsPerPage: 10, currentPage: page }">
-                                    <td><span class=" text-muted"> {{ permission?.id }}</span></td>
                                     <td><span class=" text-muted"> {{ permission?.name }}</span></td>
                                     <td><span class=" text-muted"> {{ permission?.description }}</span></td>
                                     <td class=" table-actions">
@@ -57,10 +55,6 @@
                                         <a class=" table-action table-action-delete" tooltip="Deletar permissao"
                                             placement="top" href="javascript:void(0)" (click)="onDelete(permission)">
                                             <i class=" fas fa-trash"> </i>
-                                        </a>
-                                        <a class="table-action" tooltip="Detalhes permissao" placement="top"
-                                            href="javascript:void(0)" (click)="onDetalhe(permission.id)">
-                                            <i class="fas fa-cogs"></i>
                                         </a>
                                     </td>
                                 </tr>

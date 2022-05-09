@@ -40,7 +40,6 @@
                                *ngIf="persons; else loadingError">
                             <thead class=" thead-light">
                             <tr>
-                                <th>ID</th>
                                 <th>NOME</th>
                                 <th>EMAIL</th>
                                 <th>TELEFONE</th>
@@ -50,7 +49,6 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let person of persons | paginate: { itemsPerPage: 10, currentPage: page }">
-                                <td><span class=" text-muted"> {{ person?.id }}</span></td>
                                 <td><span class=" text-muted"> {{ person?.name }} </span>
                                 <td><span class=" text-muted"> {{ person?.email }} </span>
                                 <td><span class=" text-muted"> {{ person?.phoneNumber }} </span>
