@@ -21,6 +21,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {ComponentDatepickerModule} from '../../@core/components/component-datepicker/component-datepicker.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         MatDatepickerModule,
         MatTabsModule,
         MatCheckboxModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        ComponentDatepickerModule
     ]
 })
 export class PersonsModule { }

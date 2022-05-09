@@ -15,7 +15,6 @@ import {distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {empty} from 'rxjs';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import {APP_DATE_FORMATS, AppDateAdapter} from '../../../@core/shared/utils/format-datepicker';
-
 @Component({
     selector: 'app-person-form',
     templateUrl: './person-form.component.html',

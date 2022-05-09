@@ -1,5 +1,5 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
@@ -22,10 +22,16 @@ import {AuthInterceptor} from './@core/shared/services/interceptors/auth.interce
 import {TextMaskModule} from 'angular2-text-mask';
 import {NgBrazil} from 'ng-brazil'
 
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ];
+
+registerLocaleData(localePt)
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -50,7 +56,9 @@ export const httpInterceptorProviders = [
     NgBrazil,
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

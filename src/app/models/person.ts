@@ -1,4 +1,6 @@
 import {Address} from './address';
+import {Role} from './role';
+import {UserPersonLegal, UserPersonPhysical} from './user';
 
 export abstract class Person {
     id?: number;
@@ -18,10 +20,12 @@ export class PersonPhysical extends Person{
     sectionVote?: string
     userId?: number
     observation?: string
+    users?: UserPersonPhysical[] = []
 
 }
 
 export class PersonLegal extends Person{
     cnpj?: string
     userId?: number
+    users?: UserPersonLegal[] = []
 }

@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="w-100">
+    <mat-label>{{ label }}</mat-label>
+    <input matInput
+        placeholder='dd/mm/aaaa'
+        (change)="onDateSelect($event)"
+        mask="d0/M0/0000"
+        [formControl]="inputControl"
+        [required]="required !== undefined"
+        >
+    <input matInput         
+        [hidden]=true
+        [matDatepicker]="picker"
+        [formControl]="dateControl"
+        [required]="required !== undefined"
+        >
+    <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="readonly"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-hint>{{hint}}</mat-hint>
+</mat-form-field>
