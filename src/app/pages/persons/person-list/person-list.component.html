@@ -58,7 +58,7 @@
                                 <td><span class=" text-muted"> {{ person?.name }} </span>
                                 <td><span class=" text-muted"> {{ person?.email }} </span>
                                 <td><span class=" text-muted"> {{ person?.phoneNumber }} </span>
-                                <td><span class=" text-muted"> {{ person?.users[0].username }} </span>
+                                <td><span class=" text-muted"> {{ person?.users[0]?.username }} </span>
                                 <td class=" table-actions">
                                     <a class="table-action" tooltip="Tornar um usuario" placement="top"
                                        href="javascript:void(0)" (click)="onUser(person.id)">

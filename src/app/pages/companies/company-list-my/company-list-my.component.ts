@@ -35,7 +35,7 @@ export class CompanyListMyComponent implements OnInit {
   }
 
   onRefresh() {
-    this.personLegalService.list()
+    this.personLegalService.listMy()
         .subscribe(
             persons => this.persons = persons,
             error => this.errorMessage

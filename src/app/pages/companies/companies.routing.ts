@@ -9,24 +9,34 @@ import {CompanyListMyComponent} from './company-list-my/company-list-my.componen
 
 
 export const companiesRoutes: Routes = [
-  {
-    path: "",
-    children: [
-      {
-        path: ":empresaId/usuarios", component: CompanyUserFormComponent,
-      },
-      {
-        path: "adicionar", component: CompanyFormComponent,
-      },
-      {
-        path: "editar/:empresaId", component: CompanyFormComponent,
-      },
-      {
-        path: "todas", component: CompanyListComponent,
-      },
-      {
-        path: "meus-cadastros", component: CompanyListMyComponent,
-      }
-    ]
-  }
+    {
+        path: '',
+        children: [
+            {
+                path: ':empresaId/usuarios', component: CompanyUserFormComponent,
+                canActivate: [AuthoritiesGuard],
+                data: ['SEG_CADASTRAR_USUARIOS']
+            },
+            {
+                path: 'adicionar', component: CompanyFormComponent,
+                canActivate: [AuthoritiesGuard],
+                data: ['SEG_CADASTRAR_EMPRESAS']
+            },
+            {
+                path: 'editar/:empresaId', component: CompanyFormComponent,
+                canActivate: [AuthoritiesGuard],
+                data: ['SEG_EDITAR_EMPRESAS']
+            },
+            {
+                path: 'todas', component: CompanyListComponent,
+                canActivate: [AuthoritiesGuard],
+                data: ['SEG_CONSULTAR_TODAS_EMPRESAS']
+            },
+            {
+                path: 'meus-cadastros', component: CompanyListMyComponent,
+                canActivate: [AuthoritiesGuard],
+                data: ['SEG_CONSULTAR_MINHAS_EMPRESAS']
+            }
+        ]
+    }
 ];

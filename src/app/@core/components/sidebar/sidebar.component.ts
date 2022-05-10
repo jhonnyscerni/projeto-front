@@ -141,7 +141,7 @@ export const ROUTES: RouteInfo[] = [
         title: 'Pessoas',
         type: "sub",
         icontype: 'ni-circle-08 text-green',
-        permissao: 'SEG_CONSULTAR_PESSOAS',
+        permissao: 'SEG_CONSULTAR_TODOS_PESSOAS',
         collapse: 'pessoas',
         isCollapsed: true,
         children: [
@@ -161,7 +161,7 @@ export const ROUTES: RouteInfo[] = [
         title: 'Empresas',
         type: 'sub',
         icontype: 'ni-building text-pink',
-        permissao: 'SEG_CONSULTAR_EMPRESAS',
+        permissao: 'SEG_CONSULTAR_TODAS_EMPRESAS',
         collapse: 'empresas',
         isCollapsed: true,
         children: [
@@ -181,7 +181,7 @@ export const ROUTES: RouteInfo[] = [
         title: 'Usuarios',
         type: 'sub',
         icontype: 'ni-single-02 text-info',
-        permissao: 'SEG_CONSULTAR_USUARIOS',
+        permissao: 'SEG_CONSULTAR_TODOS_USUARIOS',
         collapse: 'usuarios',
         isCollapsed: true,
         children: [

@@ -21,14 +21,10 @@ export const grupoRoutes: Routes = [
       {
         path: "detalhe/:roleId", component: GrupoFormComponent
       },
-      //Falta implementar verificar uma forma de validar isso, pois so ta no back-end a validação
-      // {
-      //   path: "excluir/:idUsuario", component: UserListComponent,
-      //   canActivate: [AuthoritiesGuard],
-      //   data: ['SEG_REMOVER_USUARIOS']
-      // },
       {
         path: "lista", component: RoleListComponent,
+        canActivate: [AuthoritiesGuard],
+        data: ['SEG_CONSULTAR_GRUPOS']
       },
       { path: "", redirectTo: '/grupos/lista', pathMatch: 'full' }
     ]

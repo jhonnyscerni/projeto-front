@@ -156,7 +156,7 @@ export class PersonFormComponent extends BaseFormComponent implements OnInit {
     }
 
     cancelar(){
-        this.router.navigate(['/pessoas/lista'], { relativeTo: this.route });
+        this.router.navigate(['/pessoas/meus-cadastros'], { relativeTo: this.route });
     }
 
 

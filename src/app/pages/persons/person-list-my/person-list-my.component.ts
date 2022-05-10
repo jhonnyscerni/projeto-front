@@ -32,7 +32,7 @@ export class PersonListMyComponent implements OnInit {
   }
 
   onRefresh() {
-    this.personPhysicalService.list()
+    this.personPhysicalService.listMy()
         .subscribe(
             persons => this.persons = persons,
             error => this.errorMessage

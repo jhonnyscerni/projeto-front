@@ -81,7 +81,7 @@ export class UserListMyComponent implements OnInit {
   onRefresh() {
     const params = this.getRequestParams(this.pageElement, this.size);
 
-    this.usuarioService.listSearchPage(params)
+    this.usuarioService.listSearchMyPage(params)
         .subscribe(
             users => {
               this.users = users.content

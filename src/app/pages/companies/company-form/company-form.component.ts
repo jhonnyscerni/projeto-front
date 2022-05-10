@@ -144,7 +144,7 @@ export class CompanyFormComponent extends BaseFormComponent implements OnInit {
     }
 
     cancelar() {
-        this.router.navigate(['/empresas/lista'], {relativeTo: this.route});
+        this.router.navigate(['/empresas/meus-cadastros'], {relativeTo: this.route});
     }
 
 

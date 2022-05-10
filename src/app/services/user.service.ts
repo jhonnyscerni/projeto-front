@@ -26,6 +26,12 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
+    listSearchMyPage(params): Observable<Page<User>> {
+        return this.http.get<Page<User>>(`${this.url}/my/`, {params})
+            .pipe(
+                catchError(super.serviceError));
+    }
+
     //USerPersonLegal
     savePersonLegal(record: User) {
         console.log(record);

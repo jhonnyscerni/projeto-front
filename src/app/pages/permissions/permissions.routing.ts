@@ -21,12 +21,6 @@ export const permissaoRoutes: Routes = [
       {
         path: "detalhe/:permissionId", component: PermissionFormComponent
       },
-      //Falta implementar verificar uma forma de validar isso, pois so ta no back-end a validação
-      // {
-      //   path: "excluir/:idUsuario", component: UserListComponent,
-      //   canActivate: [AuthoritiesGuard],
-      //   data: ['SEG_REMOVER_USUARIOS']
-      // },
       {
         path: "lista", component: PermissionListComponent,
         canActivate: [AuthoritiesGuard],
