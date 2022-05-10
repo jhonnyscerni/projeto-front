@@ -4,6 +4,7 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import {UserFormEditComponent} from './user-form-edit/user-form-edit.component';
 import {PersonFormComponent} from '../persons/person-form/person-form.component';
+import {UserFormCompanyComponent} from './user-form-company/user-form-company.component';
 
 
 export const userRoutes: Routes = [
@@ -11,9 +12,14 @@ export const userRoutes: Routes = [
     path: '',
     children: [
       {
-        path: "adicionar", component: UserFormComponent,
+        path: "pessoa/adicionar", component: UserFormComponent,
          canActivate: [AuthoritiesGuard],
          data: ['SEG_CADASTRAR_USUARIOS']
+      },
+      {
+        path: "empresa/adicionar", component: UserFormCompanyComponent,
+        canActivate: [AuthoritiesGuard],
+        data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
         path: "editar/:userId", component: UserFormEditComponent,
@@ -26,12 +32,6 @@ export const userRoutes: Routes = [
       {
         path: "detalhe/:userId", component: UserFormComponent
       },
-      //Falta implementar verificar uma forma de validar isso, pois so ta no back-end a validação
-      // {
-      //   path: "excluir/:idUsuario", component: UserListComponent,
-      //   canActivate: [AuthoritiesGuard],
-      //   data: ['SEG_REMOVER_USUARIOS']
-      // },
       {
         path: "lista", component: UserListComponent,
         canActivate: [AuthoritiesGuard],

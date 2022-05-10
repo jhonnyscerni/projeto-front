@@ -33,7 +33,10 @@
                     </div>
                     <div class=" col-lg-6 col-5 text-right">
                         <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
-                           [routerLink]="['/usuarios/adicionar']">
+                           [routerLink]="['/usuarios/empresa/adicionar']">
+                            Criar Usuário Pessoa Fisíca </a>
+                        <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"
+                           [routerLink]="['/usuarios/pessoa/adicionar']">
                             Criar Usuário Pessoa Fisíca </a>
                         <!-- <a class=" btn btn-sm btn-neutral" href="javascript:void(0)" (click)="onRefresh()">
                             Atualizar </a> -->
@@ -145,10 +148,6 @@
                                     <a class=" table-action table-action-delete" tooltip="Deletar usuario"
                                        placement="top" href="javascript:void(0)" (click)="onDelete(usuario)">
                                         <i class=" fas fa-trash"> </i>
-                                    </a>
-                                    <a class="table-action" tooltip="Editar Pessoa" placement="top"
-                                       href="javascript:void(0)" (click)="onEditPerson(usuario.person.id)">
-                                        <i class=" fas fa-user-edit"> </i>
                                     </a>
                                 </td>
                             </tr>

@@ -102,15 +102,15 @@
 
                     <div class=" col-md-4">
                         <div class="form-group">
-                            <label class=" form-control-label" for="cpf">
-                                CPF:
+                            <label class=" form-control-label" for="cnpj">
+                                CNPJ:
                             </label>
                             <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.cpf') }"
-                                   id="cpf" [textMask]="{mask: MASKS.cpf.textMask}"
-                                   placeholder="CPF" type="text" formControlName="cpf"/>
-                            <app-error-msg [control]="cadastroForm.get('person.cpf')"
-                                           label="CPF"></app-error-msg>
+                                   [ngClass]="{'is-invalid':verificaValidTouched('person.cnpj') }"
+                                   id="cnpj" [textMask]="{mask: MASKS.cnpj.textMask}"
+                                   placeholder="CNPJ" type="text" formControlName="cnpj"/>
+                            <app-error-msg [control]="cadastroForm.get('person.cnpj')"
+                                           label="CNPJ"></app-error-msg>
                         </div>
                     </div>
 
@@ -146,77 +146,7 @@
                 </div>
 
                 <div class="row" formGroupName="person">
-                    <div class="col-md-4">
-                        <div class=" form-group">
-                            <label class=" form-control-label" for="birthDate">
-                                Data Nascimento:
-                            </label>
-
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.birthDate') }" id="birthDate"
-                                   placeholder="Data Nascimento" type="text" formControlName="birthDate"/>
-                            <app-error-msg [control]="cadastroForm.get('person.birthDate')"
-                                           label="Email"></app-error-msg>
-                        </div>
-                    </div>
                     <div class=" col-md-4">
-                        <div class="form-group">
-                            <label class=" form-control-label" for="gender">
-                                Genero:
-                            </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.gender') }"
-                                   id="gender"
-                                   placeholder="Genero" type="text" formControlName="gender"/>
-                            <app-error-msg [control]="cadastroForm.get('person.gender')"
-                                           label="Genero"></app-error-msg>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-                        <div class="form-group">
-                            <label class=" form-control-label" for="sectionVote">
-                                Seção de Votação:
-                            </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.sectionVote') }"
-                                   id="sectionVote"
-                                   placeholder="Genero" type="text" formControlName="sectionVote"/>
-                            <app-error-msg [control]="cadastroForm.get('person.sectionVote')"
-                                           label="Genero"></app-error-msg>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-                        <div class="form-group">
-                            <label class=" form-control-label" for="zoneVoting">
-                                Zona Votação:
-                            </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.zoneVoting') }"
-                                   id="zoneVoting"
-                                   placeholder="Zona de Votação" type="text" formControlName="zoneVoting"/>
-                            <app-error-msg [control]="cadastroForm.get('person.zoneVoting')"
-                                           label="Zona Votação"></app-error-msg>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-                        <div class="form-group">
-                            <label class=" form-control-label" for="surname">
-                                Apelido:
-                            </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('person.surname') }"
-                                   id="surname"
-                                   placeholder="Apelido" type="text" formControlName="surname"/>
-                            <app-error-msg [control]="cadastroForm.get('person.surname')"
-                                           label="Apelido"></app-error-msg>
-                        </div>
-                    </div>
-
-                    <div class=" col-md-4">
-
                         <div class="form-group">
                             <label class=" form-control-label" for="vote">
                                 Voto:
@@ -231,7 +161,6 @@
                                            label="Voto"></app-error-msg>
                         </div>
                     </div>
-
 
                 </div>
 

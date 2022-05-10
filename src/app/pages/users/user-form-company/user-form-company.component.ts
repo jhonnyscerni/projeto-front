@@ -1,4 +1,4 @@
-import {distinctUntilChanged, filter, switchMap, tap} from 'rxjs/operators';
+import {distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {RoleService} from 'src/app/services/role.service';
 import {Role} from '../../../models/role';
 import {UserService} from '../../../services/user.service';
@@ -10,42 +10,39 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseFormComponent} from 'src/app/@core/shared/base-form/base-form.component';
 import {Location} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
-import {PersonPhysical} from '../../../models/person';
 import {FormValidations} from '../../../@core/shared/form-validations';
 import {NgBrazilValidators} from 'ng-brazil';
 import {utilsBr} from 'js-brasil';
 import {empty} from 'rxjs';
 import {ConsultaCepService} from '../../../@core/shared/services/consulta-cep.service';
 
+
 @Component({
-    selector: 'app-user-form',
-    templateUrl: './user-form.component.html',
-    styleUrls: ['./user-form.component.scss']
+    selector: 'app-user-form-company',
+    templateUrl: './user-form-company.component.html',
+    styleUrls: ['./user-form-company.component.scss']
 })
-export class UserFormComponent extends BaseFormComponent implements OnInit {
+export class UserFormCompanyComponent extends BaseFormComponent implements OnInit {
 
     user: User;
     userId: number;
     MASKS = utilsBr.MASKS;
-
     roles: Role[];
 
-    constructor(
-        private fb: FormBuilder,
-        private alertService: AlertModalService,
-        private location: Location,
-        private route: ActivatedRoute,
-        private usuarioService: UserService,
-        private router: Router,
-        private grupoService: RoleService,
-        private toastr: ToastrService,
-        private cepService: ConsultaCepService,
-    ) {
+    constructor(private fb: FormBuilder,
+                private alertService: AlertModalService,
+                private location: Location,
+                private route: ActivatedRoute,
+                private usuarioService: UserService,
+                private router: Router,
+                private grupoService: RoleService,
+                private toastr: ToastrService,
+                private cepService: ConsultaCepService,) {
         super();
     }
 
     ngOnInit() {
-        this.carregarGrupos();
+      this.carregarGrupos();
 
         this.cadastroForm = this.fb.group({
             id: [''],
@@ -61,31 +58,25 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
             person: this.fb.group({
                 id: [''],
                 name: ['', Validators.required],
-                cpf: ['', [Validators.required, NgBrazilValidators.cpf]],
+                cnpj: ['', [Validators.required, NgBrazilValidators.cnpj]],
                 email: [
                     '',
                     [Validators.required, Validators.email],
                 ],
                 phoneNumber: [''],
-                birthDate: [''],
-                gender: [''],
-                sectionVote: [''],
-                zoneVoting: [''],
-                surname: [''],
                 vote: [''],
                 address: this.fb.group({
-                    zipCode: ['', [Validators.required, FormValidations.cepValidator]],
-                    street: ['', Validators.required],
-                    number: ['', Validators.required],
+                    zipCode: ['', [ FormValidations.cepValidator]],
+                    street: [''],
+                    number: [''],
                     complement: [''],
-                    district: ['', Validators.required],
-                    nameCity: ['', Validators.required],
-                    state: ['', Validators.required]
+                    district: [''],
+                    nameCity: [''],
+                    state: ['']
                 }),
             }),
             roles: [''],
         });
-
 
         this.cadastroForm
             .get('person.address.zipCode')
@@ -124,7 +115,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
             msgError = 'Erro ao atualizar usuario, tente novamente!';
         }
 
-        this.usuarioService.savePersonPhysical(this.cadastroForm.value).subscribe(
+        this.usuarioService.savePersonLegal(this.cadastroForm.value).subscribe(
             success => {
                 this.toastr.success(msgSuccess, 'Informação :)')
                 this.location.back();
@@ -145,4 +136,5 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
     compareFn(compared1: { id: number }, compared2: { id: number }) {
         return compared1 && compared2 ? compared1.id === compared2.id : compared1 === compared2;
     }
+
 }
