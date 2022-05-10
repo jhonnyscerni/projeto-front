@@ -15,6 +15,7 @@ import {NgBrazil} from 'ng-brazil';
 import {TextMaskModule} from 'angular2-text-mask';
 import {UserFormEditComponent} from './user-form-edit/user-form-edit.component';
 import {UserFormCompanyComponent} from './user-form-company/user-form-company.component';
+import { UserListMyComponent } from './user-list-my/user-list-my.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import {UserFormCompanyComponent} from './user-form-company/user-form-company.co
         TextMaskModule,
         NgBrazil,
     ],
-    declarations: [UsersComponent, UserListComponent, UserFormComponent, UserFormEditComponent, UserFormCompanyComponent],
+    declarations: [UsersComponent, UserListComponent, UserFormComponent, UserFormEditComponent, UserFormCompanyComponent, UserListMyComponent],
     exports: [UsersComponent, UserListComponent, UserFormComponent, UserFormEditComponent]
 })
 export class UsersModule {

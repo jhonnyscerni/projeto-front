@@ -11,10 +11,11 @@ import {SharedModule} from '../../@core/shared/shared.module';
 import {companiesRoutes} from './companies.routing';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { CompanyUserFormComponent } from './company-user-form/company-user-form.component';
+import { CompanyListMyComponent } from './company-list-my/company-list-my.component';
 
 
 @NgModule({
-  declarations: [CompanyListComponent, CompanyFormComponent, CompanyUserFormComponent],
+  declarations: [CompanyListComponent, CompanyFormComponent, CompanyUserFormComponent, CompanyListMyComponent],
   imports: [
     CommonModule,
     ComponentsModule,

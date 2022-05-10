@@ -5,6 +5,7 @@ import {AuthoritiesGuard} from '../../@core/shared/services/authorities.guard';
 import {CompanyFormComponent} from './company-form/company-form.component';
 import {PersonUserFormComponent} from '../persons/person-user-form/person-user-form.component';
 import {CompanyUserFormComponent} from './company-user-form/company-user-form.component';
+import {CompanyListMyComponent} from './company-list-my/company-list-my.component';
 
 
 export const companiesRoutes: Routes = [
@@ -21,9 +22,11 @@ export const companiesRoutes: Routes = [
         path: "editar/:empresaId", component: CompanyFormComponent,
       },
       {
-        path: "lista", component: CompanyListComponent,
+        path: "todas", component: CompanyListComponent,
       },
-      { path: "", redirectTo: '/empresas/lista', pathMatch: 'full' }
+      {
+        path: "meus-cadastros", component: CompanyListMyComponent,
+      }
     ]
   }
 ];

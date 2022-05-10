@@ -22,10 +22,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ComponentDatepickerModule} from '../../@core/components/component-datepicker/component-datepicker.module';
+import { PersonListMyComponent } from './person-list-my/person-list-my.component';
 
 
 @NgModule({
-  declarations: [PersonListComponent, PersonFormComponent, PersonUserFormComponent],
+  declarations: [PersonListComponent, PersonFormComponent, PersonUserFormComponent, PersonListMyComponent],
     imports: [
         CommonModule,
         ComponentsModule,

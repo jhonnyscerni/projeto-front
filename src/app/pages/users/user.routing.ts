@@ -13,18 +13,12 @@ export const userRoutes: Routes = [
     children: [
       {
         path: "pessoa/adicionar", component: UserFormComponent,
-         canActivate: [AuthoritiesGuard],
-         data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
         path: "empresa/adicionar", component: UserFormCompanyComponent,
-        canActivate: [AuthoritiesGuard],
-        data: ['SEG_CADASTRAR_USUARIOS']
       },
       {
         path: "editar/:userId", component: UserFormEditComponent,
-         canActivate: [AuthoritiesGuard],
-         data: ['SEG_EDITAR_USUARIOS']
       },
       {
         path: "pessoa/:personId", component: PersonFormComponent,
@@ -33,11 +27,11 @@ export const userRoutes: Routes = [
         path: "detalhe/:userId", component: UserFormComponent
       },
       {
-        path: "lista", component: UserListComponent,
-        canActivate: [AuthoritiesGuard],
-        data: ['SEG_CONSULTAR_USUARIOS']
+        path: "todos", component: UserListComponent,
       },
-      { path: "", redirectTo: '/usuarios/lista', pathMatch: 'full' }
+      {
+        path: "meus-cadastros", component: UserListComponent,
+      }
     ]
   }
 ];
