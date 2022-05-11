@@ -125,7 +125,7 @@ export class UserFormCompanyComponent extends BaseFormComponent implements OnIni
     }
 
     cancelar() {
-        this.router.navigate(['/usuarios/lista'], {relativeTo: this.route});
+        this.router.navigate(['/usuarios/meus-cadastros'], {relativeTo: this.route});
     }
 
     carregarGrupos() {

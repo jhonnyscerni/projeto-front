@@ -91,7 +91,7 @@ export class ProfileComponent extends BaseFormComponent implements OnInit {
   }
 
   cancelar(){
-    this.router.navigate(['/users/lista'], { relativeTo: this.route });
+    this.router.navigate(['/users/meus-cadastros'], { relativeTo: this.route });
   }
 
 }

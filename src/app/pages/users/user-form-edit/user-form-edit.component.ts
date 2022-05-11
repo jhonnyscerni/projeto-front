@@ -96,7 +96,7 @@ export class UserFormEditComponent extends BaseFormComponent implements OnInit  
   }
 
   cancelar(){
-    this.router.navigate(['/usuarios/lista'], { relativeTo: this.route });
+    this.router.navigate(['/usuarios/meus-cadastros'], { relativeTo: this.route });
   }
 
   compareFn(compared1: { id: number }, compared2: { id: number }) {

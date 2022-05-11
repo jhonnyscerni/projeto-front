@@ -134,7 +134,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
     }
 
     cancelar() {
-        this.router.navigate(['/usuarios/lista'], {relativeTo: this.route});
+        this.router.navigate(['/usuarios/meus-cadastros'], {relativeTo: this.route});
     }
 
     carregarGrupos() {
