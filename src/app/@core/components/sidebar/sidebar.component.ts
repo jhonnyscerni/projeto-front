@@ -42,104 +42,11 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'ni-shop text-primary',
         permissao: 'CONSULTAR_DASHBOARD'
     },
-    // {
-    //   path: "/dashboard",
-    //   title: "Configuração",
-    //   type: "link",
-    //   icontype: "ni-settings-gear-65 text-black"
-    // },
-    // {
-    //   path: "/dashboard",
-    //   title: "Ajuda",
-    //   type: "link",
-    //   icontype: "ni-chat-round text-primary"
-    // },
-    // {
-    //   path: "/portal",
-    //   title: "portal",
-    //   type: "sub",
-    //   icontype: "ni-ungroup text-orange",
-    //   collapse: "portal",
-    //   isCollapsed: true,
-    //   children: [
-    //     { path: "pricing", title: "Pricing", type: "link" },
-    //     { path: "login", title: "Login", type: "link" },
-    //     { path: "register", title: "Register", type: "link" },
-    //     { path: "lock", title: "Lock", type: "link" },
-    //     { path: "timeline", title: "Timeline", type: "link" },
-    //     { path: "profile", title: "Profile", type: "link" }
-    //   ]
-    // },
-    // {
-    //   path: "/components",
-    //   title: "Components",
-    //   type: "sub",
-    //   icontype: "ni-ui-04 text-info",
-    //   collapse: "components",
-    //   isCollapsed: true,
-    //   children: [
-    //     { path: "buttons", title: "Buttons", type: "link" },
-    //     { path: "cards", title: "Cards", type: "link" },
-    //     { path: "grid", title: "Grid", type: "link" },
-    //     { path: "notifications", title: "Notifications", type: "link" },
-    //     { path: "icons", title: "Icons", type: "link" },
-    //     { path: "typography", title: "Typography", type: "link" },
-    //     {
-    //       path: "multilevel",
-    //       isCollapsed: true,
-    //       title: "Multilevel",
-    //       type: "sub",
-    //       collapse: "multilevel",
-    //       children: [
-    //         { title: "Third level menu" },
-    //         { title: "Just another link" },
-    //         { title: "One last link" }
-    //       ]
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: "/forms",
-    //   title: "Forms",
-    //   type: "sub",
-    //   icontype: "ni-single-copy-04 text-pink",
-    //   collapse: "forms",
-    //   isCollapsed: true,
-    //   children: [
-    //     { path: "elements", title: "Elements", type: "link" },
-    //     { path: "components", title: "Components", type: "link" },
-    //     { path: "validation", title: "Validation", type: "link" }
-    //   ]
-    // },
-    // {
-    //   path: "/tables",
-    //   title: "Tables",
-    //   type: "sub",
-    //   icontype: "ni-align-left-2 text-default",
-    //   collapse: "tables",
-    //   isCollapsed: true,
-    //   children: [
-    //     { path: "tables", title: "Tables", type: "link" },
-    //     { path: "sortable", title: "Sortable", type: "link" },
-    //     { path: "ngx-datatable", title: "Ngx Datatable", type: "link" }
-    //   ]
-    // },
-    // {
-    //   path: "/widgets",
-    //   title: "Widgets",
-    //   type: "link",
-    //   icontype: "ni-archive-2 text-green"
-    // },
-    // {
-    //   path: "/charts",
-    //   title: "Charts",
-    //   type: "link",
-    //   icontype: "ni-chart-pie-35 text-info"
-    // },
+    ////////////////////////////////////////////////////////////////////// PESSOAS  ////////////////////////////////////////////////////////////
     {
         path: '/pessoas',
         title: 'Pessoas',
-        type: "sub",
+        type: 'sub',
         icontype: 'ni-circle-08 text-green',
         permissao: 'SEG_CONSULTAR_TODOS_PESSOAS',
         collapse: 'pessoas',
@@ -156,6 +63,7 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'ni-circle-08 text-green',
         permissao: 'SEG_CONSULTAR_PESSOAS'
     },
+    ////////////////////////////////////////////////////////////////////// EMPRESAS  ////////////////////////////////////////////////////////////
     {
         path: '/empresas',
         title: 'Empresas',
@@ -176,6 +84,7 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'ni-building text-pink',
         permissao: 'SEG_CONSULTAR_EMPRESAS'
     },
+    ////////////////////////////////////////////////////////////////////// USUARIOS  ////////////////////////////////////////////////////////////
     {
         path: '/usuarios',
         title: 'Usuarios',
@@ -185,16 +94,60 @@ export const ROUTES: RouteInfo[] = [
         collapse: 'usuarios',
         isCollapsed: true,
         children: [
-            {path: 'todos', title: 'Todos Usuarios', type: 'link'},
-            {path: 'meus-cadastros', title: 'Meus Usuarios', type: 'link'},
-        ]
+            {
+                path: 'pessoas',
+                title: 'Pessoas',
+                type: 'sub',
+                collapse: 'pessoas',
+                isCollapsed: true,
+                children: [
+                    {path: 'todos', title: 'Todos Usuarios', type: 'link'},
+                    {path: 'meus-cadastros', title: 'Meus Usuarios', type: 'link'},
+                ]
+            },
+            {
+                path: 'empresas',
+                title: 'Empresas',
+                type: 'sub',
+                collapse: 'empresas',
+                isCollapsed: true,
+                children: [
+                    {path: 'todos', title: 'Todos Usuarios', type: 'link'},
+                    {path: 'meus-cadastros', title: 'Meus Usuarios', type: 'link'},
+                ]
+            },
+        ],
     },
     {
-        path: '/usuarios/meus-cadastros',
-        title: 'Usuários',
-        type: 'link',
+        path: '/usuarios',
+        title: 'Usuarios',
+        type: 'sub',
         icontype: 'ni-single-02 text-info',
-        permissao: 'SEG_CONSULTAR_USUARIOS'
+        permissao: 'SEG_CONSULTAR_USUARIOS',
+        collapse: 'usuarios',
+        isCollapsed: true,
+        children: [
+            {
+                path: 'pessoas',
+                title: 'Pessoas',
+                type: 'sub',
+                collapse: 'pessoas',
+                isCollapsed: true,
+                children: [
+                    {path: 'meus-cadastros', title: 'Meus Usuarios', type: 'link'},
+                ]
+            },
+            {
+                path: 'empresas',
+                title: 'Empresas',
+                type: 'sub',
+                collapse: 'empresas',
+                isCollapsed: true,
+                children: [
+                    {path: 'meus-cadastros', title: 'Meus Usuarios', type: 'link'},
+                ]
+            },
+        ],
     },
     {
         path: '/grupos',

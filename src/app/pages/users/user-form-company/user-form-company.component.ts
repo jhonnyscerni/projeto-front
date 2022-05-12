@@ -2,7 +2,7 @@ import {distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {RoleService} from 'src/app/services/role.service';
 import {Role} from '../../../models/role';
 import {UserService} from '../../../services/user.service';
-import {User} from '../../../models/user';
+import {User, UserPersonLegal} from '../../../models/user';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AlertModalService} from 'src/app/@core/shared/services/alert-modal.service';
@@ -24,7 +24,7 @@ import {ConsultaCepService} from '../../../@core/shared/services/consulta-cep.se
 })
 export class UserFormCompanyComponent extends BaseFormComponent implements OnInit {
 
-    user: User;
+    user: UserPersonLegal;
     userId: number;
     MASKS = utilsBr.MASKS;
     roles: Role[];
@@ -43,6 +43,18 @@ export class UserFormCompanyComponent extends BaseFormComponent implements OnIni
 
     ngOnInit() {
       this.carregarGrupos();
+
+        this.route.params.subscribe((params: any) => {
+            const idUsuario = params['userId'];
+            if (idUsuario) {
+                const usuario$ = this.usuarioService.findByIdPersonLegal(idUsuario);
+                usuario$.subscribe(usuario => {
+                    this.updateForm(usuario);
+                    this.roles = usuario.roles
+                    this.carregarGrupos();
+                });
+            }
+        });
 
         this.cadastroForm = this.fb.group({
             id: [''],
@@ -92,6 +104,32 @@ export class UserFormCompanyComponent extends BaseFormComponent implements OnIni
             ),
         )
             .subscribe(dados => (dados ? this.populaDadosForm(dados) : {}));
+    }
+
+    updateForm(user) {
+        this.cadastroForm.patchValue({
+            id: user.id,
+            username: user.username,
+            password: user.password,
+            person: {
+                id: user.person.id,
+                name: user.person.name,
+                email: user.person.email,
+                phoneNumber: user.person.phoneNumber,
+                vote: user.person.vote,
+                cnpj: user.person.cnpj,
+                address: {
+                    zipCode: user.person?.address?.zipCode,
+                    street: user.person?.address?.street,
+                    number: user.person?.address?.number,
+                    complement: user.person?.address?.complement,
+                    district: user.person?.address?.district,
+                    nameCity: user.person?.address?.nameCity,
+                    state: user.person?.address?.state
+                }
+            },
+            roles: user.roles
+        });
     }
 
     populaDadosForm(dados) {

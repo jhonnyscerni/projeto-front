@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import {User, UserPersonPhysical} from 'src/app/models/user';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AlertModalService } from 'src/app/@core/shared/services/alert-modal.service';
-import { EMPTY } from 'rxjs';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
-import { HttpParams } from '@angular/common/http';
-import { tap, map, filter, distinctUntilChanged, debounceTime, switchMap, take } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {UserPersonLegal} from '../../../models/user';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AlertModalService} from '../../../@core/shared/services/alert-modal.service';
+import {UserService} from '../../../services/user.service';
+import {switchMap, take} from 'rxjs/operators';
+import {EMPTY} from 'rxjs';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  selector: 'app-user-list-company-my',
+  templateUrl: './user-list-company-my.component.html',
+  styleUrls: ['./user-list-company-my.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListCompanyMyComponent implements OnInit {
 
-  users: UserPersonPhysical[];
+  users: UserPersonLegal[];
   errorMessage: string;
 
-  usuarioSelecionado: UserPersonPhysical;
+  usuarioSelecionado: UserPersonLegal;
 
   searchForm: FormGroup
   usernamecontrol: FormControl
@@ -32,11 +31,11 @@ export class UserListComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private alertService: AlertModalService,
-    private usuarioService: UserService,
-    private fb: FormBuilder) {
+      private router: Router,
+      private route: ActivatedRoute,
+      private alertService: AlertModalService,
+      private usuarioService: UserService,
+      private fb: FormBuilder) {
   }
 
   getRequestParams(pageElement, size) {
@@ -83,16 +82,16 @@ export class UserListComponent implements OnInit {
   onRefresh() {
     const params = this.getRequestParams(this.pageElement, this.size);
 
-    this.usuarioService.listSearchPageUserPersonPhysical(params)
-      .subscribe(
-        users => {
-          this.users = users.content
-          this.totalElements = users.totalElements
-          this.pageElement = users.number
-          this.size = users.size
-        },
-        error => this.errorMessage
-      );
+    this.usuarioService.listSearchPagePersonLegalMy(params)
+        .subscribe(
+            users => {
+              this.users = users.content
+              this.totalElements = users.totalElements
+              this.pageElement = users.number
+              this.size = users.size
+            },
+            error => this.errorMessage
+        );
   }
 
   onSearch() {
@@ -114,22 +113,22 @@ export class UserListComponent implements OnInit {
   onDelete(usuario) {
     this.usuarioSelecionado = usuario;
     const result$ = this.alertService.showConfirm(
-      'Confirmação',
-      'Tem certeza que deseja remover esse item?',
+        'Confirmação',
+        'Tem certeza que deseja remover esse item?',
     );
     result$
-      .asObservable()
-      .pipe(
-        take(1),
-        switchMap(result =>
-          result ? this.usuarioService.remove(usuario.id) : EMPTY,
-        ),
-      )
-      .subscribe(
-        success => {
-          this.onRefresh();
-        },
-      );
+        .asObservable()
+        .pipe(
+            take(1),
+            switchMap(result =>
+                result ? this.usuarioService.remove(usuario.id) : EMPTY,
+            ),
+        )
+        .subscribe(
+            success => {
+              this.onRefresh();
+            },
+        );
   }
 
 }

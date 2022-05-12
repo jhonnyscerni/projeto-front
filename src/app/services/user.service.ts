@@ -1,5 +1,5 @@
 import {CrudService} from '../@core/shared/services/crud-service';
-import {User} from '../models/user';
+import {User, UserPersonLegal, UserPersonPhysical} from '../models/user';
 import {environment} from 'src/environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Page} from '../models/page/page';
 import {AuthService} from '../@core/shared/services/auth.service';
+import {PersonLegal} from '../models/person';
 
 @Injectable({
     providedIn: 'root'
@@ -32,8 +33,34 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
+    findByIdPersonLegal(id): Observable<UserPersonLegal> {
+        return this.http.get<UserPersonLegal>(`${this.url}/${id}/person-legal`)
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+    findByIdPersonPhysical(id): Observable<UserPersonPhysical> {
+        return this.http.get<UserPersonPhysical>(`${this.url}/${id}/person-physical`)
+            .pipe(
+                catchError(super.serviceError));
+    }
+
     //USerPersonLegal
-    savePersonLegal(record: User) {
+
+    listSearchPagePersonLegal(params): Observable<Page<UserPersonLegal>> {
+        return this.http.get<Page<UserPersonLegal>>(`${this.url}/person-legal`, {params})
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+    listSearchPagePersonLegalMy(params): Observable<Page<UserPersonLegal>> {
+        return this.http.get<Page<UserPersonLegal>>(`${this.url}/person-legal/my`, {params})
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+
+    savePersonLegal(record: UserPersonLegal) {
         console.log(record);
         if (record['id']) {
             console.log('update!')
@@ -43,7 +70,7 @@ export class UserService extends CrudService<User> {
         return this.createUserLegal(record);
     }
 
-    private createUserLegal(record: User): Observable<User> {
+    private createUserLegal(record: UserPersonLegal): Observable<UserPersonLegal> {
         return this.http
             .post(`${this.url}/person-legal/`, record)
             .pipe(
@@ -51,7 +78,7 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
-    private updateUserPersonLegal(record: User): Observable<User> {
+    private updateUserPersonLegal(record: UserPersonLegal): Observable<UserPersonLegal> {
         return this.http
             .put(`${this.url}/person-legal/${record['id']}`, record)
             .pipe(
@@ -60,11 +87,12 @@ export class UserService extends CrudService<User> {
     }
 
 
-    loadByPersonIDLegal(id): Observable<User> {
-        return this.http.get<User>(`${this.url}/person-legal/${id}`)
+    //ADD
+    loadByPersonIDLegal(id): Observable<UserPersonLegal> {
+        return this.http.get<UserPersonLegal>(`${this.url}/person-legal/${id}`)
     }
 
-    savePersonUserLegal(record: User , personId : number  ): Observable<User> {
+    savePersonUserLegal(record: UserPersonLegal , personId : number  ): Observable<UserPersonLegal> {
         return this.http
             .post(`${this.url}/person-legal/${personId}`, record)
             .pipe(
@@ -75,7 +103,20 @@ export class UserService extends CrudService<User> {
 
     //UserPersonPhysical
 
-    private createUserPhysical(record: User): Observable<User> {
+    listSearchPageUserPersonPhysical(params): Observable<Page<UserPersonPhysical>> {
+        return this.http.get<Page<UserPersonPhysical>>(`${this.url}/person-physical`, {params})
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+    listSearchPageUserPersonPhysicalMy(params): Observable<Page<UserPersonPhysical>> {
+        return this.http.get<Page<UserPersonPhysical>>(`${this.url}/person-physical/my`, {params})
+            .pipe(
+                catchError(super.serviceError));
+    }
+
+
+    private createUserPhysical(record: UserPersonPhysical): Observable<UserPersonPhysical> {
         return this.http
             .post(`${this.url}/person-physical/`, record)
             .pipe(
@@ -83,7 +124,7 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
-    private updateUserPhysical(record: User): Observable<User> {
+    private updateUserPhysical(record: UserPersonPhysical): Observable<UserPersonPhysical> {
         return this.http
             .put(`${this.url}/person-physical/${record['id']}`, record)
             .pipe(
@@ -91,7 +132,7 @@ export class UserService extends CrudService<User> {
                 catchError(super.serviceError));
     }
 
-    savePersonPhysical(record: User) {
+    savePersonPhysical(record: UserPersonPhysical) {
         console.log(record);
         if (record['id']) {
             console.log('update!')
@@ -101,11 +142,12 @@ export class UserService extends CrudService<User> {
         return this.createUserPhysical(record);
     }
 
-    loadByPersonID(id): Observable<User> {
-        return this.http.get<User>(`${this.url}/person-physical/${id}`)
+    //ADD
+    loadByPersonID(id): Observable<UserPersonPhysical> {
+        return this.http.get<UserPersonPhysical>(`${this.url}/person-physical/${id}`)
     }
 
-    savePersonUser(record: User , personId : number  ): Observable<User> {
+    savePersonUser(record: UserPersonPhysical , personId : number  ): Observable<UserPersonPhysical> {
         return this.http
             .post(`${this.url}/person-physical/${personId}`, record)
             .pipe(

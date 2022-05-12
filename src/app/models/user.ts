@@ -12,10 +12,14 @@ export class UserPersonPhysical {
     id?: number;
     username?: string;
     password?: string;
+    person?: PersonPhysical;
+    roles?: Role[] = []
 }
 
 export class UserPersonLegal {
     id?: number;
     username?: string;
     password?: string;
+    person?: PersonLegal;
+    roles?: Role[] = []
 }
