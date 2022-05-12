@@ -16,11 +16,17 @@ import {NgBrazilValidators} from 'ng-brazil';
 import {utilsBr} from 'js-brasil';
 import {empty} from 'rxjs';
 import {ConsultaCepService} from '../../../@core/shared/services/consulta-cep.service';
+import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
+import {APP_DATE_FORMATS, AppDateAdapter} from '../../../@core/shared/utils/format-datepicker';
 
 @Component({
     selector: 'app-user-form',
     templateUrl: './user-form.component.html',
-    styleUrls: ['./user-form.component.scss']
+    styleUrls: ['./user-form.component.scss'],
+    providers: [
+        { provide: DateAdapter, useClass: AppDateAdapter },
+        { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
+    ]
 })
 export class UserFormComponent extends BaseFormComponent implements OnInit {
 
@@ -178,7 +184,7 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
     }
 
     cancelar() {
-        this.router.navigate(['/usuarios/meus-cadastros'], {relativeTo: this.route});
+        this.router.navigate(['/usuarios/pessoas/meus-cadastros'], {relativeTo: this.route});
     }
 
     carregarGrupos() {

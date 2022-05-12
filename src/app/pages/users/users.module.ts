@@ -17,6 +17,7 @@ import {UserFormCompanyComponent} from './user-form-company/user-form-company.co
 import { UserListMyComponent } from './user-list-my/user-list-my.component';
 import { UserListCompanyComponent } from './user-list-company/user-list-company.component';
 import { UserListCompanyMyComponent } from './user-list-company-my/user-list-company-my.component';
+import {ComponentDatepickerModule} from '../../@core/components/component-datepicker/component-datepicker.module';
 
 
 @NgModule({
@@ -37,6 +38,8 @@ import { UserListCompanyMyComponent } from './user-list-company-my/user-list-com
         // Validation
         TextMaskModule,
         NgBrazil,
+
+        ComponentDatepickerModule
     ],
     declarations: [UsersComponent, UserListComponent, UserFormComponent, UserFormCompanyComponent, UserListMyComponent, UserListCompanyComponent, UserListCompanyMyComponent],
     exports: [UsersComponent, UserListComponent, UserFormComponent]

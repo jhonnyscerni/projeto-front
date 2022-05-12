@@ -8,7 +8,6 @@ export abstract class Person {
     phoneNumber?: string
     vote?: string;
     address?: Address;
-    userId?: string;
 }
 
 export class PersonPhysical extends Person{
@@ -19,11 +18,9 @@ export class PersonPhysical extends Person{
     zoneVoting?: string
     sectionVote?: string
     observation?: string
-    users?: UserPersonPhysical[] = []
 
 }
 
 export class PersonLegal extends Person{
     cnpj?: string
-    users?: UserPersonLegal[] = []
 }

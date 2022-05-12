@@ -103,7 +103,7 @@ export class UserListCompanyMyComponent implements OnInit {
   }
 
   onEdit(id) {
-    this.router.navigate(['/usuarios/pessoa/editar', id], { relativeTo: this.route });
+    this.router.navigate(['/usuarios/empresa/editar', id], { relativeTo: this.route });
   }
 
   onPadrinho(id){
