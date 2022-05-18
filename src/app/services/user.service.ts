@@ -14,11 +14,11 @@ import {PersonLegal} from '../models/person';
 })
 export class UserService extends CrudService<User> {
 
-    private url: string = `${environment.urlbase}/users`;
+    private url: string = `${environment.urlbase}/authuser/users`;
 
     constructor(protected http: HttpClient,
                 private authservice: AuthService) {
-        super(http, `${environment.urlbase}/users`);
+        super(http, `${environment.urlbase}/authuser/users`);
     }
 
     listSearchPage(params): Observable<Page<User>> {
@@ -28,19 +28,19 @@ export class UserService extends CrudService<User> {
     }
 
     listSearchMyPage(params): Observable<Page<User>> {
-        return this.http.get<Page<User>>(`${this.url}/my/`, {params})
+        return this.http.get<Page<User>>(`${this.url}/authuser/my/`, {params})
             .pipe(
                 catchError(super.serviceError));
     }
 
     findByIdPersonLegal(id): Observable<UserPersonLegal> {
-        return this.http.get<UserPersonLegal>(`${this.url}/${id}/person-legal`)
+        return this.http.get<UserPersonLegal>(`${this.url}/authuser/${id}/person-legal`)
             .pipe(
                 catchError(super.serviceError));
     }
 
     findByIdPersonPhysical(id): Observable<UserPersonPhysical> {
-        return this.http.get<UserPersonPhysical>(`${this.url}/${id}/person-physical`)
+        return this.http.get<UserPersonPhysical>(`${this.url}/authuser/${id}/person-physical`)
             .pipe(
                 catchError(super.serviceError));
     }
@@ -48,13 +48,13 @@ export class UserService extends CrudService<User> {
     //USerPersonLegal
 
     listSearchPagePersonLegal(params): Observable<Page<UserPersonLegal>> {
-        return this.http.get<Page<UserPersonLegal>>(`${this.url}/person-legal`, {params})
+        return this.http.get<Page<UserPersonLegal>>(`${this.url}/authuser/person-legal`, {params})
             .pipe(
                 catchError(super.serviceError));
     }
 
     listSearchPagePersonLegalMy(params): Observable<Page<UserPersonLegal>> {
-        return this.http.get<Page<UserPersonLegal>>(`${this.url}/person-legal/my`, {params})
+        return this.http.get<Page<UserPersonLegal>>(`${this.url}/authuser/person-legal/my`, {params})
             .pipe(
                 catchError(super.serviceError));
     }
@@ -72,7 +72,7 @@ export class UserService extends CrudService<User> {
 
     private createUserLegal(record: UserPersonLegal): Observable<UserPersonLegal> {
         return this.http
-            .post(`${this.url}/person-legal/`, record)
+            .post(`${this.url}/authuser/person-legal/`, record)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -80,7 +80,7 @@ export class UserService extends CrudService<User> {
 
     private updateUserPersonLegal(record: UserPersonLegal): Observable<UserPersonLegal> {
         return this.http
-            .put(`${this.url}/person-legal/${record['id']}`, record)
+            .put(`${this.url}/authuser/person-legal/${record['id']}`, record)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));

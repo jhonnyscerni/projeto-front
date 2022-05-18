@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class RoleService extends CrudService<Role> {
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/roles`);
+    super(http, `${environment.urlbase}/authuser/roles`);
   }
 
 }

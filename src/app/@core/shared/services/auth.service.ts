@@ -21,9 +21,9 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class AuthService extends BaseService {
 
 
-    apiURL: string = environment.urlbase + '/auth'
-    apiURLRecuperarSenha: string = this.apiURL + '/resetpassword'
-    apiURLRegistro: string = this.apiURL + '/signup'
+    apiURL: string = environment.urlbase + '/authuser/auth'
+    apiURLRecuperarSenha: string = this.apiURL + '/authuser/resetpassword'
+    apiURLRegistro: string = this.apiURL + '/authuser/signup'
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
@@ -81,7 +81,7 @@ export class AuthService extends BaseService {
     getUsuarioIdAutenticado() {
         const token = this.obterToken();
         if (token) {
-            const usuario = this.jwtHelper.decodeToken(token).usuario_id
+            const usuario = this.jwtHelper.decodeToken(token).sub
             console.log(usuario)
             return usuario;
         }

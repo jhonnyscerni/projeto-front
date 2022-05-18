@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlbase: 'http://localhost:8087/authuser',
+  urlbase: 'http://localhost:8080',
   imagensUrl: 'http://localhost:8080',
 };
 

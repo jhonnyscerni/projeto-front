@@ -13,11 +13,11 @@ import {catchError} from 'rxjs/operators';
 export class PersonLegalService extends CrudService<User> {
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/persons-legal`);
+    super(http, `${environment.urlbase}/authuser/persons-legal`);
   }
 
   listMy(): Observable<PersonPhysical[]> {
-    return this.http.get<PersonPhysical[]>(`${environment.urlbase}/persons-legal/my`)
+    return this.http.get<PersonPhysical[]>(`${environment.urlbase}/authuser/persons-legal/my`)
         .pipe(
             catchError(super.serviceError));
   }

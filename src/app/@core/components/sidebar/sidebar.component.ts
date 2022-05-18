@@ -150,6 +150,13 @@ export const ROUTES: RouteInfo[] = [
         ],
     },
     {
+        path: '/compromissos',
+        title: 'Compromissos',
+        type: 'link',
+        icontype: 'ni-building text-pink',
+        permissao: 'SEG_CONSULTAR_TODOS_USUARIOS'
+    },
+    {
         path: '/grupos',
         title: 'Grupos',
         type: 'link',
