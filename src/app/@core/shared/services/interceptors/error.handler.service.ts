@@ -17,19 +17,20 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        return next.handle(req).pipe(catchError(error => {
+        return next.handle(req).pipe(catchError(err => {
 
-            if (error instanceof HttpErrorResponse) {
+            if (err instanceof HttpErrorResponse) {
 
-                if (error.status === 401) {
+                if (err.status === 401) {
                     this.localStorageUtil.limparDadosLocaisUsuario();
                     this.router.navigate(['/portal/login'], { queryParams: { returnUrl: this.router.url }});
                 }
-                if (error.status === 403) {
+                if (err.status === 403) {
                     this.router.navigate(['/painel/acesso-negado']);
                 }
             }
 
+            const error = err.error.message || err.statusText;
             return throwError(error);
         }));
     }

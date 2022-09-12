@@ -17,37 +17,45 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CalendarComponent} from './calendar.component';
+import {FormDialogComponent as calFormComponent} from './dialogs/form-dialog/form-dialog.component';
 import {CalendarService} from './calendar.service';
-import {TextMaskModule} from 'angular2-text-mask';
-import {SharedModule} from '../../@core/shared/shared.module';
+
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin,
+]);
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        CalendarRoutingModule,
-        FullCalendarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatInputModule,
-        MatDialogModule,
-        MatTooltipModule,
-        MatDatepickerModule,
-        MatSnackBarModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatRadioModule,
-        MatMenuModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
-        SharedModule,
-        TextMaskModule
-
-    ],
-  declarations: [CalendarComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CalendarRoutingModule,
+    FullCalendarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatMenuModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+  ],
+  declarations: [CalendarComponent, calFormComponent],
   providers: [CalendarService],
 })
 export class CalendarsModule {}
