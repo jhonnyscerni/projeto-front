@@ -1,0 +1,173 @@
+/*
+ *  Document   : style.css
+ *  Author     : RedStar Template
+ *  Description: This is a main style scss__ file for import all scss__ files.
+ *
+ *  Structure (with shortcodes):
+                 [1. Common ]
+                 [2. Fonts ]                   
+                 [3. Components ]       
+                 [4. Apps]                   
+                 [5. Pages ]    
+                 [6. Pugins ]        
+                 [7. UI ]     
+                 [8. Browser ]     
+
+                
+/*                 [1. Common ]                   			*/
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "common/_variables";
+@import "common/_mixins";
+@import "common/_customanimate.scss";
+@import "common/_general.scss";
+@import "common/_demo.scss";
+@import "common/_helpers.scss";
+@import "common/_media.scss";
+@import "common/_animation.scss";
+@import "common/_rtl.scss";
+
+/*                 [2. Fonts]                   				*/
+// @import "fonts/_material.scss__";
+//@import "fonts/fontawesome/fontawesome.scss__";
+//@import "fonts/fontawesome/regular.scss__";
+//@import "fonts/fontawesome/solid.scss__";
+//@import "fonts/fontawesome/brands.scss__";
+
+/*                 [3. Components ]                   		*/
+//@import "components/_breadcrumbs.scss__";
+//@import "components/_checkboxradio.scss__";
+//@import "components/_dropdownmenu.scss__";
+//@import "components/_feed.scss__";
+@import "components/_formcomponents.scss";
+@import "components/_infobox.scss";
+@import "components/_inputformgroup.scss";
+@import "components/_labels.scss";
+@import "components/_leftsidebaroverlay.scss";
+@import "components/_navbar";
+@import "components/_navtabs.scss";
+@import "components/_noticeboard.scss";
+@import "components/_rightsidebar.scss";
+@import "components/_searchbar.scss";
+@import "components/_switch.scss";
+@import "components/_thumbnails.scss";
+@import "components/_todo.scss";
+
+/*                 [4. Apps]                   				*/
+@import "apps/_calendar.scss";
+@import "apps/_chat.scss";
+@import "apps/_contactlist.scss";
+@import "apps/_contactgrid.scss";
+@import "apps/_dragdrop.scss";
+@import "apps/_task.scss";
+
+/*                 [5. Pages ]                   				*/
+@import "pages/_dashboard.scss";
+@import "pages/_inbox.scss";
+@import "pages/_pricing.scss";
+@import "pages/_profile.scss";
+@import "pages/_timeline.scss";
+// @import "pages/_extra_pages.scss__";
+@import "pages/_auth.scss";
+
+/*                 [6. Pugins ]                   				*/
+//@import "plugins/_carousel.scss__";
+//@import "plugins/_charts.scss__";
+//@import "plugins/_formwizard.scss__";
+//@import "plugins/_imagegallery.scss__";
+//@import "plugins/_maps.scss__";
+//@import "plugins/_tables.scss__";
+
+/*                 [7. UI ]                   */
+//@import "ui/_alerts.scss__";
+//@import "ui/_badgelistgroupitem.scss__";
+//@import "ui/_buttons.scss__";
+//@import "ui/_card.scss__";
+//@import "ui/_collapse.scss__";
+//@import "ui/_dialogs.scss__";
+//@import "ui/_expansion.scss__";
+//@import "ui/_mediaobject.scss__";
+//@import "ui/_modals.scss__";
+//@import "ui/_pageloader.scss__";
+//@import "ui/_pagination.scss__";
+//@import "ui/_panels.scss__";
+//@import "ui/_preloaders.scss__";
+//@import "ui/_progressbars.scss__";
+//@import "ui/_slider.scss__";
+//@import "ui/_snackbar.scss__";
+//@import "ui/_tabs.scss__";
+//@import "ui/_tooltippopovers.scss__";
+//@import "ui/_ckeditor.scss__";
+
+/*                 [8. Browser ]                   			*/
+@import "browser/_ie10.scss";
+@import "browser/_ie11.scss";
+
+// Argon functions
+// Bootstrap functions
+@import "bootstrap/functions";
+@import "bootstrap/mixins";
+
+// Argon functions
+@import "custom/functions";
+@import "custom/variables";
+@import "bootstrap/variables";
+
+// Argon mixins
+@import "custom/mixins";
+
+// Bootstrap components
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/badge";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+@import "bootstrap/progress";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/close";
+@import "bootstrap/modal";
+@import "bootstrap/tooltip";
+@import "bootstrap/popover";
+@import "bootstrap/carousel";
+@import "bootstrap/utilities";
+@import "bootstrap/print";
+
+// Argon components
+@import "custom/components";
+@import "custom/utilities";
+@import "custom/vendors";
+
+// Angular changes
+@import "angular/dropdowns";
+@import "angular/navbar-vertical";
+@import "angular/progressbar";
+@import "angular/plugin-ngx-chips";
+@import "angular/ngx-toastr";
+@import "angular/mobius1-selectr";
+@import "angular/tooltips";
+@import "angular/plugin-ngx-datatable";
+@import "angular/navbar-vertical";
+@import "angular/vector-map";
+
+@import "~ngx-toastr/toastr-bs4-alert";
+

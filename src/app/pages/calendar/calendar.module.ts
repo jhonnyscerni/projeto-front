@@ -20,18 +20,6 @@ import {CalendarComponent} from './calendar.component';
 import {FormDialogComponent as calFormComponent} from './dialogs/form-dialog/form-dialog.component';
 import {CalendarService} from './calendar.service';
 
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
-import interactionPlugin from '@fullcalendar/interaction';
-
-FullCalendarModule.registerPlugins([
-  dayGridPlugin,
-  timeGridPlugin,
-  listPlugin,
-  interactionPlugin,
-]);
-
 @NgModule({
   imports: [
     CommonModule,

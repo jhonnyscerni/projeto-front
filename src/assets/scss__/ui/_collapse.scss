@@ -1,0 +1,16 @@
+/*
+ *  Document   : _collapse.scss__
+ *  Author     : RedStar Template
+ *  Description: This scss__ file for collapse style classes
+ */
+.collapse,
+.collapse.in,
+.collapsing {
+  .well {
+    @include border-radius(0);
+    margin-bottom: 0;
+  }
+  &.show {
+    display: block;
+  }
+}
