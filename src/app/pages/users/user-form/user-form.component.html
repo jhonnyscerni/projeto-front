@@ -23,7 +23,8 @@
                 </div>
 
                 <div class=" col-lg-6 col-5 text-right">
-                    <a class=" btn btn-sm btn-neutral" [routerLink]="['/usuarios/pessoas/meus-cadastros']"> Lista de Usuários </a>
+                    <a class=" btn btn-sm btn-neutral" [routerLink]="['/usuarios/pessoas/meus-cadastros']"> Lista de
+                        Usuários </a>
                 </div>
             </div>
         </div>
@@ -148,12 +149,13 @@
                 <div class="row" formGroupName="person">
                     <div class="col-md-4">
                         <div class=" form-group">
-                            <label class=" form-control-label" >
+                            <label class=" form-control-label">
                                 Data Nascimento:
                             </label>
-                            <component-datepicker label="Data Nascimento" formControlName="birthDate" ngDefaultControl></component-datepicker>
+                            <component-datepicker label="Data Nascimento" formControlName="birthDate"
+                                                  ngDefaultControl></component-datepicker>
                             <app-error-msg
-                                    [control]="cadastroForm.get('birthDate')"
+                                    [control]="cadastroForm.get('person.birthDate')"
                                     label="Data de Nascimento"></app-error-msg>
                         </div>
                     </div>

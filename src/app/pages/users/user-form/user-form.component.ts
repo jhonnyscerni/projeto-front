@@ -189,7 +189,9 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
 
     carregarGrupos() {
         return this.grupoService.list()
-            .subscribe(roles => this.roles = roles);
+            .subscribe(roles => {
+                this.roles = roles
+            });
     }
 
     compareFn(compared1: { id: number }, compared2: { id: number }) {
