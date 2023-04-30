@@ -65,7 +65,7 @@ export class CalendarComponent extends BaseFormComponent implements OnInit {
 
     }
 
-    profissional = this.authService.getUsuarioIdAutenticado();
+    profissional = this.authService.getUserId();
 
     public ngOnInit(): void {
 

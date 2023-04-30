@@ -1,88 +1,84 @@
-import { Component, OnInit } from "@angular/core";
-
-declare const google: any;
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import MarkerClusterer from "@google/markerclustererplus";
 
 @Component({
   selector: "app-google",
-  templateUrl: "google.component.html"
+  templateUrl: "./google.component.html"
 })
-export class GoogleComponent implements OnInit {
-  constructor() {}
+export class GoogleComponent implements AfterViewInit {
+  
+  @ViewChild('map', {static: false}) mapElement: ElementRef;
+  map: google.maps.Map;
+  center = new google.maps.LatLng(-1.323118, -48.4056779);
+  marker: google.maps.Marker;
+  mapMarkers: any = [];
+  markerCluster: any;
+  mapOptions: google.maps.MapOptions = {
+    styles:[{
+      "featureType": "poi",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }],
+    center: this.center,
+    zoom: 12,
+  };
+  infoWindow: google.maps.InfoWindow;
+  locations: any = [
+    {lat: -1.323118, lng: -48.2056779, nm : "teste"},
+    {lat: -1.323118, lng: -49.4056779, nm : "teste"},
+    {lat: -1.323118, lng: -48.4057779, nm : "teste"},
+    {lat: -1.323118, lng: -48.4056179, nm : "teste"},
+    {lat: -1.323118, lng: -48.4056729, nm : "teste"},
+    {lat: -1.323118, lng: -49.4056379, nm : "teste"},
+    
+  ]
+ngAfterViewInit(){
+  this.mapInit();
+}
+mapInit(){
+  this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
+// this.marker = new google.maps.Marker({position: this.center, map:this.map})
+  this.infoWindow = new google.maps.InfoWindow();
+  for (let i of this.locations){
+    const tempMarker = new google.maps.Marker({position: i, map: this.map});
+    tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
+    return () => {
+    infoWindow.setContent('<p><b>teste</b> : ' + i.nm + '</p><p><b>Latitude</b> : ' + i.lat +'</p>');
+    infoWindow.open(map, tempMarker);
+    }
+    })(tempMarker, this.map, this.infoWindow));
+ this.mapMarkers.push(tempMarker);
+}
+this.markerCluster = new MarkerClusterer(this.map,this.mapMarkers,{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'})
+}
+  /////////////////////////////////////////////////////////////////////////////////////////// OBJECT
+  markers: marker[] = [
+    {
+      lat: 51.673858,
+      lng: 7.815982,
+      label: 'A',
+      draggable: true
+    },
+    {
+      lat: 51.373858,
+      lng: 7.215982,
+      label: 'B',
+      draggable: false
+    },
+    {
+      lat: 51.723858,
+      lng: 7.895982,
+      label: 'C',
+      draggable: true
+    }
+  ]
+}
 
-  ngOnInit() {
-    var map = document.getElementById("map-custom");
-    var lat = map.getAttribute("data-lat");
-    var lng = map.getAttribute("data-lng");
-
-    var myLatlng = new google.maps.LatLng(lat, lng);
-    var mapOptions = {
-      zoom: 12,
-      scrollwheel: false,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      styles: [
-        {
-          featureType: "administrative",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#444444" }]
-        },
-        {
-          featureType: "landscape",
-          elementType: "all",
-          stylers: [{ color: "#f2f2f2" }]
-        },
-        {
-          featureType: "poi",
-          elementType: "all",
-          stylers: [{ visibility: "off" }]
-        },
-        {
-          featureType: "road",
-          elementType: "all",
-          stylers: [{ saturation: -100 }, { lightness: 45 }]
-        },
-        {
-          featureType: "road.highway",
-          elementType: "all",
-          stylers: [{ visibility: "simplified" }]
-        },
-        {
-          featureType: "road.arterial",
-          elementType: "labels.icon",
-          stylers: [{ visibility: "off" }]
-        },
-        {
-          featureType: "transit",
-          elementType: "all",
-          stylers: [{ visibility: "off" }]
-        },
-        {
-          featureType: "water",
-          elementType: "all",
-          stylers: [{ color: "#5e72e4" }, { visibility: "on" }]
-        }
-      ]
-    };
-
-    map = new google.maps.Map(map, mapOptions);
-
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: "Hello World!"
-    });
-
-    var contentString =
-      '<div class="info-window-content"><h2>Argon Dashboard</h2>' +
-      "<p>A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</p></div>";
-
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    google.maps.event.addListener(marker, "click", function() {
-      infowindow.open(map, marker);
-    });
-  }
+// just an interface for type safety.
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
 }

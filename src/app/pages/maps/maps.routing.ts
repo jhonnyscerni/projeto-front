@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 
 import { GoogleComponent } from "./google/google.component";
-import { VectorComponent } from "./vector/vector.component";
 
 export const MapsRoutes: Routes = [
   {
@@ -18,7 +17,7 @@ export const MapsRoutes: Routes = [
     children: [
       {
         path: "vector",
-        component: VectorComponent
+        component: GoogleComponent
       }
     ]
   }

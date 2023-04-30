@@ -46,6 +46,10 @@ const routes: Routes = [
         loadChildren: "./pages/users/users.module#UsersModule"
       },
       {
+        path: "maps",
+        loadChildren: "./pages/maps/maps.module#MapsModule"
+      },
+      {
         path: "grupos",
         loadChildren: "./pages/roles/roles.module#RolesModule"
       },

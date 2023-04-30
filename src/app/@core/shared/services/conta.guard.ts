@@ -11,7 +11,7 @@ export class ContaGuard implements CanActivate {
         ){}
     
     canActivate() {
-        if(this.auth.obterToken()){
+        if(this.auth.getToken()){
             this.router.navigate(['/home']);
         }
 

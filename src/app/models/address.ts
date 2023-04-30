@@ -6,4 +6,6 @@ export class Address {
     district?: string;
     nameCity?: string;
     state?: string;
+    lat?: string;
+    lng?: string;
 }

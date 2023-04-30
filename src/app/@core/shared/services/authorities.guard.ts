@@ -19,7 +19,7 @@ export class AuthoritiesGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
 
-      let authorities = this.authService.getAutorizacoes();
+      let authorities = this.authService.getAuthorities();
 
       // Transformando o authorities em outra Lista so com os nomes
       for (var i of authorities) {

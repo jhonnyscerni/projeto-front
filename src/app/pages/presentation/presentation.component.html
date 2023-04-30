@@ -1,505 +1,167 @@
-<nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-danger">
-  <!-- <nav
-  class="navbar navbar-top navbar-expand navbar-dark bg-danger border-bottom"
-  id="navbar-main"
-> -->
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']">
-      <img src="assets/img/brand/white.png" />
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
-      aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed"
-      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse navbar-custom-collapse collapse" id="collapseBasic" [collapse]="isCollapsed"
-      id="navbarSupportedContent">
-      <div class="navbar-collapse-header">
-        <div class="row">
-          <div class="col-6 collapse-brand">
-            <a [routerLink]="['/dashboard']">
-              <img src="assets/img/brand/blue.png" />
-            </a>
-          </div>
-          <div class="col-6 collapse-close">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"
-              aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation"
-              (click)="isCollapsed = !isCollapsed">
-              <span></span> <span></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <ul class="navbar-nav mr-auto">
-         <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            href="#"
-          >
-            <span class="nav-link-inner--text">Menu</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            href="#"
-          >
-            <span class="nav-link-inner--text">menu</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLinkActive="active"
-            href="#"
-          >
-            <span class="nav-link-inner--text">Menu</span>
-          </a>
-        </li>
-      </ul>
-      <hr class="d-lg-none" />
-      <!--Menu-->
-      <ul [ngSwitch]="usuarioLogado()" class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank"
-            data-toggle="tooltip" data-original-title="Like us on Facebook">
-            <i class="fab fa-facebook-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Facebook</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank"
-            data-toggle="tooltip" data-original-title="Follow us on Instagram">
-            <i class="fab fa-instagram"></i>
-            <span class="nav-link-inner--text d-lg-none">Instagram</span>
-          </a>
-        </li>
-        <li *ngSwitchCase="false" class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/portal/login']">
-            <span class="btn-inner--icon">
-              <i class="fas fa-sign-in-alt mr-2"></i>
-            </span>
-            <span class="nav-link-inner--text">ACESSE SUA CONTA</span>
-          </a>
-        </li>
-
-        <!-- <li *ngSwitchCase="false" class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/portal/cadastrar']">
-            <span class="btn-inner--icon">
-              <i class="fas fa-shopping-cart mr-2"></i>
-              <i class="fas fa-sign-in-alt mr-2"></i>
-            </span>
-            <span class="nav-link-inner--text">CADASTRE-SE</span>
-          </a>
-        </li>-->
-
-        <li *ngSwitchCase="true" class="nav-item d-none d-lg-block ml-lg-4">
-          <a class="btn btn-neutral btn-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
-            <span class="btn-inner--icon">
-              <i class="fas fa-columns mr-2"></i>
-            </span>
-            <span class="nav-link-inner--text">PAINEL</span>
-          </a>
-        </li>
-
-        <li *ngSwitchCase="true" class="nav-item dropdown" dropdown placement="bottom-right">
-          <a class="nav-link pr-0 dropdown-toggle" role="button" dropdownToggle>
-            <div class="media align-items-center">
-              <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="assets/img/theme/team-4.jpg" />
-              </span>
-              <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm  font-weight-bold">{{user}}</span>
-              </div>
-            </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" *dropdownMenu>
-            <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Bem Vindo!</h6>
-            </div>
-            <a routerLinkActive="active" [routerLink]="['/configuracao/minha-conta']" class="dropdown-item">
-              <i class="ni ni-single-02"></i> <span>Minha Conta</span>
-            </a>
-            <!-- <a
-              routerLinkActive="active"
-              [routerLink]="['/user-profile']"
-              class="dropdown-item"
-            >
-              <i class="ni ni-settings-gear-65"></i> <span>Settings</span>
-            </a>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/user-profile']"
-              class="dropdown-item"
-            >
-              <i class="ni ni-calendar-grid-58"></i> <span>Activity</span>
-            </a>
-            <a
-              routerLinkActive="active"
-              [routerLink]="['/portal/user-profile']"
-              class="dropdown-item"
-            >
-              <i class="ni ni-support-16"></i> <span>Support</span>
-            </a> -->
-            <div class="dropdown-divider"></div>
-            <a href="javascript:void()" (click)="logout()" class="dropdown-item">
-              <i class="ni ni-user-run"></i> <span>Sair</span>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div *ngIf="sidenavOpen === true" class="backdrop d-xl-none" (click)="toggleSidenav()"></div>
-
 <div class="main-content">
   <!-- Header -->
-  <div class="header bg-danger pt-5 pb-7">
+  <div class="header bg-gradiente-blue pt-2 pb-70">
+    <nav id="navbar-main" class="pb-70 navbar navbar-horizontal navbar-main navbar-expand-lg navbar-light">
+      <div class="container">
+        <div class="auth-logo">
+          <a class="logo-brand">
+            <img src="assets/img/icon-logo.png" [width]="55" width="" alt=""/>
+            <span class="logo-name">GesPolítica</span>
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+                aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse navbar-custom-collapse collapse" id="collapseBasic" [collapse]="isCollapsed"
+             id="navbarSupportedContent">
+          <div class="navbar-collapse-header">
+            <div class="row">
+              <div class="col-8 collapse-brand">
+                <a [routerLink]="['/home']">
+                  <img src="assets/img/icon-logo.png" class="img-mobile" [width]="55" width="" alt=""/>
+                  <span class="logo-mobile">GesPolítica</span>
+                </a>
+              </div>
+              <div class="col-4 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"
+                        aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation"
+                        (click)="isCollapsed = !isCollapsed">
+                  <span></span> <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          <!--Menu-->
+          <ul [ngSwitch]="usuarioLogado()" class="navbar-nav align-items-lg-center ml-lg-auto">
+            <li *ngSwitchCase="false" class="nav-item d-lg-block ml-lg-4">
+              <a class="btn btn-portal btn-icon" routerLinkActive="active" [routerLink]="['/portal/login']">
+            <span class="btn-inner--icon">
+              <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
+              <i class="fas fa-sign-in-alt mr-2"></i>
+            </span>
+                <span class="nav-link-inner--text">ACESSE SUA CONTA</span>
+              </a>
+            </li>
+            <!-- </ul> -->
+
+            <!-- User -->
+            <!-- <ul class="navbar-nav align-items-center ml-auto ml-md-0"> -->
+
+            <li *ngSwitchCase="true" class="nav-item d-none d-lg-block ml-lg-4">
+              <a class="btn btn-portal btn-icon" routerLinkActive="active" (click)="onDashboard()">
+            <span class="btn-inner--icon">
+              <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
+              <i class="fas fa-columns mr-2 text-white"></i>
+            </span>
+                <span class="nav-link-inner--text text-white">PAINEL</span>
+              </a>
+            </li>
+
+            <li *ngSwitchCase="true" class="nav-item dropdown" dropdown placement="bottom-right">
+              <a class="nav-link pr-0 dropdown-toggle" role="button" dropdownToggle>
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="assets/img/theme/team-4.jpg"/>
+                  </span>
+                      <div class="media-body ml-2 d-lg-block">
+                        <span class="mb-0 text-sm font-weight-bold" style="color: #1e1e1e !important;">{{user}}</span>
+                      </div>
+                  <a href="javascript:void()" (click)="logout()" class="sair">
+                    <i class="ni ni-user-run"></i> <span>Sair</span>
+                  </a>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-arrow d-none dropdown-menu-right" *dropdownMenu>
+                <div class=" dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Bem Vindo!</h6>
+                </div>
+                <a routerLinkActive="active" (click)="onProfile()" class="dropdown-item">
+                  <i class="ni ni-single-02"></i> <span>Minha Conta</span>
+                </a>
+                <!-- <a
+                  routerLinkActive="active"
+                  [routerLink]="['/user-profile']"
+                  class="dropdown-item"
+                >
+                  <i class="ni ni-settings-gear-65"></i> <span>Settings</span>
+                </a>
+                <a
+                  routerLinkActive="active"
+                  [routerLink]="['/user-profile']"
+                  class="dropdown-item"
+                >
+                  <i class="ni ni-calendar-grid-58"></i> <span>Activity</span>
+                </a>
+                <a
+                  routerLinkActive="active"
+                  [routerLink]="['/portal/user-profile']"
+                  class="dropdown-item"
+                >
+                  <i class="ni ni-support-16"></i> <span>Support</span>
+                </a> -->
+                <div class="dropdown-divider"></div>
+                <a href="javascript:void()" (click)="logout()" class="dropdown-item">
+                  <i class="ni ni-user-run"></i> <span>Sair</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container">
-      <div class="header-body">
+      <div class="header-body pb-5">
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="pr-5">
-              <h1 class="display-2 text-white font-weight-bold mb-0">
-                Lorem ipsum dolor sit amet.
+              <h1 class="display-2 jss1162 text-black mb-0">
+                Software para Gestão de Conhecimento Político
               </h1>
-              <h2 class="display-4 text-white font-weight-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <h2 class="display-4 text-black font-weight-light mt-4">
+                Crie uma base eleitoral poderosa <br/>  
+                Conquiste novos eleitores, converse com eles de forma personalizada e saiba quantos votos perdidos, conquistados e a conquistar você tem na sua base.
+             
               </h2>
-              <p class="text-white mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed rhoncus condimentum orci ut dictum.
-              </p>
+              <p class="text-text-black banner-info-text mt-4">
+                <!--                - O paciente pode ter acesso as Consultas efetuadas, tendo historico de atendimentos. <br/>-->
+               </p>
               <div class="mt-5">
-                <a [routerLink]="['/dashboard']" class="btn btn-neutral my-2">COMECE AGORA</a>
-                <!-- <a
-                  href="https://www.creative-tim.com/product/argon-dashboard-pro-angular?ref=adpa-presentation-page"
-                  class="btn btn-default my-2"
-                  >Purchase now</a
-                > -->
+                <a
+                  [routerLink]="['/authentication/signup']"
+                  class="btn btn-portal my-2"
+                >COMECE AGORA</a
+                >
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="row pt-5">
-              <div class="col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                    <h5 class="h3">TITULO 01</h5>
-                    <p>Vivamus ornare non nulla blandit aliquet.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow mb-4">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                    <h5 class="h3">TITULO 02</h5>
-                    <p>
-                      Vivamus ornare non nulla blandit aliquet.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 pt-lg-5 pt-4">
-                <div class="card mb-4">
-                  <div class="card-body">
-                    <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow mb-4">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                    <h5 class="h3">TITULO 03</h5>
-                    <p>
-                      Vivamus ornare non nulla blandit aliquet
-                    </p>
-                  </div>
-                </div>
-                <div class="card mb-4">
-                  <div class="card-body">
-                    <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow mb-4">
-                      <i class="ni ni-active-40"></i>
-                    </div>
-                    <h5 class="h3">TITULO 04</h5>
-                    <p>Vivamus ornare non nulla blandit aliquet.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-6 pb-5">
+            <img class="img-fluid img-auto ls-is-cached lazyloaded" style="margin-left: 140px; width: 350px;"
+            src="/assets/img/animated-screen-2.svg">
+            <img class="img-fluid img-auto ls-is-cached lazyloaded" style="margin-top: -120px;"
+                 id="cross-platform"
+                 src="/assets/img/animated-screen-1.svg">
+                 <!-- <img class="img-fluid img-auto ls-is-cached lazyloaded" id="cross-platform"
+                 src="/assets/img/banner_image.png"> -->
+
           </div>
         </div>
       </div>
-    </div>
-    <div class="separator separator-bottom separator-skew zindex-100">
-      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-        xmlns="http://www.w3.org/2000/svg">
-        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-      </svg>
     </div>
   </div>
-  <section class="py-6 pb-9 bg-default">
-    <div class="container-fluid">
-      <div class="row justify-content-center text-center">
-        <div class="col-md-6">
-          <h2 class="display-3 text-white">Veja como funciona o Projeto Inicial</h2>
-          <p class="lead text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque et leo eget tortor imperdiet facilisis a
-            vitae diam.
-            Quisque mollis odio turpis. Praesent euismod arcu mi, vitae ultricies magna fringilla sit amet. Proin
-            pellentesque quam leo,
-            quis pellentesque nibh pharetra at. Maecenas vehicula consequat arcu. Sed vitae vestibulum neque. Cras eros
-            libero,
-            laoreet eget ipsum quis, ultrices luctus massa. Interdum et malesuada fames ac ante ipsum primis in
-            faucibus.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section section-lg pt-lg-0 mt--7">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5">
-                  <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4">
-                    <i class="ni ni-check-bold"></i>
-                  </div>
-                  <h4 class="h3 text-primary text-uppercase">
-                    nformação 1
-                  </h4>
-                  <p class="description mt-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                  </p>
-                  <div>
-                    <span class="badge badge-pill badge-primary mr-1"
-                      >bootstrap 4</span
-                    >
-                    <span class="badge badge-pill badge-primary mr-1"
-                      >dashboard</span
-                    >
-                    <span class="badge badge-pill badge-primary">template</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5">
-                  <div class="icon icon-shape bg-gradient-success text-white rounded-circle mb-4">
-                    <i class="ni ni-istanbul"></i>
-                  </div>
-                  <h4 class="h3 text-success text-uppercase">
-                    Informação 2
-                  </h4>
-                  <p class="description mt-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                  </p>
-                  <div>
-                    <span class="badge badge-pill badge-success mr-1">npm</span>
-                    <span class="badge badge-pill badge-success mr-1"
-                      >gulp</span
-                    >
-                    <span class="badge badge-pill badge-success"
-                      >build tools</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5">
-                  <div class="icon icon-shape bg-gradient-warning text-white rounded-circle mb-4">
-                    <i class="ni ni-planet"></i>
-                  </div>
-                  <h4 class="h3 text-warning text-uppercase">
-                    Informação 3
-                  </h4>
-                  <p class="description mt-3">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                  </p>
-                  <div>
-                    <span class="badge badge-pill badge-warning mr-1"
-                      >sass</span
-                    >
-                    <span class="badge badge-pill badge-warning mr-1"
-                      >design</span
-                    >
-                    <span class="badge badge-pill badge-warning"
-                      >customize</span 
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="py-6">
-    <div class="container">
-      <div class="row row-grid align-items-center">
-        <div class="col-md-6 order-md-2">
-          <img src="assets/img/theme/landing-1.png" class="img-fluid" />
-        </div>
-        <div class="col-md-6 order-md-1">
-          <div class="pr-md-5">
-            <h1>Titulo</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-            </p>
-            <ul class="list-unstyled mt-5">
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-settings-gear-65"></i>
-                    </div>
-                  </div>
-                  <div><h4 class="mb-0">Topico</h4></div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-html5"></i>
-                    </div>
-                  </div>
-                  <div><h4 class="mb-0">Topico</h4></div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="badge badge-circle badge-success mr-3">
-                      <i class="ni ni-satisfied"></i>
-                    </div>
-                  </div>
-                  <div><h4 class="mb-0">Topico</h4></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="py-6">
-    <div class="container">
-      <div class="row row-grid align-items-center">
-        <div class="col-md-6">
-          <img src="assets/img/theme/landing-2.png" class="img-fluid" />
-        </div>
-        <div class="col-md-6">
-          <div class="pr-md-5">
-            <h1>Titulo</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-            </p>
-            <a href="#" class="font-weight-bold text-warning mt-5">Botão</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-   <section class="py-6">
-    <div class="container">
-      <div class="row row-grid align-items-center">
-        <div class="col-md-6 order-md-2">
-          <img src="assets/img/theme/landing-3.png" class="img-fluid" />
-        </div>
-        <div class="col-md-6 order-md-1">
-          <div class="pr-md-5">
-            <h1>Titulo</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-            </p>
-            <a
-              href="#"
-              class="font-weight-bold text-info mt-5"
-              >Botão</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="py-7 section-nucleo-icons bg-white overflow-hidden">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="display-3">Titulo</h2>
-          <p class="lead">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-          </p>
-          <div class="btn-wrapper">
-            <a href="#" class="btn btn-primary">Botão 1</a>
-             <a
-              href="#"
-              class="btn btn-default mt-3 mt-md-0"
-              >Botão 2</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </div>
 <!-- Footer -->
 <footer class="py-5" id="footer-main">
   <div class="container">
     <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6">
-        <div class="copyright text-center text-xl-left text-muted">
-          &copy; {{ test | date: "yyyy" }}
-          <a href="#" class="font-weight-bold ml-1"
-            target="_blank">Projeto</a>
+      <div class="col-xl-12">
+        <div class="container text-center">
+          Todos os direitos reservados &copy; {{ test | date: "yyyy" }} - GesPolítica - Software para Gestão de Conhecimento Político - Desenvolvido por - Jhonny Scerni
+
         </div>
-      </div>
-      <div class="col-xl-6">
-        <ul
-          class="nav nav-footer justify-content-center justify-content-xl-end"
-        >
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link"
-              >Link</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link"
-              target="_blank"
-              >Link</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link"
-              >Link</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link"
-              >Link</a
-            >
-          </li>
-        </ul>
       </div>
     </div>
   </div>

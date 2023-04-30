@@ -45,8 +45,8 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
             .login(this.cadastroForm.value)
             .subscribe(response => {
                 this.authService.saveToken(response)
-                this.authService.getUsuarioAutenticado()
-                this.authService.getAutorizacoes()
+                this.authService.getUserName()
+                this.authService.getAuthorities()
                 this.returnUrl
                     ? this.router.navigate([this.returnUrl])
                     : this.router.navigate(['/dashboard']);

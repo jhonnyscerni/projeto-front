@@ -1,21 +1,20 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ComponentsModule } from "../../components/components.module";
-import { DxVectorMapModule } from "devextreme-angular";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DxVectorMapModule } from 'devextreme-angular';
 
-import { RouterModule } from "@angular/router";
-import { MapsRoutes } from "./maps.routing";
+import { RouterModule } from '@angular/router';
+import { MapsRoutes } from './maps.routing';
 
-import { GoogleComponent } from "./google/google.component";
-import { VectorComponent } from "./vector/vector.component";
+import { GoogleComponent } from './google/google.component';
+import {ComponentsModule} from '../../@core/components/components.module';
 
 @NgModule({
-  declarations: [GoogleComponent, VectorComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(MapsRoutes),
-    ComponentsModule,
-    DxVectorMapModule
-  ]
+  declarations: [GoogleComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(MapsRoutes),
+        ComponentsModule,
+        DxVectorMapModule,
+    ]
 })
 export class MapsModule {}

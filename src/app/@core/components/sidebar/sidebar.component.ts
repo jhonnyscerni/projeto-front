@@ -156,6 +156,13 @@ export const ROUTES: RouteInfo[] = [
         icontype: 'ni-building text-pink',
         permissao: 'SEG_CONSULTAR_TODOS_USUARIOS'
     },
+//    {
+//        path: '/maps/google',
+//        title: 'Mapa',
+//        type: 'link',
+//        icontype: 'ni-building text-pink',
+//       permissao: 'SEG_CONSULTAR_TODOS_USUARIOS'
+//   },
     {
         path: '/grupos',
         title: 'Grupos',
@@ -189,7 +196,7 @@ export class SidebarComponent implements OnInit {
     }
 
     ngOnInit() {
-        let authorities = this.authService.getAutorizacoes();
+        let authorities = this.authService.getAuthorities();
 
         this.menuItems = ROUTES.filter(menuItem => menuItem);
         this.router.events.subscribe(event => {

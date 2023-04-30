@@ -32,64 +32,50 @@ export class AuthService extends BaseService {
         super();
     }
 
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+    /**
+     * Save Token
+     */
     public saveToken(token: any): void {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.setItem(TOKEN_KEY, token.token);
     }
-
-    public getToken(): string | null {
+    /**
+     * Get Token
+     */
+    public getToken(): string {
         return localStorage.getItem(TOKEN_KEY);
     }
 
-    public saveUser(user: any): void {
-        localStorage.removeItem(USER_KEY);
-        localStorage.setItem(USER_KEY, JSON.stringify(user));
-    }
-
-    public getUser(): any {
-        const user = localStorage.getItem(USER_KEY);
-        if (user) {
-            return JSON.parse(user);
-        }
-
-        return {};
-    }
-
-    obterToken() {
-        const tokenString = localStorage.getItem(TOKEN_KEY)
-        if (tokenString) {
-            // const token = JSON.parse(tokenString)
-            const token = tokenString
-            return token;
-        }
-        return null;
-    }
-
-    public encerrarSessao() {
-        localStorage.removeItem(TOKEN_KEY)
-    }
-
-    public getUsuarioAutenticado() {
-        const token = this.obterToken();
+    /**
+     * Sub
+     */
+    public getUserId(): any {
+        const token = this.getToken();
         if (token) {
-            const usuario = this.jwtHelper.decodeToken(token).sub
-            return usuario;
+            return this.jwtHelper.decodeToken(token).sub;
         }
         return null;
     }
 
-    getUsuarioIdAutenticado() {
-        const token = this.obterToken();
+    /**
+     * Iss
+     */
+    public getUserName(): any {
+        const token = this.getToken();
         if (token) {
-            const usuario = this.jwtHelper.decodeToken(token).sub
-            console.log(usuario)
-            return usuario;
+            return this.jwtHelper.decodeToken(token).iss;
         }
         return null;
     }
 
-    public getAutorizacoes() {
-        const token = this.obterToken();
+    /**
+     * Authorities
+     */
+    public getAuthorities() {
+        const token = this.getToken();
         if (token) {
             const autorizacoes = this.jwtHelper.decodeToken(token).authorities
             return autorizacoes;
@@ -97,14 +83,20 @@ export class AuthService extends BaseService {
         return null;
     }
 
-
+    /**
+     * Verify if Authenticated
+     */
     public isAuthenticated(): boolean {
-        const token = this.obterToken();
+        const token = this.getToken();
         if (token) {
             const expired = this.jwtHelper.isTokenExpired(token)
             return !expired;
         }
         return false;
+    }
+
+    public signOut() {
+        localStorage.removeItem(TOKEN_KEY)
     }
 
     public salvar(usuario: User): Observable<any> {

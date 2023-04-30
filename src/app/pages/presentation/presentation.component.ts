@@ -19,12 +19,12 @@ export class PresentationComponent implements OnInit {
   ngOnInit() { }
 
   usuarioLogado(): boolean {
-    this.user = this.authService.getUsuarioAutenticado()
+    this.user = this.authService.getUserName()
     return this.authService.isAuthenticated()
   }
 
   logout() {
-    this.authService.encerrarSessao()
+    this.authService.signOut()
     this.router.navigate(['/home'])
   }
 }

@@ -52,7 +52,7 @@ export class FormDialogComponent extends BaseFormComponent {
         private alertService: AlertModalService,
     ) {
         super();
-        this.user = this.authService.getUsuarioIdAutenticado();
+        this.user = this.authService.getUserId();
         this.action = data.action;
         if (this.action === 'edit') {
             this.dialogTitle = data.calendar.title;

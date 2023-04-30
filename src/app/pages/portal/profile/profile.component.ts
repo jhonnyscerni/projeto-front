@@ -49,7 +49,7 @@ export class ProfileComponent extends BaseFormComponent implements OnInit {
   }
 
   carregarInfo(){
-     return this.usuarioService.loadByID(this.authService.getUsuarioIdAutenticado())
+     return this.usuarioService.loadByID(this.authService.getUserId())
         .subscribe(usuario => {
           this.usuario = usuario
           this.updateForm(this.usuario);
