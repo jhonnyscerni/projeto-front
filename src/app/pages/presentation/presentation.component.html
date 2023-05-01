@@ -52,7 +52,7 @@
             <!-- <ul class="navbar-nav align-items-center ml-auto ml-md-0"> -->
 
             <li *ngSwitchCase="true" class="nav-item d-none d-lg-block ml-lg-4">
-              <a class="btn btn-portal btn-icon" routerLinkActive="active" (click)="onDashboard()">
+              <a class="btn btn-portal btn-icon" routerLinkActive="active" [routerLink]="['/dashboard']">
             <span class="btn-inner--icon">
               <!-- <i class="fas fa-shopping-cart mr-2"></i> -->
               <i class="fas fa-columns mr-2 text-white"></i>
@@ -71,7 +71,7 @@
                         <span class="mb-0 text-sm font-weight-bold" style="color: #1e1e1e !important;">{{user}}</span>
                       </div>
                   <a href="javascript:void()" (click)="logout()" class="sair">
-                    <i class="ni ni-user-run"></i> <span>Sair</span>
+                    <i class="ni ni-user-run ml-5 font-weight-bold"></i> <span>Sair</span>
                   </a>
                 </div>
               </a>
