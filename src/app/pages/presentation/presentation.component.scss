@@ -56,6 +56,21 @@
   font-weight: 500 !important;
 }
 
+.bg-gradiente-black{
+  background: #000;
+  //background: linear-gradient(-45deg, #2196F3 20%, #0D47A1 70%);
+}
+
+.bg-gradiente-red{
+  background: #c70c0c;
+  //background: linear-gradient(-45deg, #2196F3 20%, #0D47A1 70%);
+}
+
+.bg-gradiente-Yellow{
+  background: #9ccc17;
+  //background: linear-gradient(-45deg, #2196F3 20%, #0D47A1 70%);
+}
+
 .bg-gradiente-blue {
   background: #FFFFFF;
   background: url(/assets/img/event-h-bg.jpg)no-repeat center center;

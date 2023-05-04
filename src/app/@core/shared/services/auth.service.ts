@@ -22,7 +22,7 @@ export class AuthService extends BaseService {
 
 
     apiURL: string = environment.urlbase + '/authuser/auth'
-    apiURLRecuperarSenha: string = this.apiURL + '/authuser/resetpassword'
+    apiURLRecuperarSenha: string = this.apiURL + '/resetpassword'
     apiURLRegistro: string = this.apiURL + '/authuser/signup'
     jwtHelper: JwtHelperService = new JwtHelperService();
 

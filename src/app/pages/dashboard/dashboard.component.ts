@@ -135,7 +135,7 @@ mapInit(){
           const tempMarker = new google.maps.Marker({position: new google.maps.LatLng(Number(i.address?.lat), Number(i.address?.lng)), map: this.map});
           tempMarker.addListener('click',((tempMarker, map, infoWindow) => {
           return () => {
-          infoWindow.setContent('<p><b>Nome</b> : ' + i.name + '</p><p><b>E:mail</b> : ' + i.email +'</p>');
+          infoWindow.setContent('<p><b>Nome</b> : ' + i.name + '</p><p><b>Status</b> : ' + i.vote +'</p>');
           infoWindow.open(map, tempMarker);
           }
           })(tempMarker, this.map, this.infoWindow));

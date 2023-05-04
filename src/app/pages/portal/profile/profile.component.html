@@ -76,7 +76,7 @@
 
           <div class=" text-center">
             <h5 class=" h3">
-              {{usuario?.nome}}<span class=" font-weight-light"> </span>
+              {{usuario?.name}}<span class=" font-weight-light"> </span>
             </h5>
 
             <div class=" h5 font-weight-300">
@@ -312,13 +312,13 @@
               <div class=" row">
                 <div class=" col-lg-6">
                   <div class=" form-group">
-                    <label class=" form-control-label" for="nome">
+                    <label class=" form-control-label" for="username">
                       Nome do Usuário
                     </label>
 
-                    <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('nome') }" id="nome"
-                      placeholder="Nome do Usuário" type="text" formControlName="nome" />
-                    <app-error-msg [control]="cadastroForm.get('nome')" label="Nome"></app-error-msg>
+                    <input class=" form-control" [ngClass]="{'is-invalid':verificaValidTouched('username') }" id="username"
+                      placeholder="Nome do Usuário" type="text" formControlName="username" />
+                    <app-error-msg [control]="cadastroForm.get('username')" label="Nome"></app-error-msg>
                     <!--app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório.">
                          </app-campo-control-erro -->
                   </div>
@@ -346,13 +346,13 @@
               <div class=" row">
                 <div class=" col-lg-6">
                   <div class=" form-group">
-                    <label class=" form-control-label" for="senha">
+                    <label class=" form-control-label" for="password">
                       Senha:
                     </label>
 
-                    <input class="form-control" placeholder="Senha" type="password" formControlName="senha" name="senha"
+                    <input class="form-control" placeholder="Senha" type="password" formControlName="password" id="password" name="password"
                       (focus)="focus = true" (blur)="focus = false" />
-                    <app-error-msg [control]="cadastroForm.get('senha')" label="Senha"></app-error-msg>
+                    <app-error-msg [control]="cadastroForm.get('password')" label="Senha"></app-error-msg>
                   </div>
                 </div>
 
