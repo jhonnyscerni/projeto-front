@@ -160,5 +160,8 @@ export class PersonFormComponent extends BaseFormComponent implements OnInit {
     }
 
 
+    compareFn(compared1: { id: number }, compared2: { id: number }) {
+        return compared1 && compared2 ? compared1.id === compared2.id : compared1 === compared2;
+    }
 
 }

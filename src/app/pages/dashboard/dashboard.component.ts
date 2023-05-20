@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   private numberPersonVoteIsPerdido: number = 0;
 
   private user: any;
+  private role: any;
   persons: PersonPhysical[];
 
 

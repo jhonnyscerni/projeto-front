@@ -23,6 +23,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ComponentDatepickerModule} from '../../@core/components/component-datepicker/component-datepicker.module';
 import { PersonListMyComponent } from './person-list-my/person-list-my.component';
+import {TextMaskModule} from 'angular2-text-mask';
+import {NgBrazil} from 'ng-brazil';
 
 
 @NgModule({
@@ -52,7 +54,11 @@ import { PersonListMyComponent } from './person-list-my/person-list-my.component
         MatTabsModule,
         MatCheckboxModule,
         MatFormFieldModule,
-        ComponentDatepickerModule
+        ComponentDatepickerModule,
+
+        // Validation
+        TextMaskModule,
+        NgBrazil,
     ],
     exports:[
         PersonListComponent, PersonFormComponent, PersonUserFormComponent

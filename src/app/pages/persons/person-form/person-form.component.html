@@ -114,16 +114,20 @@
                         </div>
                     </div>
                     <div class=" col-md-4">
-                        <div class="form-group">
-                            <label class=" form-control-label" for="gender">
-                                Genero:
-                            </label>
-                            <input class=" form-control"
-                                   [ngClass]="{'is-invalid':verificaValidTouched('gender') }"
-                                   id="gender"
-                                   placeholder="Genero" type="text" formControlName="gender"/>
-                            <app-error-msg [control]="cadastroForm.get('gender')"
-                                           label="Genero"></app-error-msg>
+                         <div class="form-group">
+                            <div class="form-group">
+                                <label class=" form-control-label" for="gender">
+                                    Genero:
+                                </label>
+                                <select class="form-control" id="gender" placeholder="Genero" formControlName="gender"
+                                        [ngClass]="{'is-invalid':verificaValidTouched('gender') }">
+                                    <option>MASCULINO</option>
+                                    <option>FEMININO</option>
+                                    <option>OUTROS</option>
+                                </select>
+                                <app-error-msg [control]="cadastroForm.get('gender')"
+                                               label="Genero"></app-error-msg>
+                            </div>
                         </div>
                     </div>
 
@@ -135,9 +139,9 @@
                             <input class=" form-control"
                                    [ngClass]="{'is-invalid':verificaValidTouched('sectionVote') }"
                                    id="sectionVote"
-                                   placeholder="Genero" type="text" formControlName="sectionVote"/>
+                                   placeholder="Seção" type="text" formControlName="sectionVote"/>
                             <app-error-msg [control]="cadastroForm.get('sectionVote')"
-                                           label="Genero"></app-error-msg>
+                                           label="seção"></app-error-msg>
                         </div>
                     </div>
 

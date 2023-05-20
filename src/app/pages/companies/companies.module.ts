@@ -12,6 +12,8 @@ import {companiesRoutes} from './companies.routing';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { CompanyUserFormComponent } from './company-user-form/company-user-form.component';
 import { CompanyListMyComponent } from './company-list-my/company-list-my.component';
+import {NgBrazil} from 'ng-brazil';
+import {TextMaskModule} from 'angular2-text-mask';
 
 
 @NgModule({
@@ -28,7 +30,12 @@ import { CompanyListMyComponent } from './company-list-my/company-list-my.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    
+    // Validation
+    TextMaskModule,
+    NgBrazil,
+    
   ]
 })
 export class CompaniesModule { }
