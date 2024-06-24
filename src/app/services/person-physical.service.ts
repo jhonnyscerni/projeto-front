@@ -12,11 +12,11 @@ import {PersonPhysical} from '../models/person';
 })
 export class PersonPhysicalService extends CrudService<User> {
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/authuser/persons-phisical`);
+    super(http, `${environment.urlbase}/politicalmanagement/persons-phisical`);
   }
 
   listMy(): Observable<PersonPhysical[]> {
-    return this.http.get<PersonPhysical[]>(`${environment.urlbase}/authuser/persons-phisical/my`)
+    return this.http.get<PersonPhysical[]>(`${environment.urlbase}/politicalmanagement/persons-phisical/my`)
         .pipe(
             catchError(super.serviceError));
   }

@@ -14,17 +14,17 @@ import {catchError} from 'rxjs/operators';
 export class PermissionService extends CrudService<Permission> {
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/authuser/permissions`);
+    super(http, `${environment.urlbase}/politicalmanagement/permissions`);
   }
 
   listSearchPage(params): Observable<Page<Permission>> {
-    return this.http.get<Page<Permission>>(`${environment.urlbase}/authuser/permissions`, {params})
+    return this.http.get<Page<Permission>>(`${environment.urlbase}/politicalmanagement/permissions`, {params})
         .pipe(
             catchError(super.serviceError));
   }
 
   list(): Observable<Permission[]> {
-    return this.http.get<Permission[]>(`${environment.urlbase}/authuser/permissions/list`)
+    return this.http.get<Permission[]>(`${environment.urlbase}/politicalmanagement/permissions/list`)
         .pipe(
             //delay(1000),
             // tap(console.log),

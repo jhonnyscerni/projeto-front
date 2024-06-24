@@ -17,8 +17,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AlertModalService} from '../../../../@core/shared/services/alert-modal.service';
 import {AppointmentService} from '../../../../services/appointment.service';
-import {Person} from '../../../../models/person';
+import { EMPTY } from 'rxjs';
 import {User} from '../../../../models/user';
+import { switchMap, take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-form-dialog',
@@ -38,6 +39,7 @@ export class FormDialogComponent extends BaseFormComponent {
     cadastroFormLancamento: FormGroup;
     user = User
     className: any
+    idAppointment: number;
 
     constructor(
         public dialogRef: MatDialogRef<FormDialogComponent>,
@@ -59,6 +61,7 @@ export class FormDialogComponent extends BaseFormComponent {
             this.calendar = data.calendar;
             this.showDeleteBtn = true;
             const idAppointment = data.calendar.id;
+            this.idAppointment = idAppointment;
 
             if (idAppointment) {
                 const load$ = this.appointmentService.loadByID(idAppointment);
@@ -104,6 +107,29 @@ export class FormDialogComponent extends BaseFormComponent {
                 this.toastr.error(msgError, 'Opa :(')
         );
     }
+
+    onDelete() {
+        const result$ = this.alertService.showConfirm(
+          'Confirmação',
+          'Tem certeza que deseja remover esse item?',
+        );
+        result$
+          .asObservable()
+          .pipe(
+            take(1),
+            switchMap(result =>
+              result ? this.appointmentService.remove(this.idAppointment) : EMPTY,
+            ),
+          )
+          .subscribe(
+            success => {
+                this.toastr.success('Item excluiro com sucesso!', 'Informação :)')
+                this.dialogRef.close('submit');
+             
+            },
+          );
+      }
+    
 
 
     updateForm(appointment) {

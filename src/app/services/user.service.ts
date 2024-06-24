@@ -14,11 +14,11 @@ import {PersonLegal} from '../models/person';
 })
 export class UserService extends CrudService<User> {
 
-    private url: string = `${environment.urlbase}/authuser/users`;
+    private url: string = `${environment.urlbase}/politicalmanagement/users`;
 
     constructor(protected http: HttpClient,
                 private authservice: AuthService) {
-        super(http, `${environment.urlbase}/authuser/users`);
+        super(http, `${environment.urlbase}/politicalmanagement/users`);
     }
 
     listSearchPage(params): Observable<Page<User>> {

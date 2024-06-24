@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class DashboardService {
 
-    private url: string = `${environment.urlbase}/authuser/dashboard/auth`;
+    private url: string = `${environment.urlbase}/politicalmanagement/dashboard/auth`;
 
     constructor(protected http: HttpClient) {
     }

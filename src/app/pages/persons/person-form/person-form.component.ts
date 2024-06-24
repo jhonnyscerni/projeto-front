@@ -132,8 +132,7 @@ export class PersonFormComponent extends BaseFormComponent implements OnInit {
                 street: dados.logradouro,
                 district: dados.bairro,
                 nameCity: dados.localidade,
-                state: dados.uf,
-                complement: dados.complemento
+                state: dados.uf
             },
         });
     }

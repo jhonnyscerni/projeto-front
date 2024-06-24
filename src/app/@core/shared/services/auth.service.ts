@@ -21,9 +21,9 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class AuthService extends BaseService {
 
 
-    apiURL: string = environment.urlbase + '/authuser/auth'
+    apiURL: string = environment.urlbase + '/politicalmanagement/auth'
     apiURLRecuperarSenha: string = this.apiURL + '/resetpassword'
-    apiURLRegistro: string = this.apiURL + '/authuser/signup'
+    apiURLRegistro: string = this.apiURL + '/politicalmanagement/signup'
     jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(

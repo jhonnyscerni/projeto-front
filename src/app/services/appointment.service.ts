@@ -11,10 +11,10 @@ import {catchError} from 'rxjs/operators';
 })
 export class AppointmentService extends CrudService<Appointment> {
 
-  private url: string = `${environment.urlbase}/appointment/appointments`;
+  private url: string = `${environment.urlbase}/politicalmanagement/appointments`;
 
   constructor(protected http: HttpClient) {
-    super(http, `${environment.urlbase}/appointment/appointments`);
+    super(http, `${environment.urlbase}/politicalmanagement/appointments`);
   }
 
   listResults(): Observable<Appointment[]> {

@@ -130,6 +130,7 @@ export class CalendarComponent extends BaseFormComponent implements OnInit {
         });
     }
     eventClick(appointment) {
+        console.log(appointment)
         const calendarData: any = {
             id: appointment.event.id
         };
@@ -144,6 +145,7 @@ export class CalendarComponent extends BaseFormComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((result) => {
+            console.log(result)
             if (result === "submit") {
                 // this.calendarData = this.calendarService.getDialogData();
                 // this.calendarEvents.forEach(function (element, index) {
@@ -193,7 +195,7 @@ export class CalendarComponent extends BaseFormComponent implements OnInit {
         this.calendarEvents = calendarEvents; // reassign the array
     }
     handleEventRender(info) {
-        // console.log(info)
+         //console.log(info)
         // this.todaysEvents = this.todaysEvents.concat(info);
     }
 
