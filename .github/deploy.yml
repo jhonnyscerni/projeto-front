@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - monolithic-political
 name: 🚀 Deploy website on push 
 
 jobs:
