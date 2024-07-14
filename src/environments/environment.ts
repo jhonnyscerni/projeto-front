@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  urlbase: 'http://localhost:8080',
-  imagensUrl: 'http://localhost:8080',
+  urlbase: 'https://political-management.onrender.com',
+  imagensUrl: 'https://political-management.onrender.com',
 };
 
 /*
