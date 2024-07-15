@@ -80,10 +80,10 @@ export class UserFormComponent extends BaseFormComponent implements OnInit {
             person: this.fb.group({
                 id: [''],
                 name: ['', Validators.required],
-                cpf: ['', [Validators.required, NgBrazilValidators.cpf]],
+                cpf: ['', [NgBrazilValidators.cpf]],
                 email: [
                     '',
-                    [Validators.required, Validators.email],
+                    [Validators.email],
                 ],
                 phoneNumber: [''],
                 birthDate: [''],
