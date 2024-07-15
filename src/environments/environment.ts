@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  urlbase: 'https://political-management.onrender.com',
-  imagensUrl: 'https://political-management.onrender.com',
+  urlbase: 'https://political-management-production.up.railway.app',
+  imagensUrl: 'https://political-management-production.up.railway.app',
 };
 
 /*
